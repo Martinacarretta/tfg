@@ -12,15 +12,23 @@ To plot, display normally, no .t and no origin = lower.
 BUT REMEMBER THE AXIS FOLLOW THE IMAGE y-axis direction CONVENTION (Y AXIS GOES DOWN, NOT UP)
 
   0  1  2  3
+  
 0
+
 1
+
 2
+
 3
 
 NOT 
 
 3
+
 2
+
 1
+
 0
+
   0  1  2  3
