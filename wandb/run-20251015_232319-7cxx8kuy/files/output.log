@@ -1,0 +1,157 @@
+✅ Found 30 training pairs out of 30 listed in CSV.
+✅ Found 30 training pairs out of 30 listed in CSV.
+[('/home/martina/codi2/4year/tfg/training_set_npy/001_49.npy', '/home/martina/codi2/4year/tfg/training_set_npy/001_49_mask.npy'), ('/home/martina/codi2/4year/tfg/training_set_npy/003_69.npy', '/home/martina/codi2/4year/tfg/training_set_npy/003_69_mask.npy'), ('/home/martina/codi2/4year/tfg/training_set_npy/020_26.npy', '/home/martina/codi2/4year/tfg/training_set_npy/020_26_mask.npy'), ('/home/martina/codi2/4year/tfg/training_set_npy/025_109.npy', '/home/martina/codi2/4year/tfg/training_set_npy/025_109_mask.npy'), ('/home/martina/codi2/4year/tfg/training_set_npy/027_61.npy', '/home/martina/codi2/4year/tfg/training_set_npy/027_61_mask.npy')]
+>>> Training starts at  2025-10-15 23:31:03.277381
+>>> Training starts at  2025-10-15 23:53:50.750276
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 1/90 | Reward: -22.000 | Mean: -22.000
+Episode 2/90 | Reward: -40.000 | Mean: -22.000
+Episode 3/90 | Reward: -40.000 | Mean: -31.000
+Episode 4/90 | Reward: -40.000 | Mean: -34.000
+Episode 5/90 | Reward: -40.000 | Mean: -35.500
+Episode 6/90 | Reward: -38.500 | Mean: -36.400
+>>> Training starts at  2025-10-15 23:56:38.436100
+Episode 1/90 | Reward: -28.000 | Mean: -28.000
+Episode 2/90 | Reward: -38.500 | Mean: -28.000
+Episode 3/90 | Reward: -40.000 | Mean: -33.250
+Episode 4/90 | Reward: -38.500 | Mean: -35.500
+Episode 5/90 | Reward: -40.000 | Mean: -36.250
+Episode 6/90 | Reward: -40.000 | Mean: -37.000
+Episode 7/90 | Reward: -25.000 | Mean: -37.500
+Episode 8/90 | Reward: -10.000 | Mean: -35.714
+Episode 9/90 | Reward: -10.000 | Mean: -32.500
+Episode 10/90 | Reward: -10.000 | Mean: -30.000
+Episode 11/90 | Reward: -10.000 | Mean: -28.000
+Episode 12/90 | Reward: -10.000 | Mean: -26.364
+Episode 13/90 | Reward: -10.000 | Mean: -25.000
+Episode 14/90 | Reward: -10.000 | Mean: -23.846
+Episode 15/90 | Reward: -11.500 | Mean: -22.857
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 16/90 | Reward: -8.500 | Mean: -22.100
+Episode 17/90 | Reward: -10.000 | Mean: -21.250
+Episode 18/90 | Reward: -10.000 | Mean: -20.588
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 19/90 | Reward: -7.000 | Mean: -20.000
+Episode 20/90 | Reward: -10.000 | Mean: -19.316
+Episode 21/90 | Reward: -10.000 | Mean: -18.850
+Entered tumor region!
+Exited tumor region!
+Episode 22/90 | Reward: -8.500 | Mean: -18.429
+Episode 23/90 | Reward: -10.000 | Mean: -17.977
+Episode 24/90 | Reward: -10.000 | Mean: -17.630
+Episode 25/90 | Reward: -10.000 | Mean: -17.312
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 26/90 | Reward: -7.000 | Mean: -17.020
+Episode 27/90 | Reward: -10.000 | Mean: -16.635
+Episode 28/90 | Reward: -10.000 | Mean: -16.389
+Episode 29/90 | Reward: -10.000 | Mean: -16.161
+Episode 30/90 | Reward: -10.000 | Mean: -15.948
+Episode 31/90 | Reward: -10.000 | Mean: -15.750
+Episode 32/90 | Reward: -10.000 | Mean: -15.565
+Episode 33/90 | Reward: -10.000 | Mean: -15.391
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 34/90 | Reward: -7.000 | Mean: -15.227
+Episode 35/90 | Reward: -10.000 | Mean: -14.985
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 36/90 | Reward: -7.000 | Mean: -14.843
+Episode 37/90 | Reward: -10.000 | Mean: -14.625
+Entered tumor region!
+Exited tumor region!
+Episode 38/90 | Reward: -8.500 | Mean: -14.500
+Episode 39/90 | Reward: -10.000 | Mean: -14.342
+Episode 40/90 | Reward: -10.000 | Mean: -14.231
+Episode 41/90 | Reward: -10.000 | Mean: -14.125
+Episode 42/90 | Reward: -10.000 | Mean: -14.024
+Episode 43/90 | Reward: -10.000 | Mean: -13.929
+Episode 44/90 | Reward: -10.000 | Mean: -13.837
+Episode 45/90 | Reward: -11.500 | Mean: -13.750
+Episode 46/90 | Reward: -10.000 | Mean: -13.700
+Episode 47/90 | Reward: -10.000 | Mean: -13.620
+Episode 48/90 | Reward: -10.000 | Mean: -13.543
+Episode 49/90 | Reward: -10.000 | Mean: -13.469
+Episode 50/90 | Reward: -10.000 | Mean: -13.398
+Episode 51/90 | Reward: -10.000 | Mean: -13.330
+Episode 52/90 | Reward: -11.500 | Mean: -13.265
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 53/90 | Reward: -7.000 | Mean: -13.231
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 54/90 | Reward: -7.000 | Mean: -13.113
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 55/90 | Reward: -7.000 | Mean: -13.000
+Episode 56/90 | Reward: -10.000 | Mean: -12.891
+Episode 57/90 | Reward: -10.000 | Mean: -12.839
+Episode 58/90 | Reward: -10.000 | Mean: -12.789
+Episode 59/90 | Reward: -10.000 | Mean: -12.741
+Episode 60/90 | Reward: -10.000 | Mean: -12.695
+Episode 61/90 | Reward: -10.000 | Mean: -12.650
+Episode 62/90 | Reward: -10.000 | Mean: -12.607
+Entered tumor region!
+Exited tumor region!
+Episode 63/90 | Reward: -8.500 | Mean: -12.565
+Episode 64/90 | Reward: -10.000 | Mean: -12.500
+Episode 65/90 | Reward: -10.000 | Mean: -12.461
+Episode 66/90 | Reward: -10.000 | Mean: -12.423
+Episode 67/90 | Reward: -10.000 | Mean: -12.386
+Episode 68/90 | Reward: -10.000 | Mean: -12.351
+Entered tumor region!
+Exited tumor region!
+Episode 69/90 | Reward: -8.500 | Mean: -12.316
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 70/90 | Reward: -5.500 | Mean: -12.261
+Episode 71/90 | Reward: -10.000 | Mean: -12.164
+Episode 72/90 | Reward: -10.000 | Mean: -12.134
+Episode 73/90 | Reward: -10.000 | Mean: -12.104
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 74/90 | Reward: -8.500 | Mean: -12.075
+Episode 75/90 | Reward: -10.000 | Mean: -12.027
+Episode 76/90 | Reward: -10.000 | Mean: -12.000
+Entered tumor region!
+Exited tumor region!
+Episode 77/90 | Reward: -8.500 | Mean: -11.974
+Episode 78/90 | Reward: -10.000 | Mean: -11.929
+Episode 79/90 | Reward: -10.000 | Mean: -11.904
+Episode 80/90 | Reward: -10.000 | Mean: -11.880
+Episode 81/90 | Reward: -10.000 | Mean: -11.856
+Episode 82/90 | Reward: -10.000 | Mean: -11.833
+Episode 83/90 | Reward: -10.000 | Mean: -11.811
+Episode 84/90 | Reward: -11.500 | Mean: -11.789
+Entered tumor region!
+Exited tumor region!
+Episode 85/90 | Reward: -8.500 | Mean: -11.786
+Episode 86/90 | Reward: -10.000 | Mean: -11.747
+Episode 87/90 | Reward: -10.000 | Mean: -11.727
+Episode 88/90 | Reward: -10.000 | Mean: -11.707
+Episode 89/90 | Reward: -10.000 | Mean: -11.688
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 90/90 | Reward: -7.000 | Mean: -11.669
+>>> Training completed at  2025-10-16 00:02:37.063139

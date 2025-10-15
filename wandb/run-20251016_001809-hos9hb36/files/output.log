@@ -1,0 +1,273 @@
+>>> Training starts at  2025-10-16 00:18:15.693289
+Filling replay buffer...
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Training...
+Episode 2 Mean Rewards -15.00 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 3 Mean Rewards -19.83 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 5 Mean Rewards -17.70 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 6 Mean Rewards -17.75 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 7 Mean Rewards -16.21 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 8 Mean Rewards -15.06 Epsilon 0.01		Entered tumor region!
+Episode 10 Mean Rewards -15.25 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 11 Mean Rewards -15.36 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 13 Mean Rewards -14.42 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 16 Mean Rewards -16.53 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 17 Mean Rewards -16.12 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 19 Mean Rewards -15.87 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 21 Mean Rewards -15.24 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 22 Mean Rewards -14.86 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 23 Mean Rewards -14.52 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 24 Mean Rewards -14.23 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 25 Mean Rewards -14.48 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 26 Mean Rewards -14.75 Epsilon 0.01		Entered tumor region!
+Episode 29 Mean Rewards -14.66 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 30 Mean Rewards -14.35 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 31 Mean Rewards -14.29 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 32 Mean Rewards -14.06 Epsilon 0.01		Entered tumor region!
+Episode 33 Mean Rewards -14.67 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 34 Mean Rewards -14.57 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 37 Mean Rewards -14.51 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 38 Mean Rewards -14.28 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 39 Mean Rewards -14.09 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 40 Mean Rewards -14.03 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 41 Mean Rewards -13.93 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Episode 43 Mean Rewards -13.97 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Episode 45 Mean Rewards -14.07 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 46 Mean Rewards -13.99 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 48 Mean Rewards -13.76 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 50 Mean Rewards -13.95 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 52 Mean Rewards -13.74 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 54 Mean Rewards -13.55 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 55 Mean Rewards -13.51 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 57 Mean Rewards -13.47 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 58 Mean Rewards -13.36 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 59 Mean Rewards -13.36 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 60 Mean Rewards -13.28 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 61 Mean Rewards -13.40 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 62 Mean Rewards -13.35 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 63 Mean Rewards -13.30 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 64 Mean Rewards -13.23 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 65 Mean Rewards -13.52 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 66 Mean Rewards -13.51 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 67 Mean Rewards -13.41 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 68 Mean Rewards -13.32 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 69 Mean Rewards -13.29 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 70 Mean Rewards -13.35 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Episode 71 Mean Rewards -13.28 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 75 Mean Rewards -13.07 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Episode 76 Mean Rewards -12.72 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 77 Mean Rewards -12.66 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 79 Mean Rewards -12.66 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Episode 80 Mean Rewards -12.31 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 82 Mean Rewards -12.27 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 83 Mean Rewards -12.31 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 84 Mean Rewards -12.39 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 87 Mean Rewards -12.55 Epsilon 0.01		Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 88 Mean Rewards -12.66 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Episode 89 Mean Rewards -12.69 Epsilon 0.01		Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Entered tumor region!
+Exited tumor region!
+Entered tumor region!
+Exited tumor region!
+Episode 90 Mean Rewards -12.78 Epsilon 0.01		
+Episode limit reached.
+>>> Training completed at  2025-10-16 00:27:55.031676
+[34m[1mwandb[0m: [33mWARNING[0m Calling wandb.login() after wandb.init() has no effect.
