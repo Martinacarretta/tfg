@@ -1,0 +1,28 @@
+{
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2025-10-29T20:34:36.746595Z",
+  "program": "/home/martina/codi2/4year/tfg/training_chat.ipynb",
+  "codePath": "training_chat.ipynb",
+  "codePathLocal": "training_chat.ipynb",
+  "git": {
+    "remote": "https://github.com/Martinacarretta/tfg",
+    "commit": "42e7129c60020c8805ecdd9fc33261279f2d246a"
+  },
+  "email": "martinacarrettab@gmail.com",
+  "root": "/home/martina/codi2/4year/tfg",
+  "host": "LAPTOP-INQT65B2",
+  "executable": "/usr/bin/python3",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "269427478528",
+      "used": "39362367488"
+    }
+  },
+  "memory": {
+    "total": "3991105536"
+  },
+  "writerId": "7sel8g9p1hiwfxxpb01ke2ipp5ll9zw2"
+}

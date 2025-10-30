@@ -1,0 +1,38 @@
+2025-10-30 22:51:24,043 INFO    MainThread:15810 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251030_225123-39yddz0v/logs/debug.log
+2025-10-30 22:51:24,044 INFO    MainThread:15810 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251030_225123-39yddz0v/logs/debug-internal.log
+2025-10-30 22:51:24,045 INFO    MainThread:15810 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x6ffbdc4124d0>
+2025-10-30 22:51:24,045 INFO    MainThread:15810 [wandb_init.py:init():832] calling init triggers
+2025-10-30 22:51:24,046 INFO    MainThread:15810 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 100, 'EPSILON': 0.7, 'EPSILON_DECAY': 0.007776666666666666, 'EPSILON_MIN': 0.0001, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 1000, 'DNN_UPD': 1, 'DNN_SYNC': 20, 'cnn': {'filters': [32, 64, 128], 'kernel_size': 3, 'pool_size': 2}, '_wandb': {}}
+2025-10-30 22:51:24,046 INFO    MainThread:15810 [wandb_init.py:init():880] starting backend
+2025-10-30 22:51:24,046 INFO    MainThread:15810 [wandb_init.py:init():883] sending inform_init request
+2025-10-30 22:51:24,059 INFO    MainThread:15810 [wandb_init.py:init():891] backend started and connected
+2025-10-30 22:51:24,291 INFO    MainThread:15810 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-10-30 22:51:24,304 INFO    MainThread:15810 [wandb_init.py:init():961] updated telemetry
+2025-10-30 22:51:24,370 INFO    MainThread:15810 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-10-30 22:51:25,005 INFO    MainThread:15810 [wandb_init.py:init():1036] starting run threads in backend
+2025-10-30 22:51:25,943 INFO    MainThread:15810 [wandb_run.py:_console_start():2509] atexit reg
+2025-10-30 22:51:25,944 INFO    MainThread:15810 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-10-30 22:51:25,944 INFO    MainThread:15810 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-10-30 22:51:25,946 INFO    MainThread:15810 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-10-30 22:51:25,950 INFO    MainThread:15810 [wandb_init.py:init():1076] run started, returning control to user process
+2025-10-30 22:51:25,956 INFO    MainThread:15810 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-10-30 22:51:27,173 INFO    MainThread:15810 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-10-30 22:51:27,173 INFO    MainThread:15810 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-10-30 22:59:07,828 INFO    MainThread:15810 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-10-30 23:00:23,641 INFO    MainThread:15810 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-10-30 23:00:23,648 INFO    MainThread:15810 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-10-30 23:00:23,719 INFO    MainThread:15810 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-10-30 23:00:25,313 INFO    MainThread:15810 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-10-30 23:00:25,314 INFO    MainThread:15810 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-10-30 23:00:25,332 INFO    MainThread:15810 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-10-30 23:00:38,237 INFO    MainThread:15810 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-10-30 23:00:38,237 INFO    MainThread:15810 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-10-30 23:00:38,243 INFO    MainThread:15810 [wandb_run.py:_finish():2275] finishing run martinacarrettab/TFG_Glioblastoma/39yddz0v
+2025-10-30 23:00:38,268 INFO    MainThread:15810 [jupyter.py:save_history():480] not saving jupyter history
+2025-10-30 23:00:38,269 INFO    MainThread:15810 [jupyter.py:save_ipynb():404] not saving jupyter notebook
+2025-10-30 23:00:38,270 INFO    MainThread:15810 [wandb_init.py:_jupyter_teardown():609] cleaning up jupyter logic
+2025-10-30 23:00:38,271 INFO    MainThread:15810 [wandb_run.py:_atexit_cleanup():2474] got exitcode: 0
+2025-10-30 23:00:38,277 INFO    MainThread:15810 [wandb_run.py:_restore():2456] restore
+2025-10-30 23:00:38,281 INFO    MainThread:15810 [wandb_run.py:_restore():2462] restore done
+2025-10-30 23:00:39,759 INFO    MainThread:15810 [wandb_run.py:_footer_sync_info():3872] logging synced files
