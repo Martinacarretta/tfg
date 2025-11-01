@@ -1,0 +1,18 @@
+{"time":"2025-11-01T18:30:44.174580211+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-01T18:30:44.662314117+01:00","level":"INFO","msg":"stream: created new stream","id":"zgdtsims"}
+{"time":"2025-11-01T18:30:44.662498492+01:00","level":"INFO","msg":"handler: started","stream_id":"zgdtsims"}
+{"time":"2025-11-01T18:30:44.662595648+01:00","level":"INFO","msg":"stream: started","id":"zgdtsims"}
+{"time":"2025-11-01T18:30:44.662595106+01:00","level":"INFO","msg":"writer: started","stream_id":"zgdtsims"}
+{"time":"2025-11-01T18:30:44.662635595+01:00","level":"INFO","msg":"sender: started","stream_id":"zgdtsims"}
+{"time":"2025-11-01T18:30:45.982259981+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":38}
+{"time":"2025-11-01T18:30:46.048530259+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":45}
+{"time":"2025-11-01T18:31:01.009667006+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":4740}
+{"time":"2025-11-01T18:31:01.032702794+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":14}
+{"time":"2025-11-01T18:31:07.499098486+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":1}
+{"time":"2025-11-01T18:31:07.498292437+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":7526}
+{"time":"2025-11-01T18:36:33.753385718+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/zgdtsims/file_stream\": write tcp 172.22.107.147:52124->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-01T18:36:58.396847213+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/zgdtsims/file_stream\": write tcp 172.22.107.147:40816->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-01T18:37:16.479657738+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/zgdtsims/file_stream\": write tcp 172.22.107.147:43492->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-01T18:38:42.853924528+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/zgdtsims/file_stream\": write tcp 172.22.107.147:38456->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-01T18:38:42.98508914+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":8370}
+{"time":"2025-11-01T18:38:43.082452593+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":19}

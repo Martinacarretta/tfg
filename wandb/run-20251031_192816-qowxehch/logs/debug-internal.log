@@ -1,0 +1,36 @@
+{"time":"2025-10-31T19:28:16.53796967+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-10-31T19:28:17.138419647+01:00","level":"INFO","msg":"stream: created new stream","id":"qowxehch"}
+{"time":"2025-10-31T19:28:17.13878458+01:00","level":"INFO","msg":"handler: started","stream_id":"qowxehch"}
+{"time":"2025-10-31T19:28:17.140186019+01:00","level":"INFO","msg":"stream: started","id":"qowxehch"}
+{"time":"2025-10-31T19:28:17.14056759+01:00","level":"INFO","msg":"writer: started","stream_id":"qowxehch"}
+{"time":"2025-10-31T19:28:17.140730343+01:00","level":"INFO","msg":"sender: started","stream_id":"qowxehch"}
+{"time":"2025-10-31T19:28:35.051439557+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":3670}
+{"time":"2025-10-31T19:28:35.172564052+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":27}
+{"time":"2025-10-31T19:29:35.294964814+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":9312}
+{"time":"2025-10-31T19:29:35.314676799+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:29:50.170011731+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":10481}
+{"time":"2025-10-31T19:29:50.222435206+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:30:20.280550115+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":13325}
+{"time":"2025-10-31T19:30:20.325894711+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:30:35.226102451+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":14777}
+{"time":"2025-10-31T19:30:35.309289911+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:31:35.285796882+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":20416}
+{"time":"2025-10-31T19:31:35.326384393+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:32:05.257640758+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":23330}
+{"time":"2025-10-31T19:32:05.28114864+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:32:35.196032941+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":26163}
+{"time":"2025-10-31T19:32:35.256422508+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:33:05.25257367+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":28889}
+{"time":"2025-10-31T19:33:05.28986641+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:34:05.304241215+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":33924}
+{"time":"2025-10-31T19:34:05.318972358+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:34:50.275836615+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":37985}
+{"time":"2025-10-31T19:34:50.371524007+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:35:20.183997044+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":40582}
+{"time":"2025-10-31T19:35:20.205351236+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:41:59.463006191+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.054980886}],"total_operations":1}}
+{"time":"2025-10-31T19:42:00.616740862+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-31T19:42:00.990008751+01:00","level":"INFO","msg":"stream: closing","id":"qowxehch"}
+{"time":"2025-10-31T19:42:00.990108526+01:00","level":"INFO","msg":"handler: closed","stream_id":"qowxehch"}
+{"time":"2025-10-31T19:42:00.990778645+01:00","level":"INFO","msg":"sender: closed","stream_id":"qowxehch"}
+{"time":"2025-10-31T19:42:00.990811037+01:00","level":"INFO","msg":"stream: closed","id":"qowxehch"}

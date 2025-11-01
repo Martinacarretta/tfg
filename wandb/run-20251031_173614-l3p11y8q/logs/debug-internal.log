@@ -1,0 +1,7 @@
+{"time":"2025-10-31T17:36:13.522046537+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-10-31T17:36:14.110193832+01:00","level":"INFO","msg":"stream: created new stream","id":"l3p11y8q"}
+{"time":"2025-10-31T17:36:14.110888129+01:00","level":"INFO","msg":"handler: started","stream_id":"l3p11y8q"}
+{"time":"2025-10-31T17:36:14.112040419+01:00","level":"INFO","msg":"stream: started","id":"l3p11y8q"}
+{"time":"2025-10-31T17:36:14.112782286+01:00","level":"INFO","msg":"sender: started","stream_id":"l3p11y8q"}
+{"time":"2025-10-31T17:36:14.112793136+01:00","level":"INFO","msg":"writer: started","stream_id":"l3p11y8q"}
+{"time":"2025-10-31T17:46:06.53995803+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/l3p11y8q/file_stream\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}

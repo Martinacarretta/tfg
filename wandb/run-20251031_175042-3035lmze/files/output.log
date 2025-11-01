@@ -1,0 +1,1002 @@
+>>> Training starts at  2025-10-31 17:50:46.047510
+Filling replay buffer...
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Training...
+[Episode 0] Using image: 025_109.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9455645
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.26171875
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9346505
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Agent moved into tumor at position: [2, 2]
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.4670487
+Agent stayed at tumor position
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.77232796
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9464713
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6383074
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9661017
+Episode 1 Mean Rewards -17.50 Epsilon 1.0 Loss 1.0785415172576904
+   Positive rewards: 2, Negative rewards: 18
+[Episode 1] Using image: 170_67.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.40356565
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.64522415
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7423133
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.36073825
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7649919
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 2 Mean Rewards -16.00 Epsilon 0.950005 Loss 0.4096480906009674
+   Positive rewards: 0, Negative rewards: 20
+[Episode 2] Using image: 364_25.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6977382
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7884131
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8303379
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.3846154
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5612416
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7422286
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 3 Mean Rewards -17.50 Epsilon 0.90001 Loss 0.3754807114601135
+   Positive rewards: 0, Negative rewards: 20
+[Episode 3] Using image: 003_69.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7035957
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.82370824
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7128713
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.3077153
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.86018234
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.36870027
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.12670565
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.69340974
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.82370824
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.84962404
+Episode 4 Mean Rewards -18.62 Epsilon 0.850015 Loss 0.3663158714771271
+   Positive rewards: 0, Negative rewards: 20
+[Episode 4] Using image: 153_61.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8741221
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7884131
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5729866
+Agent moved into tumor at position: [2, 2]
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.36472148
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8488889
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9673684
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.20278184
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 5 Mean Rewards -18.40 Epsilon 0.80002 Loss 0.39362508058547974
+   Positive rewards: 1, Negative rewards: 19
+[Episode 5] Using image: 224_71.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.86018234
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Agent moved into tumor at position: [1, 2]
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Agent moved into tumor at position: [2, 2]
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7752562
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8487886
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8478907
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 6 Mean Rewards -18.00 Epsilon 0.7500249999999999 Loss 0.47683754563331604
+   Positive rewards: 2, Negative rewards: 18
+[Episode 6] Using image: 153_61.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6383074
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9515782
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.44360903
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9464713
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5612416
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.71428573
+Episode 7 Mean Rewards -17.50 Epsilon 0.7000299999999999 Loss 0.5207517147064209
+   Positive rewards: 0, Negative rewards: 20
+[Episode 7] Using image: 091_92.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.46222222
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5845272
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.40356565
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.36472148
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.716792
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 8 Mean Rewards -17.69 Epsilon 0.6500349999999999 Loss 0.558320164680481
+   Positive rewards: 0, Negative rewards: 20
+[Episode 8] Using image: 089_46.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.3846154
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.49473685
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9949622
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9155937
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.3875724
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.36472148
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 9 Mean Rewards -17.17 Epsilon 0.6000399999999999 Loss 0.56005859375
+   Positive rewards: 0, Negative rewards: 20
+[Episode 9] Using image: 152_100.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.72444445
+Agent moved into tumor at position: [1, 1]
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Agent moved into tumor at position: [2, 1]
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8253055
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.2737921
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.35151008
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5729866
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.42287233
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.3846154
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.31241032
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 10 Mean Rewards -16.30 Epsilon 0.5500449999999999 Loss 0.5756703019142151
+   Positive rewards: 2, Negative rewards: 18
+[Episode 10] Using image: 349_99.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6383074
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.58984375
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.716792
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7884131
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8011696
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5729866
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 11 Mean Rewards -16.00 Epsilon 0.5000499999999999 Loss 0.5542125701904297
+   Positive rewards: 0, Negative rewards: 20
+[Episode 11] Using image: 037_83.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9054054
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8478907
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8024316
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5100671
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.58557135
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 12 Mean Rewards -15.75 Epsilon 0.45005499999999987 Loss 0.5547505617141724
+   Positive rewards: 0, Negative rewards: 20
+[Episode 12] Using image: 025_109.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7580645
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.26487625
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5100671
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.58984375
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.3077153
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9758065
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5612416
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 13 Mean Rewards -15.77 Epsilon 0.40005999999999986 Loss 0.8289613723754883
+   Positive rewards: 0, Negative rewards: 20
+[Episode 13] Using image: 234_39.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.48424068
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.49473685
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9916815
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7423133
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 14 Mean Rewards -15.46 Epsilon 0.35006499999999985 Loss 0.826107382774353
+   Positive rewards: 0, Negative rewards: 20
+[Episode 14] Using image: 115_123.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8488889
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.58557135
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.69340974
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 15 Mean Rewards -15.30 Epsilon 0.30006999999999984 Loss 0.6813259124755859
+   Positive rewards: 0, Negative rewards: 20
+[Episode 15] Using image: 170_67.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7884131
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.36870027
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7580645
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.69300914
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9455645
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 16 Mean Rewards -15.25 Epsilon 0.2500749999999998 Loss 0.8254923820495605
+   Positive rewards: 0, Negative rewards: 20
+[Episode 16] Using image: 025_109.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7752562
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.65413535
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.4481306
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9361702
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.46286473
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.59324235
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.31241032
+Episode 17 Mean Rewards -15.03 Epsilon 0.2000799999999998 Loss 0.8555205464363098
+   Positive rewards: 0, Negative rewards: 20
+[Episode 17] Using image: 325_17.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.62957543
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.86018234
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7422286
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8568342
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.77232796
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9792038
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7422286
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6977382
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6383074
+Episode 18 Mean Rewards -14.75 Epsilon 0.1500849999999998 Loss 0.7624785304069519
+   Positive rewards: 0, Negative rewards: 20
+[Episode 18] Using image: 249_54.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 1.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6977382
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.8250366
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.5847315
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.91729325
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7923387
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.59324235
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.9949622
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 19 Mean Rewards -14.50 Epsilon 0.1000899999999998 Loss 0.786609947681427
+   Positive rewards: 0, Negative rewards: 20
+[Episode 19] Using image: 187_122.npy
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.7681356
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.58305085
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.6383074
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+BATCH shapes (128, 60, 60) (128, 60, 60) (128,) (128,) (128,)
+state[0] min/max: 0.0 0.0
+Episode 20 Mean Rewards -14.28 Epsilon 0.050094999999999806 Loss 0.8414349555969238
+   Positive rewards: 0, Negative rewards: 20
+
+Episode limit reached.
+>>> Training completed at  2025-10-31 17:51:56.026934
+(60, 60)
+3
+[0 1 2]
+✅ Found 30 training pairs out of 30 listed in CSV.
+Starting at 1.0, decaying 0.049995, will reach 0.0001 after 20 episodes
+(60, 60)
+3
+[0 1 2]
+✅ Found 30 training pairs out of 30 listed in CSV.
+Starting at 1.0, decaying 0.049995, will reach 0.0001 after 20 episodes
+✅ Found 30 training pairs out of 30 listed in CSV.
+Starting at 1.0, decaying 0.049995, will reach 0.0001 after 20 episodes
+[34m[1mwandb[0m: [33mWARNING[0m Calling wandb.login() after wandb.init() has no effect.

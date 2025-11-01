@@ -1,0 +1,1801 @@
+>>> Training starts at  2025-11-01 12:31:04.042678
+Filling replay buffer...
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 3]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 0]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [2, 0]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [2, 2]
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 1]
+Agent stayed at tumor position
+Training...
+[Episode 0] Using image: 183_66.npy
+Episode 1 Mean Rewards -22.00 Epsilon 1.0 Loss 1.1135284900665283
+   Positive rewards: 0, Negative rewards: 20
+[Episode 1] Using image: 037_83.npy
+Episode 2 Mean Rewards -22.00 Epsilon 0.95 Loss 0.3681327998638153
+   Positive rewards: 0, Negative rewards: 20
+[Episode 2] Using image: 089_46.npy
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Episode 3 Mean Rewards -18.50 Epsilon 0.9025 Loss 0.3349052369594574
+   Positive rewards: 4, Negative rewards: 16
+[Episode 3] Using image: 001_49.npy
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Episode 4 Mean Rewards -16.75 Epsilon 0.8573749999999999 Loss 0.3375675082206726
+   Positive rewards: 2, Negative rewards: 18
+[Episode 4] Using image: 235_114.npy
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [2, 1]
+Episode 5 Mean Rewards -15.10 Epsilon 0.8145062499999999 Loss 0.36427542567253113
+   Positive rewards: 2, Negative rewards: 18
+[Episode 5] Using image: 298_78.npy
+Episode 6 Mean Rewards -15.25 Epsilon 0.7737809374999999 Loss 0.6090452075004578
+   Positive rewards: 0, Negative rewards: 20
+[Episode 6] Using image: 362_68.npy
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent moved into tumor at position: [2, 2]
+Agent stayed at tumor position
+Episode 7 Mean Rewards -14.50 Epsilon 0.7350918906249998 Loss 0.40816187858581543
+   Positive rewards: 4, Negative rewards: 16
+[Episode 7] Using image: 115_123.npy
+Agent moved into tumor at position: [1, 1]
+Episode 8 Mean Rewards -14.31 Epsilon 0.6983372960937497 Loss 0.41608691215515137
+   Positive rewards: 1, Negative rewards: 19
+[Episode 8] Using image: 234_39.npy
+Episode 9 Mean Rewards -14.50 Epsilon 0.6634204312890623 Loss 1.10261070728302
+   Positive rewards: 0, Negative rewards: 20
+[Episode 9] Using image: 187_122.npy
+Episode 10 Mean Rewards -14.20 Epsilon 0.6302494097246091 Loss 0.2895379960536957
+   Positive rewards: 0, Negative rewards: 20
+[Episode 10] Using image: 153_61.npy
+Episode 11 Mean Rewards -14.09 Epsilon 0.5987369392383786 Loss 0.396049827337265
+   Positive rewards: 0, Negative rewards: 20
+[Episode 11] Using image: 298_78.npy
+Agent moved into tumor at position: [1, 1]
+Episode 12 Mean Rewards -13.88 Epsilon 0.5688000922764596 Loss 0.8464211225509644
+   Positive rewards: 1, Negative rewards: 19
+[Episode 12] Using image: 349_99.npy
+Episode 13 Mean Rewards -13.92 Epsilon 0.5403600876626365 Loss 0.8196974992752075
+   Positive rewards: 0, Negative rewards: 20
+[Episode 13] Using image: 364_25.npy
+Episode 14 Mean Rewards -13.96 Epsilon 0.5133420832795047 Loss 0.6043837666511536
+   Positive rewards: 0, Negative rewards: 20
+[Episode 14] Using image: 020_26.npy
+Episode 15 Mean Rewards -14.20 Epsilon 0.48767497911552943 Loss 0.850517749786377
+   Positive rewards: 0, Negative rewards: 20
+[Episode 15] Using image: 025_109.npy
+Agent moved into tumor at position: [2, 2]
+Episode 16 Mean Rewards -14.03 Epsilon 0.46329123015975293 Loss 0.7074946761131287
+   Positive rewards: 1, Negative rewards: 19
+[Episode 16] Using image: 037_83.npy
+Episode 17 Mean Rewards -13.97 Epsilon 0.44012666865176525 Loss 0.7434898614883423
+   Positive rewards: 0, Negative rewards: 20
+[Episode 17] Using image: 355_93.npy
+Agent moved into tumor at position: [1, 1]
+Episode 18 Mean Rewards -13.92 Epsilon 0.41812033521917696 Loss 1.0035432577133179
+   Positive rewards: 1, Negative rewards: 19
+[Episode 18] Using image: 225_94.npy
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Episode 19 Mean Rewards -13.79 Epsilon 0.3972143184582181 Loss 1.1577155590057373
+   Positive rewards: 3, Negative rewards: 17
+[Episode 19] Using image: 001_49.npy
+Episode 20 Mean Rewards -13.75 Epsilon 0.37735360253530714 Loss 0.9608198404312134
+   Positive rewards: 0, Negative rewards: 20
+[Episode 20] Using image: 364_25.npy
+Episode 21 Mean Rewards -13.71 Epsilon 0.35848592240854177 Loss 0.7968829870223999
+   Positive rewards: 0, Negative rewards: 20
+[Episode 21] Using image: 170_67.npy
+Episode 22 Mean Rewards -13.55 Epsilon 0.34056162628811465 Loss 1.1019275188446045
+   Positive rewards: 0, Negative rewards: 20
+[Episode 22] Using image: 170_67.npy
+Episode 23 Mean Rewards -13.65 Epsilon 0.3235335449737089 Loss 1.0647337436676025
+   Positive rewards: 0, Negative rewards: 20
+[Episode 23] Using image: 187_122.npy
+Episode 24 Mean Rewards -13.69 Epsilon 0.30735686772502346 Loss 1.1992518901824951
+   Positive rewards: 0, Negative rewards: 20
+[Episode 24] Using image: 001_49.npy
+Episode 25 Mean Rewards -13.54 Epsilon 0.2919890243387723 Loss 1.1792843341827393
+   Positive rewards: 0, Negative rewards: 20
+[Episode 25] Using image: 183_66.npy
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent moved into tumor at position: [3, 1]
+Agent stayed at tumor position
+Episode 26 Mean Rewards -12.94 Epsilon 0.27738957312183365 Loss 1.1574121713638306
+   Positive rewards: 8, Negative rewards: 12
+[Episode 26] Using image: 025_109.npy
+Episode 27 Mean Rewards -12.83 Epsilon 0.263520094465742 Loss 1.3050074577331543
+   Positive rewards: 0, Negative rewards: 20
+[Episode 27] Using image: 091_92.npy
+Episode 28 Mean Rewards -12.73 Epsilon 0.25034408974245487 Loss 1.2278681993484497
+   Positive rewards: 0, Negative rewards: 20
+[Episode 28] Using image: 047_87.npy
+Episode 29 Mean Rewards -12.74 Epsilon 0.2378268852553321 Loss 1.159336805343628
+   Positive rewards: 0, Negative rewards: 20
+[Episode 29] Using image: 224_71.npy
+Episode 30 Mean Rewards -12.75 Epsilon 0.2259355409925655 Loss 1.500985860824585
+   Positive rewards: 0, Negative rewards: 20
+[Episode 30] Using image: 234_39.npy
+Episode 31 Mean Rewards -12.81 Epsilon 0.2146387639429372 Loss 1.4505363702774048
+   Positive rewards: 0, Negative rewards: 20
+[Episode 31] Using image: 170_67.npy
+Episode 32 Mean Rewards -12.77 Epsilon 0.20390682574579033 Loss 1.2742502689361572
+   Positive rewards: 0, Negative rewards: 20
+[Episode 32] Using image: 234_39.npy
+Agent moved into tumor at position: [1, 2]
+Episode 33 Mean Rewards -12.64 Epsilon 0.1937114844585008 Loss 1.080027461051941
+   Positive rewards: 1, Negative rewards: 19
+[Episode 33] Using image: 224_71.npy
+Episode 34 Mean Rewards -12.65 Epsilon 0.18402591023557577 Loss 1.3498966693878174
+   Positive rewards: 0, Negative rewards: 20
+[Episode 34] Using image: 349_99.npy
+Episode 35 Mean Rewards -12.66 Epsilon 0.17482461472379698 Loss 1.419628381729126
+   Positive rewards: 0, Negative rewards: 20
+[Episode 35] Using image: 265_75.npy
+Episode 36 Mean Rewards -12.67 Epsilon 0.16608338398760714 Loss 1.2229368686676025
+   Positive rewards: 0, Negative rewards: 20
+[Episode 36] Using image: 325_17.npy
+Episode 37 Mean Rewards -12.64 Epsilon 0.15777921478822676 Loss 1.0785882472991943
+   Positive rewards: 0, Negative rewards: 20
+[Episode 37] Using image: 234_39.npy
+Episode 38 Mean Rewards -12.68 Epsilon 0.14989025404881542 Loss 1.2875590324401855
+   Positive rewards: 0, Negative rewards: 20
+[Episode 38] Using image: 003_69.npy
+Episode 39 Mean Rewards -12.69 Epsilon 0.14239574134637464 Loss 0.9618130922317505
+   Positive rewards: 0, Negative rewards: 20
+[Episode 39] Using image: 187_122.npy
+Episode 40 Mean Rewards -12.66 Epsilon 0.1352759542790559 Loss 0.9792057871818542
+   Positive rewards: 0, Negative rewards: 20
+[Episode 40] Using image: 027_61.npy
+Agent moved into tumor at position: [1, 3]
+Episode 41 Mean Rewards -12.60 Epsilon 0.1285121565651031 Loss 1.3585917949676514
+   Positive rewards: 1, Negative rewards: 19
+[Episode 41] Using image: 089_46.npy
+Episode 42 Mean Rewards -12.57 Epsilon 0.12208654873684793 Loss 1.2462648153305054
+   Positive rewards: 0, Negative rewards: 20
+[Episode 42] Using image: 249_54.npy
+Episode 43 Mean Rewards -12.51 Epsilon 0.11598222130000553 Loss 1.8669484853744507
+   Positive rewards: 0, Negative rewards: 20
+[Episode 43] Using image: 288_45.npy
+Agent moved into tumor at position: [1, 0]
+Agent moved into tumor at position: [2, 0]
+Episode 44 Mean Rewards -12.42 Epsilon 0.11018311023500525 Loss 1.591817855834961
+   Positive rewards: 2, Negative rewards: 18
+[Episode 44] Using image: 187_122.npy
+Agent moved into tumor at position: [2, 1]
+Episode 45 Mean Rewards -12.33 Epsilon 0.10467395472325498 Loss 1.1409704685211182
+   Positive rewards: 1, Negative rewards: 19
+[Episode 45] Using image: 325_17.npy
+Episode 46 Mean Rewards -12.28 Epsilon 0.09944025698709223 Loss 1.0523699522018433
+   Positive rewards: 0, Negative rewards: 20
+[Episode 46] Using image: 146_45.npy
+Agent moved into tumor at position: [2, 0]
+Episode 47 Mean Rewards -12.20 Epsilon 0.09446824413773762 Loss 1.1998158693313599
+   Positive rewards: 1, Negative rewards: 19
+[Episode 47] Using image: 115_123.npy
+Episode 48 Mean Rewards -12.19 Epsilon 0.08974483193085074 Loss 1.2166589498519897
+   Positive rewards: 0, Negative rewards: 20
+[Episode 48] Using image: 153_61.npy
+Episode 49 Mean Rewards -12.14 Epsilon 0.0852575903343082 Loss 1.303226113319397
+   Positive rewards: 0, Negative rewards: 20
+[Episode 49] Using image: 224_71.npy
+Agent moved into tumor at position: [1, 2]
+Episode 50 Mean Rewards -12.10 Epsilon 0.08099471081759278 Loss 1.3975770473480225
+   Positive rewards: 1, Negative rewards: 19
+[Episode 50] Using image: 047_87.npy
+Episode 51 Mean Rewards -12.06 Epsilon 0.07694497527671314 Loss 1.2967278957366943
+   Positive rewards: 0, Negative rewards: 20
+[Episode 51] Using image: 153_61.npy
+Episode 52 Mean Rewards -12.08 Epsilon 0.07309772651287748 Loss 1.1891977787017822
+   Positive rewards: 0, Negative rewards: 20
+[Episode 52] Using image: 249_54.npy
+Episode 53 Mean Rewards -12.04 Epsilon 0.0694428401872336 Loss 1.9258677959442139
+   Positive rewards: 0, Negative rewards: 20
+[Episode 53] Using image: 003_69.npy
+Episode 54 Mean Rewards -12.00 Epsilon 0.0659706981778719 Loss 1.2688695192337036
+   Positive rewards: 0, Negative rewards: 20
+[Episode 54] Using image: 153_61.npy
+Episode 55 Mean Rewards -11.96 Epsilon 0.0626721632689783 Loss 1.3230235576629639
+   Positive rewards: 0, Negative rewards: 20
+[Episode 55] Using image: 115_123.npy
+Episode 56 Mean Rewards -11.93 Epsilon 0.059538555105529384 Loss 1.3681458234786987
+   Positive rewards: 0, Negative rewards: 20
+[Episode 56] Using image: 249_54.npy
+Agent moved into tumor at position: [1, 3]
+Agent moved into tumor at position: [2, 3]
+Agent moved into tumor at position: [2, 3]
+Episode 57 Mean Rewards -11.82 Epsilon 0.05656162735025291 Loss 1.764200210571289
+   Positive rewards: 3, Negative rewards: 17
+[Episode 57] Using image: 003_69.npy
+Episode 58 Mean Rewards -11.78 Epsilon 0.053733545982740265 Loss 1.3386696577072144
+   Positive rewards: 0, Negative rewards: 20
+[Episode 58] Using image: 162_106.npy
+Episode 59 Mean Rewards -11.75 Epsilon 0.05104686868360325 Loss 1.410109281539917
+   Positive rewards: 0, Negative rewards: 20
+[Episode 59] Using image: 025_109.npy
+Episode 60 Mean Rewards -11.72 Epsilon 0.04849452524942309 Loss 1.4041905403137207
+   Positive rewards: 0, Negative rewards: 20
+[Episode 60] Using image: 355_93.npy
+Episode 61 Mean Rewards -11.70 Epsilon 0.04606979898695193 Loss 1.3838118314743042
+   Positive rewards: 0, Negative rewards: 20
+[Episode 61] Using image: 146_45.npy
+Agent moved into tumor at position: [2, 0]
+Episode 62 Mean Rewards -11.67 Epsilon 0.04376630903760433 Loss 1.3237112760543823
+   Positive rewards: 1, Negative rewards: 19
+[Episode 62] Using image: 037_83.npy
+Agent moved into tumor at position: [2, 1]
+Episode 63 Mean Rewards -11.62 Epsilon 0.041577993585724116 Loss 1.183056116104126
+   Positive rewards: 1, Negative rewards: 19
+[Episode 63] Using image: 025_109.npy
+Episode 64 Mean Rewards -11.59 Epsilon 0.03949909390643791 Loss 1.2331300973892212
+   Positive rewards: 0, Negative rewards: 20
+[Episode 64] Using image: 325_17.npy
+Episode 65 Mean Rewards -11.57 Epsilon 0.03752413921111601 Loss 1.0916166305541992
+   Positive rewards: 0, Negative rewards: 20
+[Episode 65] Using image: 037_83.npy
+Episode 66 Mean Rewards -11.55 Epsilon 0.03564793225056021 Loss 1.521615743637085
+   Positive rewards: 0, Negative rewards: 20
+[Episode 66] Using image: 265_75.npy
+Episode 67 Mean Rewards -11.52 Epsilon 0.0338655356380322 Loss 1.7228111028671265
+   Positive rewards: 0, Negative rewards: 20
+[Episode 67] Using image: 047_87.npy
+Episode 68 Mean Rewards -11.50 Epsilon 0.032172258856130585 Loss 1.600332260131836
+   Positive rewards: 0, Negative rewards: 20
+[Episode 68] Using image: 355_93.npy
+Agent moved into tumor at position: [1, 1]
+Episode 69 Mean Rewards -11.46 Epsilon 0.030563645913324056 Loss 1.5104396343231201
+   Positive rewards: 1, Negative rewards: 19
+[Episode 69] Using image: 187_122.npy
+Episode 70 Mean Rewards -11.46 Epsilon 0.029035463617657853 Loss 1.3891955614089966
+   Positive rewards: 0, Negative rewards: 20
+[Episode 70] Using image: 349_99.npy
+Agent moved into tumor at position: [0, 1]
+Agent moved into tumor at position: [1, 1]
+Episode 71 Mean Rewards -11.44 Epsilon 0.027583690436774957 Loss 1.6888914108276367
+   Positive rewards: 2, Negative rewards: 18
+[Episode 71] Using image: 235_114.npy
+Episode 72 Mean Rewards -11.42 Epsilon 0.02620450591493621 Loss 1.6140682697296143
+   Positive rewards: 0, Negative rewards: 20
+[Episode 72] Using image: 003_69.npy
+Episode 73 Mean Rewards -11.40 Epsilon 0.0248942806191894 Loss 1.5802092552185059
+   Positive rewards: 0, Negative rewards: 20
+[Episode 73] Using image: 153_61.npy
+Episode 74 Mean Rewards -11.38 Epsilon 0.023649566588229927 Loss 1.6266692876815796
+   Positive rewards: 0, Negative rewards: 20
+[Episode 74] Using image: 162_106.npy
+Episode 75 Mean Rewards -11.36 Epsilon 0.022467088258818428 Loss 1.7108945846557617
+   Positive rewards: 0, Negative rewards: 20
+[Episode 75] Using image: 170_67.npy
+Agent moved into tumor at position: [2, 2]
+Episode 76 Mean Rewards -11.32 Epsilon 0.021343733845877507 Loss 2.1589102745056152
+   Positive rewards: 1, Negative rewards: 19
+[Episode 76] Using image: 170_67.npy
+Episode 77 Mean Rewards -11.31 Epsilon 0.02027654715358363 Loss 1.8793506622314453
+   Positive rewards: 0, Negative rewards: 20
+[Episode 77] Using image: 115_123.npy
+Episode 78 Mean Rewards -11.29 Epsilon 0.019262719795904448 Loss 1.817396879196167
+   Positive rewards: 0, Negative rewards: 20
+[Episode 78] Using image: 027_61.npy
+Agent moved into tumor at position: [1, 3]
+Episode 79 Mean Rewards -11.25 Epsilon 0.018299583806109226 Loss 1.7875421047210693
+   Positive rewards: 1, Negative rewards: 19
+[Episode 79] Using image: 183_66.npy
+Agent moved into tumor at position: [2, 0]
+Agent moved into tumor at position: [2, 1]
+Episode 80 Mean Rewards -11.20 Epsilon 0.017384604615803764 Loss 1.9837745428085327
+   Positive rewards: 2, Negative rewards: 18
+[Episode 80] Using image: 025_109.npy
+Episode 81 Mean Rewards -11.19 Epsilon 0.016515374385013576 Loss 1.7015138864517212
+   Positive rewards: 0, Negative rewards: 20
+[Episode 81] Using image: 025_109.npy
+Episode 82 Mean Rewards -11.19 Epsilon 0.015689605665762895 Loss 1.9809755086898804
+   Positive rewards: 0, Negative rewards: 20
+[Episode 82] Using image: 027_61.npy
+Agent moved into tumor at position: [1, 2]
+Agent moved into tumor at position: [1, 3]
+Episode 83 Mean Rewards -11.14 Epsilon 0.01490512538247475 Loss 1.9149614572525024
+   Positive rewards: 2, Negative rewards: 18
+[Episode 83] Using image: 355_93.npy
+Episode 84 Mean Rewards -11.14 Epsilon 0.014159869113351011 Loss 1.808936357498169
+   Positive rewards: 0, Negative rewards: 20
+[Episode 84] Using image: 349_99.npy
+Episode 85 Mean Rewards -11.13 Epsilon 0.01345187565768346 Loss 1.9109117984771729
+   Positive rewards: 0, Negative rewards: 20
+[Episode 85] Using image: 349_99.npy
+Agent moved into tumor at position: [0, 1]
+Episode 86 Mean Rewards -11.10 Epsilon 0.012779281874799287 Loss 1.947759985923767
+   Positive rewards: 1, Negative rewards: 19
+[Episode 86] Using image: 152_100.npy
+Agent moved into tumor at position: [1, 1]
+Agent moved into tumor at position: [1, 2]
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Agent stayed at tumor position
+Episode 87 Mean Rewards -10.76 Epsilon 0.012140317781059323 Loss 1.5063908100128174
+   Positive rewards: 19, Negative rewards: 1
+[Episode 87] Using image: 234_39.npy
+Episode 88 Mean Rewards -10.85 Epsilon 0.011533301892006355 Loss 1.9658197164535522
+   Positive rewards: 0, Negative rewards: 20
+[Episode 88] Using image: 349_99.npy
+Episode 89 Mean Rewards -10.84 Epsilon 0.010956636797406038 Loss 1.822671890258789
+   Positive rewards: 0, Negative rewards: 20
+[Episode 89] Using image: 027_61.npy
+Agent moved into tumor at position: [1, 3]
+Episode 90 Mean Rewards -10.82 Epsilon 0.010408804957535735 Loss 1.7164108753204346
+   Positive rewards: 1, Negative rewards: 19
+[Episode 90] Using image: 234_39.npy
+Episode 91 Mean Rewards -10.81 Epsilon 0.009888364709658948 Loss 1.5727622509002686
+   Positive rewards: 0, Negative rewards: 20
+[Episode 91] Using image: 089_46.npy
+Episode 92 Mean Rewards -10.80 Epsilon 0.009393946474176 Loss 1.3126232624053955
+   Positive rewards: 0, Negative rewards: 20
+[Episode 92] Using image: 152_100.npy
+Agent moved into tumor at position: [2, 1]
+Agent moved into tumor at position: [2, 2]
+Episode 93 Mean Rewards -10.76 Epsilon 0.0089242491504672 Loss 1.4917298555374146
+   Positive rewards: 2, Negative rewards: 18
+[Episode 93] Using image: 027_61.npy
+Agent moved into tumor at position: [1, 3]
+Episode 94 Mean Rewards -10.73 Epsilon 0.008478036692943839 Loss 1.7624965906143188
+   Positive rewards: 1, Negative rewards: 19
+[Episode 94] Using image: 020_26.npy
+Episode 95 Mean Rewards -10.73 Epsilon 0.008054134858296647 Loss 1.3581769466400146
+   Positive rewards: 0, Negative rewards: 20
+[Episode 95] Using image: 187_122.npy
+Episode 96 Mean Rewards -10.72 Epsilon 0.0076514281153818135 Loss 1.1659910678863525
+   Positive rewards: 0, Negative rewards: 20
+[Episode 96] Using image: 089_46.npy
+Agent moved into tumor at position: [2, 2]
+Episode 97 Mean Rewards -10.70 Epsilon 0.0072688567096127225 Loss 1.418310523033142
+   Positive rewards: 1, Negative rewards: 19
+[Episode 97] Using image: 225_94.npy
+Agent moved into tumor at position: [2, 0]
+Episode 98 Mean Rewards -10.67 Epsilon 0.006905413874132086 Loss 1.5385594367980957
+   Positive rewards: 1, Negative rewards: 19
+[Episode 98] Using image: 265_75.npy
+Episode 99 Mean Rewards -10.67 Epsilon 0.006560143180425482 Loss 1.3170162439346313
+   Positive rewards: 0, Negative rewards: 20
+[Episode 99] Using image: 091_92.npy
+Episode 100 Mean Rewards -10.66 Epsilon 0.0062321360214042075 Loss 1.4256012439727783
+   Positive rewards: 0, Negative rewards: 20
+
+Episode limit reached.
+>>> Training completed at  2025-11-01 12:37:01.851038

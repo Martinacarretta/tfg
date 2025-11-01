@@ -1,0 +1,16 @@
+{"time":"2025-10-31T19:22:30.427797296+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-10-31T19:22:31.046449969+01:00","level":"INFO","msg":"stream: created new stream","id":"jzrdlimq"}
+{"time":"2025-10-31T19:22:31.046725438+01:00","level":"INFO","msg":"handler: started","stream_id":"jzrdlimq"}
+{"time":"2025-10-31T19:22:31.047683514+01:00","level":"INFO","msg":"stream: started","id":"jzrdlimq"}
+{"time":"2025-10-31T19:22:31.047854229+01:00","level":"INFO","msg":"writer: started","stream_id":"jzrdlimq"}
+{"time":"2025-10-31T19:22:31.04794075+01:00","level":"INFO","msg":"sender: started","stream_id":"jzrdlimq"}
+{"time":"2025-10-31T19:22:48.11533965+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":4209}
+{"time":"2025-10-31T19:22:48.321598998+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":43}
+{"time":"2025-10-31T19:23:33.256427644+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":9674}
+{"time":"2025-10-31T19:23:33.391614125+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":3}
+{"time":"2025-10-31T19:25:24.380831579+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.016133358}],"total_operations":1}}
+{"time":"2025-10-31T19:25:25.24357301+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-31T19:25:25.554500929+01:00","level":"INFO","msg":"stream: closing","id":"jzrdlimq"}
+{"time":"2025-10-31T19:25:25.554651107+01:00","level":"INFO","msg":"handler: closed","stream_id":"jzrdlimq"}
+{"time":"2025-10-31T19:25:25.555069662+01:00","level":"INFO","msg":"sender: closed","stream_id":"jzrdlimq"}
+{"time":"2025-10-31T19:25:25.555122144+01:00","level":"INFO","msg":"stream: closed","id":"jzrdlimq"}
