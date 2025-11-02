@@ -1,0 +1,14 @@
+Filling replay buffer...
+Training for 90 episodes as in paper...
+Episode  10 | Mean Reward:  -17.35 | Epsilon: 0.6990 | Loss: 0.1886
+Episode  20 | Mean Reward:  -14.50 | Epsilon: 0.6980 | Loss: 0.2111
+Episode  30 | Mean Reward:  -14.65 | Epsilon: 0.6970 | Loss: 0.1981
+Episode  40 | Mean Reward:  -15.25 | Epsilon: 0.6960 | Loss: 0.2263
+Episode  50 | Mean Reward:  -14.65 | Epsilon: 0.6950 | Loss: 0.2370
+Episode  60 | Mean Reward:  -15.25 | Epsilon: 0.6940 | Loss: 0.2487
+Episode  70 | Mean Reward:  -13.90 | Epsilon: 0.6930 | Loss: 0.2707
+Episode  80 | Mean Reward:  -16.15 | Epsilon: 0.6920 | Loss: 0.1934
+Episode  90 | Mean Reward:  -13.90 | Epsilon: 0.6910 | Loss: 0.2376
+Training completed
+Found 30 training pairs
+Test Accuracy: 36.7% (11/30)

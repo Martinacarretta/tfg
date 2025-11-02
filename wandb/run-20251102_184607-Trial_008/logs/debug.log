@@ -1,0 +1,22 @@
+2025-11-02 18:46:07,963 INFO    MainThread:31887 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251102_184607-Trial_008/logs/debug.log
+2025-11-02 18:46:07,964 INFO    MainThread:31887 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251102_184607-Trial_008/logs/debug-internal.log
+2025-11-02 18:46:07,970 INFO    MainThread:31887 [wandb_init.py:init():832] calling init triggers
+2025-11-02 18:46:07,972 INFO    MainThread:31887 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.9, 'EPSILON_MIN': 0.01, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 1000, 'DNN_UPD': 1, 'DNN_SYNC': 20, 'cnn structure': {'filters': [32, 32, 32, 32], 'kernel_size': 3, 'stride': 2, 'padding': 1, 'activation': 'ELU', 'fc layers': [512, 256, 128, 3], 'optimizer': 'Adam'}, '_wandb': {}}
+2025-11-02 18:46:09,128 INFO    MainThread:31887 [wandb_init.py:init():880] starting backend
+2025-11-02 18:46:09,129 INFO    MainThread:31887 [wandb_init.py:init():883] sending inform_init request
+2025-11-02 18:46:09,151 INFO    MainThread:31887 [wandb_init.py:init():891] backend started and connected
+2025-11-02 18:46:09,356 INFO    MainThread:31887 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-02 18:46:09,367 INFO    MainThread:31887 [wandb_init.py:init():961] updated telemetry
+2025-11-02 18:46:09,452 INFO    MainThread:31887 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-02 18:46:10,076 INFO    MainThread:31887 [wandb_init.py:init():1036] starting run threads in backend
+2025-11-02 18:46:11,227 INFO    MainThread:31887 [wandb_run.py:_console_start():2509] atexit reg
+2025-11-02 18:46:11,228 INFO    MainThread:31887 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-11-02 18:46:11,228 INFO    MainThread:31887 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-11-02 18:46:11,230 INFO    MainThread:31887 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-11-02 18:46:11,239 INFO    MainThread:31887 [wandb_init.py:init():1076] run started, returning control to user process
+2025-11-02 18:51:49,415 INFO    MainThread:31887 [wandb_run.py:_finish():2275] finishing run martinacarrettab/TFG_Glioblastoma/Trial_008
+2025-11-02 18:51:49,425 INFO    MainThread:31887 [wandb_run.py:_atexit_cleanup():2474] got exitcode: 0
+2025-11-02 18:51:49,427 INFO    MainThread:31887 [wandb_run.py:_restore():2456] restore
+2025-11-02 18:51:49,427 INFO    MainThread:31887 [wandb_run.py:_restore():2462] restore done
+2025-11-02 18:51:50,601 INFO    MainThread:31887 [wandb_run.py:_footer_sync_info():3872] logging synced files
