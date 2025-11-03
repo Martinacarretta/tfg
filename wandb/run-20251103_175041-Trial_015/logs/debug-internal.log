@@ -1,0 +1,14 @@
+{"time":"2025-11-03T17:50:41.552617127+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-03T17:50:42.450358624+01:00","level":"INFO","msg":"stream: created new stream","id":"Trial_015"}
+{"time":"2025-11-03T17:50:42.451122191+01:00","level":"INFO","msg":"stream: started","id":"Trial_015"}
+{"time":"2025-11-03T17:50:42.451579519+01:00","level":"INFO","msg":"handler: started","stream_id":"Trial_015"}
+{"time":"2025-11-03T17:50:42.451142851+01:00","level":"INFO","msg":"sender: started","stream_id":"Trial_015"}
+{"time":"2025-11-03T17:50:42.451170676+01:00","level":"INFO","msg":"writer: started","stream_id":"Trial_015"}
+{"time":"2025-11-03T18:33:14.129431195+01:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Trial_015/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-11-03T18:56:42.935858676+01:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Trial_015/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-11-03T19:08:09.139813689+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.078986147}],"total_operations":1}}
+{"time":"2025-11-03T19:08:10.104737962+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-03T19:08:10.505082248+01:00","level":"INFO","msg":"stream: closing","id":"Trial_015"}
+{"time":"2025-11-03T19:08:10.50603599+01:00","level":"INFO","msg":"handler: closed","stream_id":"Trial_015"}
+{"time":"2025-11-03T19:08:10.506978166+01:00","level":"INFO","msg":"sender: closed","stream_id":"Trial_015"}
+{"time":"2025-11-03T19:08:10.507020948+01:00","level":"INFO","msg":"stream: closed","id":"Trial_015"}

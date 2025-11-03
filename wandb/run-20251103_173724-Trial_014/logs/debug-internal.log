@@ -1,0 +1,8 @@
+{"time":"2025-11-03T17:37:25.233474057+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-03T17:37:28.604047063+01:00","level":"INFO","msg":"stream: created new stream","id":"Trial_014"}
+{"time":"2025-11-03T17:37:28.651867715+01:00","level":"INFO","msg":"handler: started","stream_id":"Trial_014"}
+{"time":"2025-11-03T17:37:28.699722283+01:00","level":"INFO","msg":"stream: started","id":"Trial_014"}
+{"time":"2025-11-03T17:37:28.699321785+01:00","level":"INFO","msg":"sender: started","stream_id":"Trial_014"}
+{"time":"2025-11-03T17:37:28.700568048+01:00","level":"INFO","msg":"writer: started","stream_id":"Trial_014"}
+{"time":"2025-11-03T17:39:52.118333118+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Trial_014/file_stream\": write tcp 172.22.107.147:37262->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-03T17:40:56.032082961+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Trial_014/file_stream\": EOF"}

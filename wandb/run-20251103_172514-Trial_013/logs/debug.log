@@ -1,0 +1,32 @@
+2025-11-03 17:25:14,865 INFO    MainThread:17477 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251103_172514-Trial_013/logs/debug.log
+2025-11-03 17:25:14,865 INFO    MainThread:17477 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251103_172514-Trial_013/logs/debug-internal.log
+2025-11-03 17:25:14,865 INFO    MainThread:17477 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7d4844b83880>
+2025-11-03 17:25:14,866 INFO    MainThread:17477 [wandb_init.py:init():832] calling init triggers
+2025-11-03 17:25:14,866 INFO    MainThread:17477 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'reward': [1.0, -2.0, -0.5], 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.9, 'EPSILON_MIN': 0.1, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 1000, 'DNN_UPD': 1, 'DNN_SYNC': 20, 'cnn structure': {'filters': [32, 32, 32, 32], 'kernel_size': 3, 'stride': 2, 'padding': 1, 'activation': 'ELU', 'fc layers': [512, 256, 128, 3], 'optimizer': 'Adam'}, '_wandb': {}}
+2025-11-03 17:25:14,866 INFO    MainThread:17477 [wandb_init.py:init():880] starting backend
+2025-11-03 17:25:14,866 INFO    MainThread:17477 [wandb_init.py:init():883] sending inform_init request
+2025-11-03 17:25:14,883 INFO    MainThread:17477 [wandb_init.py:init():891] backend started and connected
+2025-11-03 17:25:15,063 INFO    MainThread:17477 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-03 17:25:15,065 INFO    MainThread:17477 [wandb_init.py:init():961] updated telemetry
+2025-11-03 17:25:15,150 INFO    MainThread:17477 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-03 17:25:15,758 INFO    MainThread:17477 [wandb_init.py:init():1036] starting run threads in backend
+2025-11-03 17:25:16,408 INFO    MainThread:17477 [wandb_run.py:_console_start():2509] atexit reg
+2025-11-03 17:25:16,409 INFO    MainThread:17477 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-11-03 17:25:16,409 INFO    MainThread:17477 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-11-03 17:25:16,410 INFO    MainThread:17477 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-11-03 17:25:16,412 INFO    MainThread:17477 [wandb_init.py:init():1076] run started, returning control to user process
+2025-11-03 17:25:16,420 INFO    MainThread:17477 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-03 17:25:19,796 INFO    MainThread:17477 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-03 17:25:19,796 INFO    MainThread:17477 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-03 17:34:51,052 INFO    MainThread:17477 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-03 17:36:05,171 INFO    MainThread:17477 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-03 17:36:05,172 INFO    MainThread:17477 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-03 17:36:05,178 INFO    MainThread:17477 [wandb_run.py:_finish():2275] finishing run martinacarrettab/TFG_Glioblastoma/Trial_013
+2025-11-03 17:36:05,189 INFO    MainThread:17477 [jupyter.py:save_history():480] not saving jupyter history
+2025-11-03 17:36:05,190 INFO    MainThread:17477 [jupyter.py:save_ipynb():404] not saving jupyter notebook
+2025-11-03 17:36:05,190 INFO    MainThread:17477 [wandb_init.py:_jupyter_teardown():609] cleaning up jupyter logic
+2025-11-03 17:36:05,190 INFO    MainThread:17477 [wandb_run.py:_atexit_cleanup():2474] got exitcode: 0
+2025-11-03 17:36:05,194 INFO    MainThread:17477 [wandb_run.py:_restore():2456] restore
+2025-11-03 17:36:05,195 INFO    MainThread:17477 [wandb_run.py:_restore():2462] restore done
+2025-11-03 17:36:06,819 INFO    MainThread:17477 [wandb_run.py:_footer_sync_info():3872] logging synced files
