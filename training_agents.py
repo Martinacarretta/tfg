@@ -12,7 +12,7 @@ from tqdm.auto import tqdm
 class DQNAgent:
     
     def __init__(self, env_config, dnnetwork, buffer_class, train_pairs, env_class, 
-                 epsilon=0.1, eps_decay=0.99, epsilon_min=0.01, batch_size=32, gamma=0.99, 
+                 epsilon=0.1, eps_decay=0.99, eps_decay_type="subtraction", epsilon_min=0.01, batch_size=32, gamma=0.99, 
                  memory_size=1500, buffer_initial=150, save_name="Glioblastoma"):
         self.env_config = env_config
         self.env_class = env_class
@@ -23,7 +23,13 @@ class DQNAgent:
 
         self.epsilon = epsilon # initial epsilon for e-greedy
         self.eps_decay = eps_decay # decay of epsilon after each episode to balance exploration and exploitation
-        self.epsilon_min = epsilon_min
+        self.eps_decay_type = eps_decay_type
+
+        if self.epsilon == 0: # testing mode
+            self.epsilon_min = 0
+        else: # training mode.
+            self.epsilon_min = epsilon_min
+            
         self.batch_size = batch_size # size of the mini-batch for training
         self.gamma = gamma
         
@@ -186,9 +192,12 @@ class DQNAgent:
                         print('\nEpisode limit reached.')
                         break
                     
-                    # self.epsilon = max(self.epsilon * self.eps_decay, self.epsilon_min)
-                    # Update epsilon according to the fixed decay rate # SUBTRACTION FROM PPAPER
-                    self.epsilon = max(self.epsilon - self.eps_decay, self.epsilon_min) 
+                    if self.eps_decay_type == "exponential":
+                        # Update epsilon according to exponential decay
+                        self.epsilon = max(self.epsilon * self.eps_decay, self.epsilon_min)
+                    else:
+                        self.epsilon = max(self.epsilon - self.eps_decay, self.epsilon_min) 
+                        
                     torch.save(self.dnnetwork.state_dict(), self.save_name + ".dat")
         
         pbar.close()
