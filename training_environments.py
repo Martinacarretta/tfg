@@ -5,17 +5,13 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-import torch
-from collections import deque
 from copy import deepcopy
-import wandb
-import random
-import datetime
 
-import torch.nn as nn
 import pandas as pd
 
 from tqdm.auto import tqdm
+
+SEED = 42
 
 def prepare(mode = "train"):
     if mode == "train":

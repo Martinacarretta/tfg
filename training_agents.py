@@ -9,6 +9,8 @@ import random
 
 from tqdm.auto import tqdm
 
+SEED = 42
+
 class DQNAgent:
     
     def __init__(self, env_config, dnnetwork, buffer_class, train_pairs, env_class, 
@@ -17,6 +19,10 @@ class DQNAgent:
         self.env_config = env_config
         self.env_class = env_class
         
+        # REMOVED: Don't create self.env here - it's wasteful and gets overwritten
+        # first_img, first_mask = train_pairs[0]
+        # self.env = self.env_class(first_img, first_mask, **self.env_config)
+
         self.dnnetwork = dnnetwork # main network
         self.target_network = deepcopy(dnnetwork) # prevents the target Q-values from changing with every single update
         self.target_network.optimizer = None # paper said target net is only  weights, no optimizer
@@ -25,10 +31,7 @@ class DQNAgent:
         self.eps_decay = eps_decay # decay of epsilon after each episode to balance exploration and exploitation
         self.eps_decay_type = eps_decay_type
 
-        if self.epsilon == 0: # testing mode
-            self.epsilon_min = 0
-        else: # training mode.
-            self.epsilon_min = epsilon_min
+        self.epsilon_min = 0 if self.epsilon == 0 else epsilon_min
             
         self.batch_size = batch_size # size of the mini-batch for training
         self.gamma = gamma
@@ -39,10 +42,7 @@ class DQNAgent:
         
         # block of the last X episodes to calculate the average reward 
         self.nblock = 100 
-        
-        # create template using configuration for all the MRIs
-        self.template_env = self._create_template_env()
-        
+                
         #create buffers for each training image
         self.buffers = {
             img_path: buffer_class(capacity=memory_size)
@@ -51,8 +51,6 @@ class DQNAgent:
 
         self.initialize()
         
-    def _create_template_env(self):
-        return self.env_class("trial.npy", "trial_mask.npy", **self.env_config)
     
     def initialize(self): # reset variables at the beginning of training
         self.update_loss = []
@@ -61,6 +59,7 @@ class DQNAgent:
         self.sync_eps = []
         self.total_reward = 0
         self.step_count = 0
+        self.state0 = None  # Initialize as None since we don't have env yet
         
     ## Take new action
     def take_step(self, eps, mode='train'):
@@ -96,10 +95,9 @@ class DQNAgent:
         print("Filling replay buffer...")
         for img_path, mask_path in train_pairs: # fill each buffer
             self.current_img = img_path
-            self.env = self.env_class(img_path, mask_path, 
-                                    grid_size=self.env.grid_size, 
-                                    tumor_threshold=self.env.tumor_threshold)
-            self.state0, _ = self.env.reset()
+            # FIXED: Use env_config instead of manually specifying parameters
+            self.env = self.env_class(img_path, mask_path, **self.env_config)
+            self.state0, _ = self.env.reset(seed=SEED)
 
             #run short episode of 20 random steps on this image
             for _ in range (self.buffer_initial):
@@ -124,10 +122,10 @@ class DQNAgent:
         while training and episode < max_episodes:
             img_path, mask_path = random.choice(train_pairs)
             self.current_img = img_path
-            #print(f"[Episode {episode}] Using image: {os.path.basename(img_path)}") # debugging
 
+            # FIXED: Create new environment for this episode
             self.env = self.env_class(img_path, mask_path, **self.env_config)
-            self.state0, _ = self.env.reset()
+            self.state0, _ = self.env.reset(seed=SEED)
             self.total_reward = 0
             
             # DEBUGGING
@@ -324,4 +322,3 @@ class DQNAgent:
             self.update_loss.append(loss.detach().cpu().numpy())
         else:
             self.update_loss.append(loss.detach().numpy())
-        

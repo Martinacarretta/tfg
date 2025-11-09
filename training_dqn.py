@@ -1,21 +1,8 @@
-import gymnasium as gym
-from gymnasium import spaces
 import numpy as np
-import os
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-
 import torch
-from collections import deque
-from copy import deepcopy
-import wandb
-import random
-import datetime
-
 import torch.nn as nn
-import pandas as pd
 
-from tqdm.auto import tqdm
+SEED = 42
 
 class DQN(torch.nn.Module):
     
@@ -75,7 +62,7 @@ class DQN(torch.nn.Module):
     
     # e-greedy method
     def get_action(self, state, epsilon=0.05):
-        if np.random.random() < epsilon:
+        if np.random.random(SEED) < epsilon:
             # random action -- Exploration
             action = np.random.choice(self.actions)  
         else:
