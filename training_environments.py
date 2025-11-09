@@ -51,7 +51,7 @@ class Glioblastoma(gym.Env):
     # The metadata of the environment, e.g. {“render_modes”: [“rgb_array”, “human”], “render_fps”: 30}. 
     # For Jax or Torch, this can be indicated to users with “jax”=True or “torch”=True.
 
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, render_mode="human"): # cosntructor with the brain image, the mask and a size
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), render_mode="human"): # cosntructor with the brain image, the mask and a size
         super().__init__() # parent class
         
         self.image = np.load(image_path).astype(np.float32)
@@ -63,11 +63,12 @@ class Glioblastoma(gym.Env):
 
         self.grid_size = grid_size
         self.block_size = self.image.shape[0] // grid_size  # 240/4 = 60
+        
+        self.action_space = action_space
+        self.tumor_threshold = tumor_threshold # 15% of the patch must be tumor to consider that the agent is inside the tumor region
+        self.rewards = rewards  # [reward_on_tumor, reward_stay_no_tumor, reward_move_no_tumor]
+        
         self.render_mode = render_mode
-
-        # Define action and observation spaces
-        # Actions: 0 = stay, 1 = move down, 2 = move right
-        self.action_space = spaces.Discrete(3)
 
         # Observations: grayscale patch (normalized 0-1)
         # apparently Neural networks train better when inputs are scaled to small, 
@@ -81,8 +82,6 @@ class Glioblastoma(gym.Env):
         self.agent_pos = [0, 0] # INITIAL POSITION AT TOP LEFT
         self.current_step = 0 # initialize counter
         self.max_steps = 20  # like in the paper
-
-        self.tumor_threshold = tumor_threshold # 15% of the patch must be tumor to consider that the agent is inside the tumor region
 
     def reset(self, seed=None, options=None): # new episode where we initialize the state. 
         super().reset(seed=seed) # parent
@@ -100,14 +99,45 @@ class Glioblastoma(gym.Env):
         prev_pos = self.agent_pos.copy() # for reward computation taking into consideration the transition changes
         
         # Apply action (respect grid boundaries)
-        if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-            self.agent_pos[0] += 1  # move down
-        elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-            self.agent_pos[1] += 1  # move right
-        # else, the agent doesn't move so the observation 
-        # and reward will be calculated from the same position
-        # no need to compute self.agent_po
-
+        if self.action_space == spaces.Discrete(3):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1  # move down
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1  # move right
+            # else, the agent doesn't move so the observation 
+            # and reward will be calculated from the same position
+            # no need to compute self.agent_pos
+        elif self.action_space == spaces.Discrete(5):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1  # move down
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1  # move right
+            elif action == 3 and self.agent_pos[0] > 0:
+                self.agent_pos[0] -= 1  # move up
+            elif action == 4 and self.agent_pos[1] > 0:
+                self.agent_pos[1] -= 1  # move left
+        elif self.action_space == spaces.Discrete(9):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1  # move down
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1  # move right
+            elif action == 3 and self.agent_pos[0] > 0:
+                self.agent_pos[0] -= 1  # move up
+            elif action == 4 and self.agent_pos[1] > 0:
+                self.agent_pos[1] -= 1  # move left
+            elif action == 5 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[0] += 1  # move down-right
+                self.agent_pos[1] += 1
+            elif action == 6 and self.agent_pos[0] > 0 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[0] -= 1  # move up-right
+                self.agent_pos[1] += 1
+            elif action == 7 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] > 0:
+                self.agent_pos[0] += 1  # move down-left
+                self.agent_pos[1] -= 1
+            elif action == 8 and self.agent_pos[0] > 0 and self.agent_pos[1] > 0:
+                self.agent_pos[0] -= 1  # move up-left
+                self.agent_pos[1] -= 1
+        
         reward = self._get_reward(action, prev_pos)
                 
         obs = self._get_obs()
@@ -148,12 +178,12 @@ class Glioblastoma(gym.Env):
         inside = (tumor_count_curr / total) >= self.tumor_threshold
         
         if inside:
-            return 10.0  # reward for being on tumor or staying on tumor
+            return self.rewards[0]  # reward for being on tumor or staying on tumor
         else:
             if action == 0 or prev_pos == self.agent_pos:  # stayed in place but no tumor. we are also taking into consideration that if the action was to move but we are at the edge of the grid, we also stay in place
-                return -2.0
+                return self.rewards[1]
             else:
-                return -0.5  # moved but no tumor
+                return self.rewards[2]  # moved but no tumor
 
     def render(self):
         if self.render_mode != "human": # would be rgb_array or ansi
@@ -214,160 +244,3 @@ class Glioblastoma(gym.Env):
         # count how many pixels of lesion (nonzero)
         overlap = np.sum(patch_mask > 0)
         return overlap
-
-
-class Glioblastoma5actions(gym.Env):
-    metadata = {"render_modes": ["human"], "render_fps": 4} 
-    # The metadata of the environment, e.g. {“render_modes”: [“rgb_array”, “human”], “render_fps”: 30}. 
-    # For Jax or Torch, this can be indicated to users with “jax”=True or “torch”=True.
-
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, render_mode="human"): # cosntructor with the brain image, the mask and a size
-        super().__init__() # parent class
-        
-        self.image = np.load(image_path).astype(np.float32)
-        self.mask = np.load(mask_path).astype(np.uint8)
-        
-        img_min, img_max = self.image.min(), self.image.max()
-        if img_max > 1.0:  # only normalize if not already in [0, 1]
-            self.image = (self.image - img_min) / (img_max - img_min + 1e-8) #avoid division by 0
-
-        self.grid_size = grid_size
-        self.block_size = self.image.shape[0] // grid_size  # 240/4 = 60
-        self.render_mode = render_mode
-
-        # Define action and observation spaces
-        # Actions: 0 = stay, 1 = move up, 2 = move right, 3 = move down, 4 = move left
-        self.action_space = spaces.Discrete(5)
-
-        # Observations: grayscale patch (normalized 0-1)
-        # apparently Neural networks train better when inputs are scaled to small, 
-        # consistent ranges rather than raw 0–255 values.
-        self.observation_space = spaces.Box( # Supports continuous (and discrete) vectors or matrices
-            low=0, high=1, # Data has been normalized
-            shape=(self.block_size, self.block_size), # shape of the observation
-            dtype=np.float32
-        )
-
-        self.agent_pos = [0, 0] # INITIAL POSITION AT TOP LEFT
-        self.current_step = 0 # initialize counter
-        self.max_steps = 20  # like in the paper
-
-        self.tumor_threshold = tumor_threshold # 15% of the patch must be tumor to consider that the agent is inside the tumor region
-
-    def reset(self, seed=None, options=None): # new episode where we initialize the state. 
-        super().reset(seed=seed) # parent
-        
-        # reset
-        self.agent_pos = [0, 0]  # top-left corner
-        self.current_step = 0
-        obs = self._get_obs()
-        info = {}
-        return obs, info
-
-    def step(self, action):
-        self.current_step += 1
-
-        prev_pos = self.agent_pos.copy() # for reward computation taking into consideration the transition changes
-        
-        # Apply action (respect grid boundaries)
-        if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-            self.agent_pos[0] += 1  # move down
-        elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-            self.agent_pos[1] += 1  # move right
-        elif action == 3 and self.agent_pos[0] > 0:
-            self.agent_pos[0] -= 1  # move up
-        elif action == 4 and self.agent_pos[1] > 0:
-            self.agent_pos[1] -= 1  # move left
-        # else, the agent doesn't move so the observation 
-        # and reward will be calculated from the same position
-        # no need to compute self.agent_po
-
-        reward = self._get_reward(action, prev_pos)
-                
-        obs = self._get_obs()
-
-        # Episode ends
-        terminated = self.current_step >= self.max_steps
-        truncated = False  # we don’t need truncation here
-        info = {}
-
-        return obs, reward, terminated, truncated, info
-
-    def _get_obs(self):
-        r0 = self.agent_pos[0] * self.block_size # row start
-        c0 = self.agent_pos[1] * self.block_size # col start
-        
-        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size].astype(np.float32)
-
-        # if patch.max() == 0: # DEBUGGING
-        #     print("Warning: extracted patch has max value 0 at position:", self.agent_pos)
-        # else:
-        #     print("Brain")
-        return patch
-
-    def _get_reward(self, action, prev_pos):        
-        # look position of the agent in the mask
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-        
-        # Now that i have the patch where i was and the patch where i am, i can check if there is tumor in any of them
-        # tumor is labeled as 1 or 4 in the mask        
-        # label 2 is edema
-        
-        # first get a count of the tumor pixels in the patch. 
-        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
-        total = self.block_size * self.block_size # to compute the percentage
-        # Determine if patch has more than self.tumor_threshold of tumor
-        inside = (tumor_count_curr / total) >= self.tumor_threshold
-        
-        if inside:
-            return 1.0  # reward for being on tumor or staying on tumor
-        else:
-            if action == 0 or prev_pos == self.agent_pos:  # stayed in place but no tumor. we are also taking into consideration that if the action was to move but we are at the edge of the grid, we also stay in place
-                return -2.0
-            else:
-                return -0.5  # moved but no tumor
-
-    def render(self):
-        if self.render_mode != "human": # would be rgb_array or ansi
-            return  # Only render in human mode
-
-        # Create RGB visualization image
-        # not necessary since it's grayscale, but i want to draw the mask and position
-        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
-
-        # Overlay tumor mask in red [..., 0] 
-        tumor_overlay = np.zeros_like(vis_img) # do all blank but here we have 3 channels, mask is 2D
-        tumor_overlay[..., 0] = (self.mask > 0).astype(float) # red channel. set to float to avoid issues when blending in vis_img
-
-        # transparency overlay (crec que es el mateix valor que tinc a l'altra notebook)
-        alpha = 0.4
-        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
-
-        # Plotting
-        fig, ax = plt.subplots(figsize=(3, 3))
-        ax.imshow(vis_img, cmap='gray', origin='upper')
-
-        # Draw grid lines
-        # alpha for transparency again
-        for i in range(1, self.grid_size):
-            ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
-            ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
-
-        # Draw agent position
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        rect = patches.Rectangle(
-            (c0, r0), # (x,y) bottom left corner
-            self.block_size, # width
-            self.block_size, # height
-            linewidth=2,
-            edgecolor='yellow',
-            facecolor='none'
-        )
-        ax.add_patch(rect)
-
-        ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}")
-        ax.axis('off')
-        plt.show()

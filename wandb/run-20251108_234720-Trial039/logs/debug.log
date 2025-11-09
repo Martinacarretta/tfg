@@ -1,0 +1,45 @@
+2025-11-08 23:47:20,956 INFO    MainThread:1349 [wandb_setup.py:_flush():81] Current SDK version is 0.22.2
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_setup.py:_flush():81] Configure stats pid to 1349
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_setup.py:_flush():81] Loading settings from /home/martina/.config/wandb/settings
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_setup.py:_flush():81] Loading settings from /home/martina/codi2/4year/tfg/wandb/settings
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251108_234720-Trial039/logs/debug.log
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251108_234720-Trial039/logs/debug-internal.log
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7bf613a37bb0>
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_init.py:init():832] calling init triggers
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'environment': 'Glioblastoma', 'model': 'DQN', 'agent': 'DQNAgent', 'buffer': 'ReplayBuffer', 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.01, 'Decay type': 'subtraction', 'EPSILON_MIN': 0.1, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 150, 'DNN_UPD': 1, 'DNN_SYNC': 20, '_wandb': {}}
+2025-11-08 23:47:20,957 INFO    MainThread:1349 [wandb_init.py:init():880] starting backend
+2025-11-08 23:47:21,396 INFO    MainThread:1349 [wandb_init.py:init():883] sending inform_init request
+2025-11-08 23:47:21,439 INFO    MainThread:1349 [wandb_init.py:init():891] backend started and connected
+2025-11-08 23:47:21,453 INFO    MainThread:1349 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-08 23:47:21,454 INFO    MainThread:1349 [wandb_init.py:init():961] updated telemetry
+2025-11-08 23:47:21,471 INFO    MainThread:1349 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-08 23:47:22,233 INFO    MainThread:1349 [wandb_init.py:init():1036] starting run threads in backend
+2025-11-08 23:47:22,803 INFO    MainThread:1349 [wandb_run.py:_console_start():2509] atexit reg
+2025-11-08 23:47:22,803 INFO    MainThread:1349 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-11-08 23:47:22,803 INFO    MainThread:1349 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-11-08 23:47:22,804 INFO    MainThread:1349 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-11-08 23:47:22,810 INFO    MainThread:1349 [wandb_init.py:init():1076] run started, returning control to user process
+2025-11-08 23:47:22,812 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:47:28,385 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:47:28,388 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:47:28,882 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:50:42,237 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:50:42,239 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:50:42,254 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:50:43,224 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:50:43,224 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:50:43,241 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:52:40,218 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:52:40,219 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:52:40,236 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:54:09,943 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:54:09,944 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:54:09,962 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:54:11,852 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:54:11,853 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:54:11,888 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-08 23:54:14,298 INFO    MainThread:1349 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-08 23:54:14,299 INFO    MainThread:1349 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-08 23:54:15,523 INFO    MainThread:1349 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend

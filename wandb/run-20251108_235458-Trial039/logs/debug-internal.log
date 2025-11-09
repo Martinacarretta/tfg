@@ -1,0 +1,9 @@
+{"time":"2025-11-08T23:54:58.533880422+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-08T23:54:59.105713284+01:00","level":"INFO","msg":"stream: created new stream","id":"Trial039"}
+{"time":"2025-11-08T23:54:59.105871594+01:00","level":"INFO","msg":"handler: started","stream_id":"Trial039"}
+{"time":"2025-11-08T23:54:59.10632215+01:00","level":"INFO","msg":"stream: started","id":"Trial039"}
+{"time":"2025-11-08T23:54:59.106458489+01:00","level":"INFO","msg":"sender: started","stream_id":"Trial039"}
+{"time":"2025-11-08T23:54:59.106494238+01:00","level":"INFO","msg":"writer: started","stream_id":"Trial039"}
+{"time":"2025-11-08T23:54:59.238253156+01:00","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run Trial039 was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2025-11-08T23:55:01.743039348+01:00","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run Trial039 was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2025-11-08T23:55:06.362655484+01:00","level":"INFO","msg":"api: retrying HTTP error","status":409,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"run Trial039 was previously created and deleted; try a new run id\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}

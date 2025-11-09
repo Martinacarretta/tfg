@@ -1,40 +1,41 @@
-import gymnasium as gym
-from gymnasium import spaces
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 
 import torch
-from collections import deque
 from copy import deepcopy
 import wandb
 import random
-import datetime
-
-import torch.nn as nn
-import pandas as pd
 
 from tqdm.auto import tqdm
 
 class DQNAgent:
     
-    def __init__(self, env, dnnetwork, buffer_class, train_pairs, epsilon=0.1, eps_decay=0.99, epsilon_min=0.01, batch_size=32, gamma=0.99, memory_size=1500, buffer_initial=150, save_name="Glioblastoma"):
-        self.env = env
+    def __init__(self, env_config, dnnetwork, buffer_class, train_pairs, env_class, 
+                 epsilon=0.1, eps_decay=0.99, epsilon_min=0.01, batch_size=32, gamma=0.99, 
+                 memory_size=1500, buffer_initial=150, save_name="Glioblastoma"):
+        self.env_config = env_config
+        self.env_class = env_class
+        
         self.dnnetwork = dnnetwork # main network
         self.target_network = deepcopy(dnnetwork) # prevents the target Q-values from changing with every single update
         self.target_network.optimizer = None # paper said target net is only  weights, no optimizer
-        # self.buffer = buffer # store experiences
+
         self.epsilon = epsilon # initial epsilon for e-greedy
         self.eps_decay = eps_decay # decay of epsilon after each episode to balance exploration and exploitation
         self.epsilon_min = epsilon_min
         self.batch_size = batch_size # size of the mini-batch for training
         self.gamma = gamma
+        
         self.buffer_initial = buffer_initial # number of random experiences to fill the buffer before training
+        
         self.save_name = save_name
         
         # block of the last X episodes to calculate the average reward 
         self.nblock = 100 
+        
+        # create template using configuration for all the MRIs
+        self.template_env = self._create_template_env()
         
         #create buffers for each training image
         self.buffers = {
@@ -42,10 +43,10 @@ class DQNAgent:
             for img_path, _ in train_pairs
         }
 
-        
-        # average reward used to determine if the agent has learned to play
-        #self.reward_threshold = self.env.spec.reward_threshold 
         self.initialize()
+        
+    def _create_template_env(self):
+        return self.env_class("trial.npy", "trial_mask.npy", **self.env_config)
     
     def initialize(self): # reset variables at the beginning of training
         self.update_loss = []
@@ -54,7 +55,6 @@ class DQNAgent:
         self.sync_eps = []
         self.total_reward = 0
         self.step_count = 0
-        self.state0 = self.env.reset()[0]
         
     ## Take new action
     def take_step(self, eps, mode='train'):
@@ -90,7 +90,7 @@ class DQNAgent:
         print("Filling replay buffer...")
         for img_path, mask_path in train_pairs: # fill each buffer
             self.current_img = img_path
-            self.env = Glioblastoma(img_path, mask_path, 
+            self.env = self.env_class(img_path, mask_path, 
                                     grid_size=self.env.grid_size, 
                                     tumor_threshold=self.env.tumor_threshold)
             self.state0, _ = self.env.reset()
@@ -120,7 +120,7 @@ class DQNAgent:
             self.current_img = img_path
             #print(f"[Episode {episode}] Using image: {os.path.basename(img_path)}") # debugging
 
-            self.env = Glioblastoma(img_path, mask_path, grid_size=self.env.grid_size, tumor_threshold=self.env.tumor_threshold)
+            self.env = self.env_class(img_path, mask_path, **self.env_config)
             self.state0, _ = self.env.reset()
             self.total_reward = 0
             

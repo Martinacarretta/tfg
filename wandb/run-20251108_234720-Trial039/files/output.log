@@ -1,0 +1,6 @@
+Filling replay buffer...
+Starting at 1.0, decaying 0.01, will reach 0.1 after 90 episodes
+✅ Found 30 pairs out of 30 listed in CSV.
+(60, 60)
+3
+[0 1 2]

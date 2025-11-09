@@ -1,0 +1,86 @@
+2025-11-08 23:54:58,067 INFO    MainThread:3102 [wandb_setup.py:_flush():81] Current SDK version is 0.22.2
+2025-11-08 23:54:58,069 INFO    MainThread:3102 [wandb_setup.py:_flush():81] Configure stats pid to 3102
+2025-11-08 23:54:58,069 INFO    MainThread:3102 [wandb_setup.py:_flush():81] Loading settings from /home/martina/.config/wandb/settings
+2025-11-08 23:54:58,069 INFO    MainThread:3102 [wandb_setup.py:_flush():81] Loading settings from /home/martina/codi2/4year/tfg/wandb/settings
+2025-11-08 23:54:58,069 INFO    MainThread:3102 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-11-08 23:54:58,070 INFO    MainThread:3102 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251108_235458-Trial039/logs/debug.log
+2025-11-08 23:54:58,071 INFO    MainThread:3102 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251108_235458-Trial039/logs/debug-internal.log
+2025-11-08 23:54:58,071 INFO    MainThread:3102 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x77aed0368fd0>
+2025-11-08 23:54:58,072 INFO    MainThread:3102 [wandb_init.py:init():832] calling init triggers
+2025-11-08 23:54:58,072 INFO    MainThread:3102 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'environment': 'Glioblastoma', 'model': 'DQN', 'agent': 'DQNAgent', 'buffer': 'ReplayBuffer', 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.01, 'Decay type': 'subtraction', 'EPSILON_MIN': 0.1, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 150, 'DNN_UPD': 1, 'DNN_SYNC': 20, '_wandb': {}}
+2025-11-08 23:54:58,072 INFO    MainThread:3102 [wandb_init.py:init():880] starting backend
+2025-11-08 23:54:58,504 INFO    MainThread:3102 [wandb_init.py:init():883] sending inform_init request
+2025-11-08 23:54:58,511 INFO    MainThread:3102 [wandb_init.py:init():891] backend started and connected
+2025-11-08 23:54:58,539 INFO    MainThread:3102 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-08 23:54:58,540 INFO    MainThread:3102 [wandb_init.py:init():961] updated telemetry
+2025-11-08 23:54:58,556 INFO    MainThread:3102 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-08 23:55:07,924 WARNING MainThread:3102 [wandb_init.py:init():1591] [no run ID] interrupted
+Traceback (most recent call last):
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1582, in init
+    run = wi.init(run_settings, run_config, run_printer)
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1004, in init
+    result = wait_with_progress(
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 23, in wait_with_progress
+    return wait_all_with_progress(
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 77, in wait_all_with_progress
+    return asyncer.run(progress_loop_with_timeout)
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/asyncio_manager.py", line 136, in run
+    return future.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 453, in result
+    self._condition.wait(timeout)
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+2025-11-08 23:55:07,929 INFO    wandb-AsyncioManager-main:3102 [service_client.py:_forward_responses():80] Reached EOF.
+2025-11-08 23:55:07,941 INFO    wandb-AsyncioManager-main:3102 [mailbox.py:close():137] Closing mailbox, abandoning 1 handles.
+2025-11-08 23:55:24,867 ERROR   MainThread:3102 [wandb_init.py:init():1597] [no run ID] error in wandb.init()
+Traceback (most recent call last):
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1582, in init
+    run = wi.init(run_settings, run_config, run_printer)
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 884, in init
+    service.inform_init(
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/service/service_connection.py", line 158, in inform_init
+    self._asyncer.run(
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/asyncio_manager.py", line 136, in run
+    return future.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/asyncio_manager.py", line 219, in _wrap
+    return await fn()
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/usr/lib/python3.10/asyncio/streams.py", line 371, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.10/asyncio/streams.py", line 167, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2025-11-08 23:55:31,347 ERROR   MainThread:3102 [wandb_init.py:init():1597] [no run ID] error in wandb.init()
+Traceback (most recent call last):
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1582, in init
+    run = wi.init(run_settings, run_config, run_printer)
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 884, in init
+    service.inform_init(
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/service/service_connection.py", line 158, in inform_init
+    self._asyncer.run(
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/asyncio_manager.py", line 136, in run
+    return future.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/asyncio_manager.py", line 219, in _wrap
+    return await fn()
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/usr/lib/python3.10/asyncio/streams.py", line 359, in drain
+    raise exc
+  File "/usr/lib/python3.10/asyncio/selector_events.py", line 924, in write
+    n = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe

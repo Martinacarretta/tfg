@@ -1,0 +1,7 @@
+2025-11-08 23:55:31,345 INFO    MainThread:3102 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251108_235531-Trial040/logs/debug.log
+2025-11-08 23:55:31,345 INFO    MainThread:3102 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251108_235531-Trial040/logs/debug-internal.log
+2025-11-08 23:55:31,345 INFO    MainThread:3102 [wandb_init.py:init():832] calling init triggers
+2025-11-08 23:55:31,345 INFO    MainThread:3102 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'environment': 'Glioblastoma', 'model': 'DQN', 'agent': 'DQNAgent', 'buffer': 'ReplayBuffer', 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.01, 'Decay type': 'subtraction', 'EPSILON_MIN': 0.1, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 150, 'DNN_UPD': 1, 'DNN_SYNC': 20, '_wandb': {}}
+2025-11-08 23:55:31,345 INFO    MainThread:3102 [wandb_init.py:init():880] starting backend
+2025-11-08 23:55:31,345 INFO    MainThread:3102 [wandb_init.py:init():883] sending inform_init request
