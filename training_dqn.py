@@ -62,7 +62,7 @@ class DQN(torch.nn.Module):
     
     # e-greedy method
     def get_action(self, state, epsilon=0.05):
-        if np.random.random(SEED) < epsilon:
+        if np.random.random() < epsilon:
             # random action -- Exploration
             action = np.random.choice(self.actions)  
         else:
