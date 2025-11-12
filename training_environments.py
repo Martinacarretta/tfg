@@ -9,17 +9,16 @@ from copy import deepcopy
 
 import pandas as pd
 
-from tqdm.auto import tqdm
 
 SEED = 42
 
 def prepare(mode = "train"):
     if mode == "train":
         base_dir = "/home/martina/codi2/4year/tfg/training_set_npy"
-        csv_path = "/home/martina/codi2/4year/tfg/training.csv"
+        csv_path = "/home/martina/codi2/4year/tfg/set_training.csv"
     else:
         base_dir = "/home/martina/codi2/4year/tfg/testing_set_npy"
-        csv_path = "/home/martina/codi2/4year/tfg/testing.csv"
+        csv_path = "/home/martina/codi2/4year/tfg/set_testing.csv"
 
     # Load the CSV
     df = pd.read_csv(csv_path)
@@ -240,3 +239,187 @@ class Glioblastoma(gym.Env):
         # count how many pixels of lesion (nonzero)
         overlap = np.sum(patch_mask > 0)
         return overlap
+
+# Glioblastoma2 has positional encodings
+class Glioblastoma2(gym.Env):
+    metadata = {"render_modes": ["human"], "render_fps": 4} 
+
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), render_mode="human"):
+        super().__init__()
+        
+        self.image = np.load(image_path).astype(np.float32)
+        self.mask = np.load(mask_path).astype(np.uint8)
+        
+        img_min, img_max = self.image.min(), self.image.max()
+        if img_max > 1.0:
+            self.image = (self.image - img_min) / (img_max - img_min + 1e-8)
+
+        self.grid_size = grid_size
+        self.block_size = self.image.shape[0] // grid_size
+        
+        self.action_space = action_space
+        self.tumor_threshold = tumor_threshold
+        self.rewards = rewards
+        
+        self.render_mode = render_mode
+
+        # UPDATED: Now 3 channels (image + 2 positional encodings)
+        self.observation_space = spaces.Box(
+            low=0, high=1,
+            shape=(3, self.block_size, self.block_size),  # Changed from (60, 60) to (3, 60, 60)
+            dtype=np.float32
+        )
+
+        self.agent_pos = [0, 0]
+        self.current_step = 0
+        self.max_steps = 20
+
+    def reset(self, seed=None, options=None):
+        super().reset(seed=seed)
+        
+        self.agent_pos = [0, 0]
+        self.current_step = 0
+        obs = self._get_obs()
+        info = {}
+        return obs, info
+
+    def step(self, action):
+        self.current_step += 1
+
+        prev_pos = self.agent_pos.copy()
+        
+        # Apply action (respect grid boundaries)
+        if self.action_space == spaces.Discrete(3):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1
+        elif self.action_space == spaces.Discrete(5):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1
+            elif action == 3 and self.agent_pos[0] > 0:
+                self.agent_pos[0] -= 1
+            elif action == 4 and self.agent_pos[1] > 0:
+                self.agent_pos[1] -= 1
+        elif self.action_space == spaces.Discrete(9):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1
+            elif action == 3 and self.agent_pos[0] > 0:
+                self.agent_pos[0] -= 1
+            elif action == 4 and self.agent_pos[1] > 0:
+                self.agent_pos[1] -= 1
+            elif action == 5 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[0] += 1
+                self.agent_pos[1] += 1
+            elif action == 6 and self.agent_pos[0] > 0 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[0] -= 1
+                self.agent_pos[1] += 1
+            elif action == 7 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] > 0:
+                self.agent_pos[0] += 1
+                self.agent_pos[1] -= 1
+            elif action == 8 and self.agent_pos[0] > 0 and self.agent_pos[1] > 0:
+                self.agent_pos[0] -= 1
+                self.agent_pos[1] -= 1
+        
+        reward = self._get_reward(action, prev_pos)
+                
+        obs = self._get_obs()
+
+        terminated = self.current_step >= self.max_steps
+        truncated = False
+        info = {}
+
+        return obs, reward, terminated, truncated, info
+
+    def _get_obs(self):
+        """
+        UPDATED: Returns (3, 60, 60) tensor with:
+        - Channel 0: Image patch
+        - Channel 1: Normalized row position (0 to 1)
+        - Channel 2: Normalized column position (0 to 1)
+        """
+        r0 = self.agent_pos[0] * self.block_size
+        c0 = self.agent_pos[1] * self.block_size
+        
+        # Extract image patch
+        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size].astype(np.float32)
+        
+        # Create position encoding channels (normalized to [0, 1])
+        pos_row = np.full_like(patch, self.agent_pos[0] / (self.grid_size - 1))
+        pos_col = np.full_like(patch, self.agent_pos[1] / (self.grid_size - 1))
+        
+        # Stack into (3, H, W) format
+        obs = np.stack([patch, pos_row, pos_col], axis=0)
+        
+        return obs
+
+    def _get_reward(self, action, prev_pos):        
+        r0 = self.agent_pos[0] * self.block_size
+        c0 = self.agent_pos[1] * self.block_size
+        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
+        
+        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
+        total = self.block_size * self.block_size
+        inside = (tumor_count_curr / total) >= self.tumor_threshold
+        
+        if inside:
+            return self.rewards[0]
+        else:
+            if action == 0 or prev_pos == self.agent_pos:
+                return self.rewards[1]
+            else:
+                return self.rewards[2]
+
+    def render(self):
+        if self.render_mode != "human":
+            return
+
+        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
+
+        tumor_overlay = np.zeros_like(vis_img)
+        tumor_overlay[..., 0] = (self.mask > 0).astype(float)
+
+        alpha = 0.4
+        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
+
+        fig, ax = plt.subplots(figsize=(3, 3))
+        ax.imshow(vis_img, cmap='gray', origin='upper')
+
+        for i in range(1, self.grid_size):
+            ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
+            ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
+
+        r0 = self.agent_pos[0] * self.block_size
+        c0 = self.agent_pos[1] * self.block_size
+        rect = patches.Rectangle(
+            (c0, r0),
+            self.block_size,
+            self.block_size,
+            linewidth=2,
+            edgecolor='yellow',
+            facecolor='none'
+        )
+        ax.add_patch(rect)
+
+        ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}")
+        ax.axis('off')
+        plt.show()
+        
+    def current_patch_overlap_with_lesion(self):
+        row, col = self.agent_pos
+        patch_h = self.block_size
+        patch_w = self.block_size
+        
+        y0 = row * patch_h
+        y1 = y0 + patch_h
+        x0 = col * patch_w
+        x1 = x0 + patch_w
+        
+        patch_mask = self.mask[y0:y1, x0:x1]
+        overlap = np.sum(patch_mask > 0)
+        return overlap
+

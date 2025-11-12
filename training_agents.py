@@ -1,5 +1,4 @@
 import numpy as np
-import os
 import matplotlib.pyplot as plt
 
 import torch
@@ -315,6 +314,256 @@ class DQNAgent:
         # add gradient clipping (FALTAAA)
         torch.nn.utils.clip_grad_norm_(self.dnnetwork.parameters(), max_norm=1.0)
         # Apply the gradients to the neural network
+        self.dnnetwork.optimizer.step() 
+        
+        # Save loss values
+        if self.dnnetwork.device == 'cuda':
+            self.update_loss.append(loss.detach().cpu().numpy())
+        else:
+            self.update_loss.append(loss.detach().numpy())
+
+# DQNAgent2 uses only one unified buffer instead of per-image buffers. 
+# Agent1 falls back to random sampling if not enough experiences. Agent2 is cleaner and more efficient
+# DQNAgent2 doesn't manipulate the channel dimension. 
+class DQNAgent2:
+    
+    def __init__(self, env_config, dnnetwork, buffer_class, train_pairs, env_class, 
+                 epsilon=0.1, eps_decay=0.99, eps_decay_type="subtraction", epsilon_min=0.01, batch_size=32, gamma=0.99, 
+                 memory_size=1500, buffer_initial=150, save_name="Glioblastoma"):
+        self.env_config = env_config
+        self.env_class = env_class
+
+        self.dnnetwork = dnnetwork
+        self.target_network = deepcopy(dnnetwork)
+        self.target_network.optimizer = None
+
+        self.epsilon = epsilon
+        self.eps_decay = eps_decay
+        self.eps_decay_type = eps_decay_type
+
+        self.epsilon_min = 0 if self.epsilon == 0 else epsilon_min
+            
+        self.batch_size = batch_size
+        self.gamma = gamma
+        
+        self.buffer_initial = buffer_initial
+        
+        self.save_name = save_name
+        
+        self.nblock = 100
+        
+        # UPDATED: Single unified replay buffer instead of per-image buffers
+        self.buffer = buffer_class(capacity=memory_size)
+
+        self.initialize()
+        
+    
+    def initialize(self):
+        self.update_loss = []
+        self.training_rewards = []
+        self.mean_training_rewards = []
+        self.sync_eps = []
+        self.total_reward = 0
+        self.step_count = 0
+        self.state0 = None
+        
+    def take_step(self, eps, mode='train'):
+        if mode == 'explore':
+            action = self.env.action_space.sample() 
+        else:
+            action = self.dnnetwork.get_action(self.state0, eps)
+            self.step_count += 1
+            
+        new_state, reward, terminated, truncated, _ = self.env.step(action)
+        done = terminated or truncated
+        self.total_reward += reward
+        
+        # UPDATED: Store in single buffer
+        self.buffer.append(self.state0, action, reward, done, new_state)
+        self.state0 = new_state.copy()
+        
+        if done:
+            self.state0 = self.env.reset()[0]
+        return done, reward
+
+            
+    def train(self, train_pairs, gamma=0.99, max_episodes=50000, 
+              dnn_update_frequency=4,
+              dnn_sync_frequency=200):
+        
+        self.gamma = gamma
+
+        # UPDATED: Fill single buffer with experiences from all images
+        print("Filling replay buffer...")
+        for img_path, mask_path in train_pairs:
+            self.env = self.env_class(img_path, mask_path, **self.env_config)
+            self.state0, _ = self.env.reset(seed=SEED)
+
+            # Run short episode on this image
+            for _ in range(self.buffer_initial):
+                self.take_step(self.epsilon, mode='explore')
+
+        print(f"Buffer filled with {len(self.buffer.buffer)} experiences")
+            
+        self.episode_rewards = []
+        self.mean_rewards = []
+        self.epsilon_values = []
+        self.loss_values = []
+ 
+        episode = 0
+        training = True
+        
+        pbar = tqdm(total=max_episodes, desc="Initializing", 
+                unit="ep", unit_scale=True, 
+                bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]')
+
+        
+        print("Training...")
+        while training and episode < max_episodes:
+            # UPDATED: Randomly select image for this episode
+            img_path, mask_path = random.choice(train_pairs)
+            self.env = self.env_class(img_path, mask_path, **self.env_config)
+            self.state0, _ = self.env.reset(seed=SEED)
+            self.total_reward = 0
+            
+            pos_rewards = 0
+            neg_rewards = 0
+            
+            for step in range(self.env.max_steps):
+                gamedone, reward = self.take_step(self.epsilon, mode='train')
+
+                if reward > 0: pos_rewards += 1
+                else: neg_rewards += 1
+                
+                # Update main network
+                if self.step_count % dnn_update_frequency == 0:
+                    self.update()
+                    
+                # Synchronize networks
+                if self.step_count % dnn_sync_frequency == 0:
+                    self.target_network.load_state_dict(
+                        self.dnnetwork.state_dict())
+                    self.sync_eps.append(episode)
+                    
+                if gamedone:
+                    episode += 1
+                    pbar.update(1)
+                                       
+                    self.training_rewards.append(self.total_reward)
+                    if len(self.training_rewards) >= self.nblock:
+                        mean_rewards = np.mean(self.training_rewards[-self.nblock:])
+                    else:
+                        mean_rewards = np.mean(self.training_rewards)
+                    
+                    self.mean_training_rewards.append(mean_rewards)
+
+                    print("Episode {:d} | Episode reward {:.2f} | Mean Rewards {:.2f} | Epsilon {:.4f} | Loss {:.4f}".format(
+                        episode, self.total_reward, mean_rewards, self.epsilon, np.mean(self.update_loss)))
+                    print(f"      Positive rewards: {pos_rewards}, Negative rewards: {neg_rewards}")
+                    
+                    wandb.log({
+                        'episode': episode,
+                        'mean_rewards': mean_rewards,
+                        'episode reward': self.total_reward,
+                        'epsilon': self.epsilon,
+                        'loss': np.mean(self.update_loss),
+                        'buffer_size': len(self.buffer.buffer)
+                    }, step=episode)
+                    
+                    self.episode_rewards.append(self.total_reward)
+                    self.mean_rewards.append(mean_rewards)
+                    self.epsilon_values.append(self.epsilon)
+                    self.loss_values.append(np.mean(self.update_loss))
+                    
+                    self.update_loss = []
+
+                    if episode >= max_episodes:
+                        training = False
+                        print('\nEpisode limit reached.')
+                        break
+                    
+                    if self.eps_decay_type == "exponential":
+                        self.epsilon = max(self.epsilon * self.eps_decay, self.epsilon_min)
+                    else:
+                        self.epsilon = max(self.epsilon - self.eps_decay, self.epsilon_min) 
+                        
+                    torch.save(self.dnnetwork.state_dict(), self.save_name + ".dat")
+        
+        pbar.close()
+                    
+        # Plotting
+        fig, axes = plt.subplots(2, 2, figsize=(10, 8))
+        axes = axes.ravel()
+
+        axes[0].plot(self.episode_rewards)
+        axes[0].set_xlabel('Episode')
+        axes[0].set_ylabel('Episode Reward')
+        axes[0].set_title('Episode Rewards Over Time')
+
+        axes[1].plot(self.mean_rewards)
+        axes[1].set_xlabel('Episode')
+        axes[1].set_ylabel('Mean Reward')
+        axes[1].set_title('Mean Rewards Over Time')
+
+        axes[2].plot(self.epsilon_values)
+        axes[2].set_xlabel('Episode')
+        axes[2].set_ylabel('Epsilon Values')
+        axes[2].set_title('Epsilon Values Over Time')
+
+        axes[3].plot(self.loss_values)
+        axes[3].set_xlabel('Episode')
+        axes[3].set_ylabel('Loss')
+        axes[3].set_title('Loss Over Time')
+
+        plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+        plt.show()
+
+
+    def calculate_loss(self, batch):
+        states, actions, rewards, dones, next_states = batch
+        device = self.dnnetwork.device
+
+        # UPDATED: No need to unsqueeze(1) - already (batch, 3, 60, 60)
+        states = torch.FloatTensor(states).to(device)
+        next_states = torch.FloatTensor(next_states).to(device)
+
+        rewards_vals = torch.FloatTensor(rewards).to(device=device) 
+        actions_vals = torch.LongTensor(np.array(actions)).reshape(-1,1).to(device=device)
+        dones_t = torch.BoolTensor(dones).to(device=device)
+        
+        qvals = torch.gather(self.dnnetwork.get_qvals(states), 1, actions_vals)
+        
+        qvals_next_all = self.target_network.get_qvals(next_states)
+        qvals_next = torch.max(qvals_next_all, dim=1)[0].detach()
+
+        qvals_next[dones_t] = 0.0 
+        
+        expected_qvals = (self.gamma * qvals_next) + rewards_vals
+        
+        loss = torch.nn.MSELoss()(qvals, expected_qvals.reshape(-1,1))
+        return loss
+    
+
+    def update(self):
+        """
+        UPDATED: Simplified update - sample from single unified buffer
+        """
+        # Check if buffer has enough experiences
+        if len(self.buffer.buffer) < self.batch_size:
+            return
+            
+        self.dnnetwork.optimizer.zero_grad()
+        
+        # Sample batch from unified buffer
+        batch = self.buffer.sample_batch(self.batch_size)
+
+        # Calculate loss
+        loss = self.calculate_loss(batch) 
+        loss.backward() 
+        
+        # Gradient clipping
+        torch.nn.utils.clip_grad_norm_(self.dnnetwork.parameters(), max_norm=1.0)
+        
         self.dnnetwork.optimizer.step() 
         
         # Save loss values
