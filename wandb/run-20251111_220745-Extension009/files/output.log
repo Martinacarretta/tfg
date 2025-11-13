@@ -1,0 +1,9 @@
+Filling replay buffer...
+Buffer filled with 10000 experiences
+Training...
+Episode 1 | Episode reward 105.00 | Mean Rewards 105.00 | Epsilon 1.0000 | Loss 34.3743
+      Positive rewards: 8, Negative rewards: 12
+Episode 2 | Episode reward -29.00 | Mean Rewards 38.00 | Epsilon 0.9800 | Loss 31.4943
+      Positive rewards: 0, Negative rewards: 20
+Episode 3 | Episode reward 105.00 | Mean Rewards 60.33 | Epsilon 0.9604 | Loss 32.7723
+      Positive rewards: 8, Negative rewards: 12

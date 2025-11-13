@@ -1,0 +1,12 @@
+{"time":"2025-11-10T08:57:06.404735115+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-10T08:57:06.927454837+01:00","level":"INFO","msg":"stream: created new stream","id":"Trial264"}
+{"time":"2025-11-10T08:57:06.927543175+01:00","level":"INFO","msg":"handler: started","stream_id":"Trial264"}
+{"time":"2025-11-10T08:57:06.927732228+01:00","level":"INFO","msg":"stream: started","id":"Trial264"}
+{"time":"2025-11-10T08:57:06.927779026+01:00","level":"INFO","msg":"writer: started","stream_id":"Trial264"}
+{"time":"2025-11-10T08:57:06.9278109+01:00","level":"INFO","msg":"sender: started","stream_id":"Trial264"}
+{"time":"2025-11-10T09:01:37.927645053+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 84-88, summary, console lines 172-183","runtime_seconds":0.074060752}],"total_operations":1}}
+{"time":"2025-11-10T09:01:38.703546046+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-10T09:01:38.978526292+01:00","level":"INFO","msg":"stream: closing","id":"Trial264"}
+{"time":"2025-11-10T09:01:38.978596225+01:00","level":"INFO","msg":"handler: closed","stream_id":"Trial264"}
+{"time":"2025-11-10T09:01:38.978741891+01:00","level":"INFO","msg":"sender: closed","stream_id":"Trial264"}
+{"time":"2025-11-10T09:01:38.978752922+01:00","level":"INFO","msg":"stream: closed","id":"Trial264"}

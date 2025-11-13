@@ -1,0 +1,94 @@
+_wandb:
+    value:
+        cli_version: 0.22.2
+        e:
+            su30e5jk4jjxhg1wbz86e5iwy7cuagz6:
+                codePath: training_gridsearch.ipynb
+                codePathLocal: training_gridsearch.ipynb
+                cpu_count: 4
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "269427478528"
+                        used: "40592875520"
+                email: martinacarrettab@gmail.com
+                executable: /usr/bin/python3
+                git:
+                    commit: 97d76728f870a8f55a83299fb5fb16e29bcc4c55
+                    remote: https://github.com/Martinacarretta/tfg
+                host: LAPTOP-INQT65B2
+                memory:
+                    total: "3991105536"
+                os: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35
+                program: /home/martina/codi2/4year/tfg/training_gridsearch.ipynb
+                python: CPython 3.10.12
+                root: /home/martina/codi2/4year/tfg
+                startedAt: "2025-11-10T08:42:04.824051Z"
+                writerId: su30e5jk4jjxhg1wbz86e5iwy7cuagz6
+        m: []
+        python_version: 3.10.12
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 2
+                - 13
+                - 14
+                - 16
+                - 61
+            "4": 3.10.12
+            "5": 0.22.2
+            "8":
+                - 1
+                - 2
+            "12": 0.22.2
+            "13": linux-x86_64
+BATCH_SIZE:
+    value: 128
+BURN_IN:
+    value: 200
+DNN_SYNC:
+    value: 20
+DNN_UPD:
+    value: 1
+Decay type:
+    value: exponential
+EPSILON:
+    value: 0.9
+EPSILON_DECAY:
+    value: 0.8
+EPSILON_MIN:
+    value: 0.05
+GAMMA:
+    value: 0.99
+MAX_EPISODES:
+    value: 90
+MEMORY_SIZE:
+    value: 15000
+agent:
+    value: DQNAgent
+buffer:
+    value: ReplayBuffer
+configuration:
+    value:
+        action_space: Discrete(3)
+        grid_size: 4
+        rewards:
+            - 8
+            - -1.5
+            - -0.3
+environment:
+    value: Glioblastoma
+lr:
+    value: 0.0001
+model:
+    value: DQN
+notes:
+    value: ""
+rewards:
+    value:
+        - 8
+        - -1.5
+        - -0.3

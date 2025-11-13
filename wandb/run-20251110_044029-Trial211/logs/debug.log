@@ -1,0 +1,26 @@
+2025-11-10 04:40:29,501 INFO    MainThread:42439 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/wandb/run-20251110_044029-Trial211/logs/debug.log
+2025-11-10 04:40:29,502 INFO    MainThread:42439 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/wandb/run-20251110_044029-Trial211/logs/debug-internal.log
+2025-11-10 04:40:29,502 INFO    MainThread:42439 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7dfe5dd9db70>
+2025-11-10 04:40:29,502 INFO    MainThread:42439 [wandb_init.py:init():832] calling init triggers
+2025-11-10 04:40:29,502 INFO    MainThread:42439 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'environment': 'Glioblastoma', 'configuration': {'grid_size': 4, 'rewards': [8.0, -1.5, -0.3], 'action_space': Discrete(3)}, 'model': 'DQN', 'agent': 'DQNAgent', 'buffer': 'ReplayBuffer', 'notes': '', 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.95, 'Decay type': 'exponential', 'EPSILON_MIN': 0.1, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 100, 'DNN_UPD': 1, 'DNN_SYNC': 20, 'rewards': [8.0, -1.5, -0.3], '_wandb': {}}
+2025-11-10 04:40:29,502 INFO    MainThread:42439 [wandb_init.py:init():880] starting backend
+2025-11-10 04:40:29,502 INFO    MainThread:42439 [wandb_init.py:init():883] sending inform_init request
+2025-11-10 04:40:29,504 INFO    MainThread:42439 [wandb_init.py:init():891] backend started and connected
+2025-11-10 04:40:29,528 INFO    MainThread:42439 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-10 04:40:29,545 INFO    MainThread:42439 [wandb_init.py:init():961] updated telemetry
+2025-11-10 04:40:29,554 INFO    MainThread:42439 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-10 04:40:30,133 INFO    MainThread:42439 [wandb_init.py:init():1036] starting run threads in backend
+2025-11-10 04:40:30,600 INFO    MainThread:42439 [wandb_run.py:_console_start():2509] atexit reg
+2025-11-10 04:40:30,600 INFO    MainThread:42439 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-11-10 04:40:30,600 INFO    MainThread:42439 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-11-10 04:40:30,600 INFO    MainThread:42439 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-11-10 04:40:30,601 INFO    MainThread:42439 [wandb_init.py:init():1076] run started, returning control to user process
+2025-11-10 04:45:11,970 INFO    MainThread:42439 [wandb_run.py:_finish():2275] finishing run martinacarrettab/TFG_Glioblastoma/Trial211
+2025-11-10 04:45:11,971 INFO    MainThread:42439 [jupyter.py:save_history():480] not saving jupyter history
+2025-11-10 04:45:11,972 INFO    MainThread:42439 [jupyter.py:save_ipynb():404] not saving jupyter notebook
+2025-11-10 04:45:11,972 INFO    MainThread:42439 [wandb_init.py:_jupyter_teardown():609] cleaning up jupyter logic
+2025-11-10 04:45:11,972 INFO    MainThread:42439 [wandb_run.py:_atexit_cleanup():2474] got exitcode: 0
+2025-11-10 04:45:11,972 INFO    MainThread:42439 [wandb_run.py:_restore():2456] restore
+2025-11-10 04:45:11,972 INFO    MainThread:42439 [wandb_run.py:_restore():2462] restore done
+2025-11-10 04:45:13,213 INFO    MainThread:42439 [wandb_run.py:_footer_sync_info():3872] logging synced files

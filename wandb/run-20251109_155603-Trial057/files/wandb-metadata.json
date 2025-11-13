@@ -1,0 +1,28 @@
+{
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2025-11-09T14:56:03.085045Z",
+  "program": "/home/martina/codi2/4year/tfg/training_gridsearch.ipynb",
+  "codePath": "training_gridsearch.ipynb",
+  "codePathLocal": "training_gridsearch.ipynb",
+  "git": {
+    "remote": "https://github.com/Martinacarretta/tfg",
+    "commit": "97d76728f870a8f55a83299fb5fb16e29bcc4c55"
+  },
+  "email": "martinacarrettab@gmail.com",
+  "root": "/home/martina/codi2/4year/tfg",
+  "host": "LAPTOP-INQT65B2",
+  "executable": "/usr/bin/python3",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "269427478528",
+      "used": "40156774400"
+    }
+  },
+  "memory": {
+    "total": "3991105536"
+  },
+  "writerId": "755hd9cibbh8cauiss06i04rit1pwerb"
+}

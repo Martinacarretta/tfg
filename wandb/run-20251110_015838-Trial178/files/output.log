@@ -1,0 +1,184 @@
+Filling replay buffer...
+Training...
+Episode 1 | Episode reward -4.80 | Mean Rewards -4.80 | Epsilon 0.9000 | Loss 2.2536
+      Positive rewards: 2, Negative rewards: 18
+Episode 2 | Episode reward -10.00 | Mean Rewards -7.40 | Epsilon 0.7200 | Loss 2.0512
+      Positive rewards: 1, Negative rewards: 19
+Episode 3 | Episode reward -15.20 | Mean Rewards -10.00 | Epsilon 0.5760 | Loss 2.3131
+      Positive rewards: 0, Negative rewards: 20
+Episode 4 | Episode reward 2.00 | Mean Rewards -7.00 | Epsilon 0.4608 | Loss 2.3387
+      Positive rewards: 3, Negative rewards: 17
+Episode 5 | Episode reward -15.20 | Mean Rewards -8.64 | Epsilon 0.3686 | Loss 2.8613
+      Positive rewards: 0, Negative rewards: 20
+Episode 6 | Episode reward -4.00 | Mean Rewards -7.87 | Epsilon 0.2949 | Loss 4.4203
+      Positive rewards: 2, Negative rewards: 18
+Episode 7 | Episode reward -15.20 | Mean Rewards -8.91 | Epsilon 0.2359 | Loss 4.9727
+      Positive rewards: 0, Negative rewards: 20
+Episode 8 | Episode reward -15.20 | Mean Rewards -9.70 | Epsilon 0.1887 | Loss 7.6046
+      Positive rewards: 0, Negative rewards: 20
+Episode 9 | Episode reward -15.20 | Mean Rewards -10.31 | Epsilon 0.1510 | Loss 10.2777
+      Positive rewards: 0, Negative rewards: 20
+Episode 10 | Episode reward -18.40 | Mean Rewards -11.12 | Epsilon 0.1208 | Loss 13.7133
+      Positive rewards: 0, Negative rewards: 20
+Episode 11 | Episode reward -15.20 | Mean Rewards -11.49 | Epsilon 0.0966 | Loss 18.7910
+      Positive rewards: 0, Negative rewards: 20
+Episode 12 | Episode reward 11.60 | Mean Rewards -9.57 | Epsilon 0.0773 | Loss 18.8400
+      Positive rewards: 5, Negative rewards: 15
+Episode 13 | Episode reward -10.00 | Mean Rewards -9.60 | Epsilon 0.0618 | Loss 23.2976
+      Positive rewards: 1, Negative rewards: 19
+Episode 14 | Episode reward 100.00 | Mean Rewards -1.77 | Epsilon 0.0500 | Loss 24.7578
+      Positive rewards: 20, Negative rewards: 0
+Episode 15 | Episode reward -17.60 | Mean Rewards -2.83 | Epsilon 0.0500 | Loss 26.7078
+      Positive rewards: 0, Negative rewards: 20
+Episode 16 | Episode reward -17.60 | Mean Rewards -3.75 | Epsilon 0.0500 | Loss 32.1804
+      Positive rewards: 0, Negative rewards: 20
+Episode 17 | Episode reward -17.60 | Mean Rewards -4.56 | Epsilon 0.0500 | Loss 32.9290
+      Positive rewards: 0, Negative rewards: 20
+Episode 18 | Episode reward -18.40 | Mean Rewards -5.33 | Epsilon 0.0500 | Loss 25.5176
+      Positive rewards: 0, Negative rewards: 20
+Episode 19 | Episode reward 88.80 | Mean Rewards -0.38 | Epsilon 0.0500 | Loss 33.7023
+      Positive rewards: 18, Negative rewards: 2
+Episode 20 | Episode reward -17.60 | Mean Rewards -1.24 | Epsilon 0.0500 | Loss 33.1245
+      Positive rewards: 0, Negative rewards: 20
+Episode 21 | Episode reward -17.60 | Mean Rewards -2.02 | Epsilon 0.0500 | Loss 31.7274
+      Positive rewards: 0, Negative rewards: 20
+Episode 22 | Episode reward -15.20 | Mean Rewards -2.62 | Epsilon 0.0500 | Loss 35.2288
+      Positive rewards: 0, Negative rewards: 20
+Episode 23 | Episode reward -0.40 | Mean Rewards -2.52 | Epsilon 0.0500 | Loss 40.0081
+      Positive rewards: 3, Negative rewards: 17
+Episode 24 | Episode reward -17.60 | Mean Rewards -3.15 | Epsilon 0.0500 | Loss 39.7926
+      Positive rewards: 0, Negative rewards: 20
+Episode 25 | Episode reward -17.60 | Mean Rewards -3.73 | Epsilon 0.0500 | Loss 44.9680
+      Positive rewards: 0, Negative rewards: 20
+Episode 26 | Episode reward 53.60 | Mean Rewards -1.52 | Epsilon 0.0500 | Loss 44.7910
+      Positive rewards: 12, Negative rewards: 8
+Episode 27 | Episode reward -18.40 | Mean Rewards -2.15 | Epsilon 0.0500 | Loss 49.6259
+      Positive rewards: 0, Negative rewards: 20
+Episode 28 | Episode reward -15.20 | Mean Rewards -2.61 | Epsilon 0.0500 | Loss 49.6196
+      Positive rewards: 0, Negative rewards: 20
+Episode 29 | Episode reward -17.60 | Mean Rewards -3.13 | Epsilon 0.0500 | Loss 52.1264
+      Positive rewards: 0, Negative rewards: 20
+Episode 30 | Episode reward 94.80 | Mean Rewards 0.13 | Epsilon 0.0500 | Loss 56.8975
+      Positive rewards: 19, Negative rewards: 1
+Episode 31 | Episode reward -17.60 | Mean Rewards -0.44 | Epsilon 0.0500 | Loss 55.2295
+      Positive rewards: 0, Negative rewards: 20
+Episode 32 | Episode reward -16.80 | Mean Rewards -0.95 | Epsilon 0.0500 | Loss 51.9181
+      Positive rewards: 0, Negative rewards: 20
+Episode 33 | Episode reward -18.40 | Mean Rewards -1.48 | Epsilon 0.0500 | Loss 53.7071
+      Positive rewards: 0, Negative rewards: 20
+Episode 34 | Episode reward -16.80 | Mean Rewards -1.93 | Epsilon 0.0500 | Loss 57.4946
+      Positive rewards: 0, Negative rewards: 20
+Episode 35 | Episode reward 88.80 | Mean Rewards 0.66 | Epsilon 0.0500 | Loss 57.2706
+      Positive rewards: 18, Negative rewards: 2
+Episode 36 | Episode reward 94.80 | Mean Rewards 3.28 | Epsilon 0.0500 | Loss 61.8761
+      Positive rewards: 19, Negative rewards: 1
+Episode 37 | Episode reward -17.60 | Mean Rewards 2.71 | Epsilon 0.0500 | Loss 55.9623
+      Positive rewards: 0, Negative rewards: 20
+Episode 38 | Episode reward -18.40 | Mean Rewards 2.16 | Epsilon 0.0500 | Loss 64.2079
+      Positive rewards: 0, Negative rewards: 20
+Episode 39 | Episode reward -15.20 | Mean Rewards 1.71 | Epsilon 0.0500 | Loss 68.6743
+      Positive rewards: 0, Negative rewards: 20
+Episode 40 | Episode reward -16.80 | Mean Rewards 1.25 | Epsilon 0.0500 | Loss 63.0892
+      Positive rewards: 0, Negative rewards: 20
+Episode 41 | Episode reward -18.40 | Mean Rewards 0.77 | Epsilon 0.0500 | Loss 62.6378
+      Positive rewards: 0, Negative rewards: 20
+Episode 42 | Episode reward -15.20 | Mean Rewards 0.39 | Epsilon 0.0500 | Loss 63.5737
+      Positive rewards: 0, Negative rewards: 20
+Episode 43 | Episode reward 94.80 | Mean Rewards 2.59 | Epsilon 0.0500 | Loss 62.9664
+      Positive rewards: 19, Negative rewards: 1
+Episode 44 | Episode reward -18.40 | Mean Rewards 2.11 | Epsilon 0.0500 | Loss 62.3477
+      Positive rewards: 0, Negative rewards: 20
+Episode 45 | Episode reward -18.40 | Mean Rewards 1.65 | Epsilon 0.0500 | Loss 53.9586
+      Positive rewards: 0, Negative rewards: 20
+Episode 46 | Episode reward -17.60 | Mean Rewards 1.23 | Epsilon 0.0500 | Loss 50.2593
+      Positive rewards: 0, Negative rewards: 20
+Episode 47 | Episode reward -15.20 | Mean Rewards 0.89 | Epsilon 0.0500 | Loss 46.6069
+      Positive rewards: 0, Negative rewards: 20
+Episode 48 | Episode reward 100.00 | Mean Rewards 2.95 | Epsilon 0.0500 | Loss 50.0822
+      Positive rewards: 20, Negative rewards: 0
+Episode 49 | Episode reward -18.40 | Mean Rewards 2.51 | Epsilon 0.0500 | Loss 59.7370
+      Positive rewards: 0, Negative rewards: 20
+Episode 50 | Episode reward -18.40 | Mean Rewards 2.10 | Epsilon 0.0500 | Loss 59.7557
+      Positive rewards: 0, Negative rewards: 20
+Episode 51 | Episode reward 94.80 | Mean Rewards 3.91 | Epsilon 0.0500 | Loss 47.3668
+      Positive rewards: 19, Negative rewards: 1
+Episode 52 | Episode reward -18.40 | Mean Rewards 3.48 | Epsilon 0.0500 | Loss 55.4713
+      Positive rewards: 0, Negative rewards: 20
+Episode 53 | Episode reward -16.00 | Mean Rewards 3.12 | Epsilon 0.0500 | Loss 54.7300
+      Positive rewards: 0, Negative rewards: 20
+Episode 54 | Episode reward -15.20 | Mean Rewards 2.78 | Epsilon 0.0500 | Loss 44.0636
+      Positive rewards: 0, Negative rewards: 20
+Episode 55 | Episode reward -18.40 | Mean Rewards 2.39 | Epsilon 0.0500 | Loss 49.7492
+      Positive rewards: 0, Negative rewards: 20
+Episode 56 | Episode reward -16.80 | Mean Rewards 2.05 | Epsilon 0.0500 | Loss 52.5542
+      Positive rewards: 0, Negative rewards: 20
+Episode 57 | Episode reward 94.80 | Mean Rewards 3.68 | Epsilon 0.0500 | Loss 45.7080
+      Positive rewards: 19, Negative rewards: 1
+Episode 58 | Episode reward 41.60 | Mean Rewards 4.33 | Epsilon 0.0500 | Loss 49.4946
+      Positive rewards: 10, Negative rewards: 10
+Episode 59 | Episode reward -17.60 | Mean Rewards 3.96 | Epsilon 0.0500 | Loss 46.2646
+      Positive rewards: 0, Negative rewards: 20
+Episode 60 | Episode reward -18.40 | Mean Rewards 3.59 | Epsilon 0.0500 | Loss 43.7697
+      Positive rewards: 0, Negative rewards: 20
+Episode 61 | Episode reward 53.60 | Mean Rewards 4.41 | Epsilon 0.0500 | Loss 41.6942
+      Positive rewards: 12, Negative rewards: 8
+Episode 62 | Episode reward 52.80 | Mean Rewards 5.19 | Epsilon 0.0500 | Loss 44.4507
+      Positive rewards: 12, Negative rewards: 8
+Episode 63 | Episode reward -17.60 | Mean Rewards 4.83 | Epsilon 0.0500 | Loss 37.0497
+      Positive rewards: 0, Negative rewards: 20
+Episode 64 | Episode reward -15.20 | Mean Rewards 4.51 | Epsilon 0.0500 | Loss 43.4760
+      Positive rewards: 0, Negative rewards: 20
+Episode 65 | Episode reward 26.00 | Mean Rewards 4.84 | Epsilon 0.0500 | Loss 40.9573
+      Positive rewards: 7, Negative rewards: 13
+Episode 66 | Episode reward -17.60 | Mean Rewards 4.50 | Epsilon 0.0500 | Loss 38.2940
+      Positive rewards: 0, Negative rewards: 20
+Episode 67 | Episode reward 42.40 | Mean Rewards 5.07 | Epsilon 0.0500 | Loss 44.8437
+      Positive rewards: 10, Negative rewards: 10
+Episode 68 | Episode reward 100.00 | Mean Rewards 6.46 | Epsilon 0.0500 | Loss 43.0861
+      Positive rewards: 20, Negative rewards: 0
+Episode 69 | Episode reward -15.20 | Mean Rewards 6.15 | Epsilon 0.0500 | Loss 37.7271
+      Positive rewards: 0, Negative rewards: 20
+Episode 70 | Episode reward -17.60 | Mean Rewards 5.81 | Epsilon 0.0500 | Loss 37.3913
+      Positive rewards: 0, Negative rewards: 20
+Episode 71 | Episode reward 14.00 | Mean Rewards 5.93 | Epsilon 0.0500 | Loss 40.6471
+      Positive rewards: 5, Negative rewards: 15
+Episode 72 | Episode reward 94.80 | Mean Rewards 7.16 | Epsilon 0.0500 | Loss 39.1426
+      Positive rewards: 19, Negative rewards: 1
+Episode 73 | Episode reward -18.40 | Mean Rewards 6.81 | Epsilon 0.0500 | Loss 36.2510
+      Positive rewards: 0, Negative rewards: 20
+Episode 74 | Episode reward 71.60 | Mean Rewards 7.69 | Epsilon 0.0500 | Loss 33.4262
+      Positive rewards: 15, Negative rewards: 5
+Episode 75 | Episode reward -16.80 | Mean Rewards 7.36 | Epsilon 0.0500 | Loss 38.5012
+      Positive rewards: 0, Negative rewards: 20
+Episode 76 | Episode reward -17.60 | Mean Rewards 7.03 | Epsilon 0.0500 | Loss 34.4888
+      Positive rewards: 0, Negative rewards: 20
+Episode 77 | Episode reward -16.00 | Mean Rewards 6.73 | Epsilon 0.0500 | Loss 32.9101
+      Positive rewards: 0, Negative rewards: 20
+Episode 78 | Episode reward -15.20 | Mean Rewards 6.45 | Epsilon 0.0500 | Loss 33.0900
+      Positive rewards: 0, Negative rewards: 20
+Episode 79 | Episode reward -15.20 | Mean Rewards 6.18 | Epsilon 0.0500 | Loss 29.9698
+      Positive rewards: 0, Negative rewards: 20
+Episode 80 | Episode reward 59.60 | Mean Rewards 6.85 | Epsilon 0.0500 | Loss 35.5925
+      Positive rewards: 13, Negative rewards: 7
+Episode 81 | Episode reward 94.80 | Mean Rewards 7.93 | Epsilon 0.0500 | Loss 31.5605
+      Positive rewards: 19, Negative rewards: 1
+Episode 82 | Episode reward 84.40 | Mean Rewards 8.86 | Epsilon 0.0500 | Loss 35.9508
+      Positive rewards: 17, Negative rewards: 3
+Episode 83 | Episode reward 8.00 | Mean Rewards 8.85 | Epsilon 0.0500 | Loss 45.5686
+      Positive rewards: 4, Negative rewards: 16
+Episode 84 | Episode reward -15.20 | Mean Rewards 8.57 | Epsilon 0.0500 | Loss 41.9434
+      Positive rewards: 0, Negative rewards: 20
+Episode 85 | Episode reward -17.60 | Mean Rewards 8.26 | Epsilon 0.0500 | Loss 42.7746
+      Positive rewards: 0, Negative rewards: 20
+Episode 86 | Episode reward 83.60 | Mean Rewards 9.13 | Epsilon 0.0500 | Loss 37.7498
+      Positive rewards: 17, Negative rewards: 3
+Episode 87 | Episode reward -17.60 | Mean Rewards 8.83 | Epsilon 0.0500 | Loss 33.7715
+      Positive rewards: 0, Negative rewards: 20
+Episode 88 | Episode reward 88.80 | Mean Rewards 9.74 | Epsilon 0.0500 | Loss 35.0898
+      Positive rewards: 18, Negative rewards: 2
+Episode 89 | Episode reward 88.80 | Mean Rewards 10.62 | Epsilon 0.0500 | Loss 34.4007
+      Positive rewards: 18, Negative rewards: 2
+Episode 90 | Episode reward 100.00 | Mean Rewards 11.62 | Epsilon 0.0500 | Loss 38.2540
+      Positive rewards: 20, Negative rewards: 0
+
+Episode limit reached.

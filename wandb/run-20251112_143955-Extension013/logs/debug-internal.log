@@ -1,0 +1,7 @@
+{"time":"2025-11-12T14:39:55.579891222+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-12T14:39:56.124035221+01:00","level":"INFO","msg":"stream: created new stream","id":"Extension013"}
+{"time":"2025-11-12T14:39:56.124447607+01:00","level":"INFO","msg":"handler: started","stream_id":"Extension013"}
+{"time":"2025-11-12T14:39:56.1246539+01:00","level":"INFO","msg":"stream: started","id":"Extension013"}
+{"time":"2025-11-12T14:39:56.124694518+01:00","level":"INFO","msg":"writer: started","stream_id":"Extension013"}
+{"time":"2025-11-12T14:39:56.124762875+01:00","level":"INFO","msg":"sender: started","stream_id":"Extension013"}
+{"time":"2025-11-12T14:42:59.655757476+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension013/file_stream\": write tcp 172.22.107.147:42708->35.186.228.49:443: write: broken pipe"}
