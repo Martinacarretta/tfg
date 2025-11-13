@@ -38,6 +38,8 @@ DQN5:
     Weight init: Kaiming normal for ReLU
     
 
+crfec que el primer es el que ha donatg millors resultats fins ara
+
 """
 
 class DQN(torch.nn.Module):

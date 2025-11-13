@@ -1,0 +1,12 @@
+{"time":"2025-11-13T23:51:54.049467635+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-13T23:51:54.487449441+01:00","level":"INFO","msg":"stream: created new stream","id":"rs6lpyng"}
+{"time":"2025-11-13T23:51:54.487720362+01:00","level":"INFO","msg":"handler: started","stream_id":"rs6lpyng"}
+{"time":"2025-11-13T23:51:54.488035595+01:00","level":"INFO","msg":"stream: started","id":"rs6lpyng"}
+{"time":"2025-11-13T23:51:54.488195018+01:00","level":"INFO","msg":"writer: started","stream_id":"rs6lpyng"}
+{"time":"2025-11-13T23:51:54.488264945+01:00","level":"INFO","msg":"sender: started","stream_id":"rs6lpyng"}
+{"time":"2025-11-13T23:57:51.63551992+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.07340002}],"total_operations":1}}
+{"time":"2025-11-13T23:57:52.197041667+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-13T23:57:52.531320117+01:00","level":"INFO","msg":"stream: closing","id":"rs6lpyng"}
+{"time":"2025-11-13T23:57:52.531465813+01:00","level":"INFO","msg":"handler: closed","stream_id":"rs6lpyng"}
+{"time":"2025-11-13T23:57:52.532232393+01:00","level":"INFO","msg":"sender: closed","stream_id":"rs6lpyng"}
+{"time":"2025-11-13T23:57:52.532298514+01:00","level":"INFO","msg":"stream: closed","id":"rs6lpyng"}

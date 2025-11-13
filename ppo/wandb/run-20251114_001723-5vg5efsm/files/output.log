@@ -1,0 +1,55 @@
+Starting Global-Aware PPO training...
+Episode 0 | Avg Reward: 4.95 | Mean Reward (100): 4.95 | Actor Loss: -0.0096
+New best model saved!
+Episode 25 | Avg Reward: 6.35 | Mean Reward (100): 5.65 | Actor Loss: 0.0090
+New best model saved!
+Episode 50 | Avg Reward: 6.17 | Mean Reward (100): 5.82 | Actor Loss: -0.0203
+New best model saved!
+Episode 75 | Avg Reward: 7.99 | Mean Reward (100): 6.36 | Actor Loss: -0.0003
+New best model saved!
+Episode 100 | Avg Reward: 22.64 | Mean Reward (100): 10.79 | Actor Loss: -0.0339
+New best model saved!
+Episode 125 | Avg Reward: 20.32 | Mean Reward (100): 14.28 | Actor Loss: -0.0050
+New best model saved!
+Episode 150 | Avg Reward: 27.66 | Mean Reward (100): 19.65 | Actor Loss: 0.0137
+New best model saved!
+Episode 175 | Avg Reward: 15.19 | Mean Reward (100): 21.45 | Actor Loss: -0.0092
+New best model saved!
+Episode 200 | Avg Reward: 19.11 | Mean Reward (100): 20.57 | Actor Loss: -0.0170
+Episode 225 | Avg Reward: 14.44 | Mean Reward (100): 19.10 | Actor Loss: -0.0064
+Episode 250 | Avg Reward: 19.70 | Mean Reward (100): 17.11 | Actor Loss: -0.0155
+Episode 275 | Avg Reward: 26.61 | Mean Reward (100): 19.97 | Actor Loss: -0.0070
+Episode 300 | Avg Reward: 17.73 | Mean Reward (100): 19.62 | Actor Loss: -0.0148
+Episode 325 | Avg Reward: 19.52 | Mean Reward (100): 20.89 | Actor Loss: -0.0110
+Episode 350 | Avg Reward: 20.47 | Mean Reward (100): 21.08 | Actor Loss: -0.0033
+Episode 375 | Avg Reward: 25.33 | Mean Reward (100): 20.76 | Actor Loss: -0.0036
+Episode 400 | Avg Reward: 31.05 | Mean Reward (100): 24.09 | Actor Loss: 0.0119
+New best model saved!
+Episode 425 | Avg Reward: 29.85 | Mean Reward (100): 26.68 | Actor Loss: 0.0002
+New best model saved!
+Episode 450 | Avg Reward: 19.59 | Mean Reward (100): 26.45 | Actor Loss: 0.0002
+Episode 475 | Avg Reward: 38.40 | Mean Reward (100): 29.72 | Actor Loss: 0.0069
+New best model saved!
+Episode 500 | Avg Reward: 34.94 | Mean Reward (100): 30.70 | Actor Loss: -0.0008
+New best model saved!
+Episode 525 | Avg Reward: 20.07 | Mean Reward (100): 28.25 | Actor Loss: -0.0041
+Episode 550 | Avg Reward: 37.77 | Mean Reward (100): 32.80 | Actor Loss: -0.0035
+New best model saved!
+Episode 575 | Avg Reward: 34.77 | Mean Reward (100): 31.89 | Actor Loss: -0.0058
+Episode 600 | Avg Reward: 25.61 | Mean Reward (100): 29.56 | Actor Loss: -0.0197
+Episode 625 | Avg Reward: 24.50 | Mean Reward (100): 30.66 | Actor Loss: 0.0085
+Episode 650 | Avg Reward: 28.16 | Mean Reward (100): 28.26 | Actor Loss: -0.0023
+Episode 675 | Avg Reward: 28.20 | Mean Reward (100): 26.62 | Actor Loss: -0.0166
+Episode 700 | Avg Reward: 33.34 | Mean Reward (100): 28.55 | Actor Loss: 0.0076
+Episode 725 | Avg Reward: 22.97 | Mean Reward (100): 28.17 | Actor Loss: -0.0081
+Episode 750 | Avg Reward: 24.11 | Mean Reward (100): 27.15 | Actor Loss: 0.0119
+Episode 775 | Avg Reward: 26.58 | Mean Reward (100): 26.75 | Actor Loss: -0.0006
+Episode 800 | Avg Reward: 20.47 | Mean Reward (100): 23.53 | Actor Loss: 0.0082
+Episode 825 | Avg Reward: 25.62 | Mean Reward (100): 24.20 | Actor Loss: -0.0062
+Episode 850 | Avg Reward: 38.02 | Mean Reward (100): 27.67 | Actor Loss: -0.0004
+Episode 875 | Avg Reward: 28.81 | Mean Reward (100): 28.23 | Actor Loss: 0.0060
+Episode 900 | Avg Reward: 26.41 | Mean Reward (100): 29.72 | Actor Loss: 0.0037
+Episode 925 | Avg Reward: 16.58 | Mean Reward (100): 27.46 | Actor Loss: -0.0044
+Episode 950 | Avg Reward: 30.09 | Mean Reward (100): 25.47 | Actor Loss: -0.0080
+Episode 975 | Avg Reward: 41.44 | Mean Reward (100): 28.63 | Actor Loss: -0.0046
+Training completed!

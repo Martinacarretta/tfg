@@ -1,0 +1,1 @@
+{"_runtime":266,"mean_reward_100":25.915,"_timestamp":1.7630754716119702e+09,"actor_loss":-0.005499132908880711,"_step":39,"critic_loss":161.93659286499025,"avg_episode_reward":18.523999999999997,"_wandb":{"runtime":266},"entropy":0.4337951362133026,"episode":975}
