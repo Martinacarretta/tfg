@@ -4,9 +4,12 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-
+import torch
+from torch.distributions import Categorical
+import imageio
+from PIL import Image
+import matplotlib.pyplot as plt
 from copy import deepcopy
-
 import pandas as pd
 
 
@@ -40,6 +43,8 @@ def prepare(mode = "train"):
 
     print(f"✅ Found {len(pairs)} pairs out of {len(df)} listed in CSV.")
     return pairs
+
+#####################################################################################################
 
 class Glioblastoma(gym.Env):
     metadata = {"render_modes": ["human"], "render_fps": 4} 
@@ -284,6 +289,277 @@ class Glioblastoma(gym.Env):
         overlap = np.sum(patch_mask > 0)
         return overlap
 
+#####################################################################################################3
+
+def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, save_gifs=True, gif_folder="TEST_GIFS"):
+    """
+    Unified testing function for both DQN and PPO agents
+    
+    Args:
+        agent: The trained agent (DQN or PPO)
+        test_pairs: List of (image_path, mask_path) tuples
+        agent_type: Either "dqn" or "ppo"
+        num_episodes: Number of episodes to test (default: all test pairs)
+        env_config: Environment configuration dictionary
+        save_gifs: Whether to save GIFs of episodes
+        gif_folder: Folder to save GIFs
+    
+    Returns:
+        Dictionary with test results including success rate and action distributions
+    """
+    if num_episodes is None:
+        num_episodes = len(test_pairs)
+    
+    # Create GIF folder if needed
+    if save_gifs and not os.path.exists(gif_folder):
+        os.makedirs(gif_folder)
+    
+    # Set model to evaluation mode
+    if agent_type.lower() == "dqn":
+        agent.dnnetwork.eval()
+    elif agent_type.lower() == "ppo":
+        agent.model.eval()
+    
+    results = {
+        'success_rate': [],
+        'final_position_accuracy': [],
+        'average_reward': [],
+        'steps_to_find_tumor': [],
+        'total_tumor_reward': [],
+        'tumor_sizes_pixels': [],
+        'tumor_sizes_percentage': [],
+        'episode_details': []
+    }
+    
+    grid_size = env_config.get('grid_size', 4)
+    rewards = env_config.get('rewards', [5.0, -1.0, -0.2])
+    action_space = env_config.get('action_space', None)
+    
+    for i in range(min(num_episodes, len(test_pairs))):
+        img_path, mask_path = test_pairs[i]
+        
+        # Create environment
+        if hasattr(agent, 'env_class'):
+            env = agent.env_class(img_path, mask_path, grid_size=grid_size, rewards=rewards, action_space=action_space)
+        else:
+            env = Glioblastoma(img_path, mask_path, grid_size=grid_size, rewards=rewards, action_space=action_space)
+        
+        state, _ = env.reset()
+        total_reward = 0
+        found_tumor = False
+        tumor_positions_visited = set()
+        steps_to_find = env.max_steps
+        tumor_rewards = 0
+        
+        # For action distribution tracking
+        action_counts = np.zeros(env.action_space.n)
+        
+        # For GIF creation
+        frames = []
+        
+        # Get tumor size information for this episode
+        tumor_size_pixels = count_tumor_pixels(env)
+        total_pixels = env.image.shape[0] * env.image.shape[1]
+        tumor_size_percentage = (tumor_size_pixels / total_pixels) * 100
+        
+        results['tumor_sizes_pixels'].append(tumor_size_pixels)
+        results['tumor_sizes_percentage'].append(tumor_size_percentage)
+        
+        for step in range(env.max_steps):
+            with torch.no_grad():
+                if agent_type.lower() == "dqn":
+                    action = agent.dnnetwork.get_action(state, epsilon=0.00)
+                    action_idx = action
+                elif agent_type.lower() == "ppo":
+                    action_probs, _ = agent.model(state)
+                    dist = Categorical(action_probs)
+                    action = dist.sample()
+                    action_idx = action.item()
+                elif agent_type.lower() == "reinforce":
+                    action, _ = agent.policy.act(state)  # handles tensor conversion internally
+                    action_idx = action
+
+            
+            action_counts[action_idx] += 1
+            
+            next_state, reward, terminated, truncated, _ = env.step(action_idx)
+            state = next_state
+            total_reward += reward
+            
+            # Track tumor-related metrics
+            current_overlap = env.current_patch_overlap_with_lesion()
+            if current_overlap > 0:
+                tumor_positions_visited.add(tuple(env.agent_pos))
+                if not found_tumor:
+                    found_tumor = True
+                    steps_to_find = step + 1
+                
+                # Count positive rewards (when on tumor)
+                if reward > 0:
+                    tumor_rewards += 1
+            
+            # Capture frame for GIF
+            if save_gifs:
+                frame = env.render(show=False)
+                if frame is not None:
+                    frames.append(frame)
+            
+            if terminated or truncated:
+                break
+        
+        # Save GIF
+        gif_path = None
+        if save_gifs and frames:
+            gif_path = os.path.join(gif_folder, f"episode_{i}_{os.path.basename(img_path).split('.')[0]}.gif")
+            # Convert frames to PIL Images and save as GIF
+            pil_frames = [Image.fromarray(frame) for frame in frames]
+            pil_frames[0].save(
+                gif_path,
+                save_all=True,
+                append_images=pil_frames[1:],
+                duration=500,  # milliseconds per frame
+                loop=0
+            )
+            if i % 10 == 0:
+                print(f"Saved GIF for episode {i} at {gif_path}")
+        
+        # Calculate metrics for this episode
+        final_overlap = env.current_patch_overlap_with_lesion()
+        
+        # Success: ended on tumor region
+        success = final_overlap > 0
+        results['success_rate'].append(success)
+        
+        # Final position accuracy
+        results['final_position_accuracy'].append(final_overlap > 0)
+        
+        # Average reward
+        results['average_reward'].append(total_reward)
+        
+        # Steps to find tumor
+        results['steps_to_find_tumor'].append(steps_to_find)
+                
+        # Total positive rewards from tumor
+        results['total_tumor_reward'].append(tumor_rewards)
+        
+        # Store detailed episode information
+        episode_detail = {
+            'image_path': img_path,
+            'success': success,
+            'final_on_tumor': final_overlap > 0,
+            'total_reward': total_reward,
+            'steps_to_find_tumor': steps_to_find,
+            'tumor_rewards': tumor_rewards,
+            'tumor_size_pixels': tumor_size_pixels,
+            'tumor_size_percentage': tumor_size_percentage,
+            'action_distribution': action_counts / np.sum(action_counts),  # Normalized
+            'action_counts_raw': action_counts,  # Keep raw counts for aggregation
+            'gif_path': gif_path
+        }
+        results['episode_details'].append(episode_detail)
+    
+    # Calculate separate action distributions
+    successful_episodes = [ep for ep in results['episode_details'] if ep['final_on_tumor']]
+    unsuccessful_episodes = [ep for ep in results['episode_details'] if not ep['final_on_tumor']]
+    
+    action_dist_success = calculate_separate_action_distribution(successful_episodes)
+    action_dist_failure = calculate_separate_action_distribution(unsuccessful_episodes)
+    
+    # Calculate overall metrics with new tumor size statistics
+    overall_results = {
+        'success_rate': np.mean(results['success_rate']),
+        'average_reward': np.mean(results['average_reward']),
+        'avg_steps_to_find_tumor': np.mean(results['steps_to_find_tumor']),
+        'avg_tumor_rewards': np.mean(results['total_tumor_reward']),
+        'biggest_tumor_pixels': np.max(results['tumor_sizes_pixels']),
+        'smallest_tumor_pixels': np.min(results['tumor_sizes_pixels']),
+        'biggest_tumor_percentage': np.max(results['tumor_sizes_percentage']),
+        'smallest_tumor_percentage': np.min(results['tumor_sizes_percentage']),
+        'avg_tumor_size_pixels': np.mean(results['tumor_sizes_pixels']),
+        'avg_tumor_size_percentage': np.mean(results['tumor_sizes_percentage']),
+        'action_distribution': calculate_overall_action_distribution(results['episode_details']),
+        'action_distribution_success': action_dist_success,
+        'action_distribution_failure': action_dist_failure,
+        'episode_details': results['episode_details']
+    }
+    
+    # Print summary
+    print("\n" + "="*60)
+    print(f"TEST RESULTS ({agent_type.upper()} Agent)")
+    print("="*60)
+    print(f"Success Rate: {overall_results['success_rate']*100:.2f}%")
+    print(f"Average Episode Reward: {overall_results['average_reward']:.2f}")
+    print(f"Average Steps to Find Tumor: {overall_results['avg_steps_to_find_tumor']:.2f}")
+    print(f"Average Tumor Rewards per Episode: {overall_results['avg_tumor_rewards']:.2f}")
+    print(f"Tumor Size Statistics:")
+    print(f"  Biggest Tumor: {overall_results['biggest_tumor_pixels']:.0f} pixels ({overall_results['biggest_tumor_percentage']:.2f}%)")
+    print(f"  Smallest Tumor: {overall_results['smallest_tumor_pixels']:.0f} pixels ({overall_results['smallest_tumor_percentage']:.2f}%)")
+    print(f"  Average Tumor: {overall_results['avg_tumor_size_pixels']:.0f} pixels ({overall_results['avg_tumor_size_percentage']:.2f}%)")
+    print(f"Overall Action Distribution: {overall_results['action_distribution']}")
+    print(f"  Successful Episodes: {overall_results['action_distribution_success']}")
+    print(f"  Unsuccessful Episodes: {overall_results['action_distribution_failure']}")
+    
+    # Print individual episode results
+    print(f"\nDetailed Results for {len(results['episode_details'])} episodes:")
+    print("-" * 80)
+    for i, detail in enumerate(results['episode_details']):
+        print(f"Episode {i}: {os.path.basename(detail['image_path'])}")
+        print(f"  Success: {detail['success']}, Final on Tumor: {detail['final_on_tumor']}")
+        print(f"  Total Reward: {detail['total_reward']:.2f}, Steps to Find: {detail['steps_to_find_tumor']}")
+        print(f"  Tumor Size: {detail['tumor_size_pixels']} pixels ({detail['tumor_size_percentage']:.2f}%)")
+        print(f"  Action Distribution: {detail['action_distribution']}")
+        if detail['gif_path']:
+            print(f"  GIF saved: {detail['gif_path']}")
+        print()
+    
+    return overall_results
+
+def count_tumor_pixels(env):
+    """Count total number of tumor pixels in the mask"""
+    if hasattr(env, 'mask'):
+        return np.sum(env.mask > 0)
+    elif hasattr(env, 'original_mask'):
+        return np.sum(env.original_mask > 0)
+    else:
+        # Fallback: try to access the mask through available attributes
+        try:
+            mask = env.lesion_mask if hasattr(env, 'lesion_mask') else None
+            if mask is not None:
+                return np.sum(mask > 0)
+        except:
+            pass
+    return 0
+
+def calculate_overall_action_distribution(episode_details):
+    """Calculate overall action distribution across all episodes"""
+    total_actions = np.zeros_like(episode_details[0]['action_distribution'])
+    
+    for detail in episode_details:
+        # Multiply by steps to get actual count, then normalize
+        action_dist = detail['action_distribution']
+        # Since action_distribution is already normalized per episode, we'll average them
+        total_actions += action_dist
+    
+    # Normalize to get overall distribution
+    overall_dist = total_actions / len(episode_details)
+    return overall_dist
+
+def calculate_separate_action_distribution(episode_list):
+    """Calculate action distribution for a specific list of episodes"""
+    if len(episode_list) == 0:
+        return np.array([])  # Return empty array if no episodes
+    
+    total_actions = np.zeros_like(episode_list[0]['action_distribution'])
+    
+    for episode in episode_list:
+        total_actions += episode['action_distribution']
+    
+    # Normalize to get distribution
+    distribution = total_actions / len(episode_list)
+    return distribution
+
+
+#####################################################################################################
 # Glioblastoma2 has positional encodings
 class Glioblastoma2(gym.Env):
     metadata = {"render_modes": ["human"], "render_fps": 4} 
