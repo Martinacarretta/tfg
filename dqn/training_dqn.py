@@ -481,3 +481,33 @@ class DQN5(torch.nn.Module):
             with torch.no_grad():
                 qvals = self.forward(state_t)
         return qvals
+    
+class DQN6(nn.Module):
+    def __init__(self, n_actions):
+        super().__init__()
+
+        self.conv = nn.Sequential(
+            nn.Conv2d(1, 16, kernel_size=5, stride=2),
+            nn.ReLU(),
+
+            nn.Conv2d(16, 32, kernel_size=3, stride=2),
+            nn.ReLU(),
+
+            nn.Conv2d(32, 64, kernel_size=3, stride=2),
+            nn.ReLU()
+        )
+
+        # compute size after conv for FC layer
+        dummy = torch.zeros(1, 1, 60, 60)
+        conv_out = self.conv(dummy).view(1, -1).shape[1]
+
+        self.fc = nn.Sequential(
+            nn.Linear(conv_out, 128),
+            nn.ReLU(),
+            nn.Linear(128, n_actions)
+        )
+
+    def get_qvals(self, x):
+        x = self.conv(x)
+        x = x.view(x.size(0), -1)
+        return self.fc(x)

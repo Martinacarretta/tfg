@@ -1,0 +1,90 @@
+_wandb:
+    value:
+        cli_version: 0.22.2
+        e:
+            wrsw1uve4auwpvdxi9nweypzou2ehahg:
+                codePath: dqn/training.ipynb
+                codePathLocal: training.ipynb
+                cpu_count: 4
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "269427478528"
+                        used: "41485656064"
+                email: martinacarrettab@gmail.com
+                executable: /usr/bin/python3
+                git:
+                    commit: 6d4569bfc8a5e4a847b410c3e1e93fe71e6022ca
+                    remote: https://github.com/Martinacarretta/tfg
+                host: LAPTOP-INQT65B2
+                memory:
+                    total: "3991113728"
+                os: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35
+                program: /home/martina/codi2/4year/tfg/dqn/training.ipynb
+                python: CPython 3.10.12
+                root: /home/martina/codi2/4year/tfg/dqn
+                startedAt: "2025-11-16T21:12:01.266337Z"
+                writerId: wrsw1uve4auwpvdxi9nweypzou2ehahg
+        m: []
+        python_version: 3.10.12
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 2
+                - 13
+                - 14
+                - 16
+                - 61
+            "4": 3.10.12
+            "5": 0.22.2
+            "8":
+                - 1
+                - 2
+            "12": 0.22.2
+            "13": linux-x86_64
+BATCH_SIZE:
+    value: 128
+BURN_IN:
+    value: 500
+DNN_SYNC:
+    value: 200
+DNN_UPD:
+    value: 4
+Decay type:
+    value: exponential
+EPSILON:
+    value: 1
+EPSILON_DECAY:
+    value: 0.99
+EPSILON_MIN:
+    value: 0.1
+GAMMA:
+    value: 0.99
+MAX_EPISODES:
+    value: 90
+MEMORY_SIZE:
+    value: 15000
+agent:
+    value: DQNAgent2
+buffer:
+    value: ReplayBuffer
+configuration:
+    value:
+        action_space: Discrete(5)
+        grid_size: 6
+        max_steps: 40
+        rewards:
+            - 3
+            - -1
+            - -0.2
+environment:
+    value: Glioblastoma3
+lr:
+    value: 5e-05
+model:
+    value: DQN2
+notes:
+    value: Stop behavior added.

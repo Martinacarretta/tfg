@@ -1,0 +1,34 @@
+2025-11-16 20:46:39,183 INFO    MainThread:15565 [wandb_setup.py:_flush():81] Current SDK version is 0.22.2
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_setup.py:_flush():81] Configure stats pid to 15565
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_setup.py:_flush():81] Loading settings from /home/martina/.config/wandb/settings
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_setup.py:_flush():81] Loading settings from /home/martina/codi2/4year/tfg/dqn/wandb/settings
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/dqn/wandb/run-20251116_204639-Extension023/logs/debug.log
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/dqn/wandb/run-20251116_204639-Extension023/logs/debug-internal.log
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7c891ceceb90>
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_init.py:init():832] calling init triggers
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'environment': 'Glioblastoma', 'configuration': {'grid_size': 6, 'rewards': [5.0, -1.0, -0.2], 'action_space': Discrete(5), 'max_steps': 40}, 'model': 'DQN', 'agent': 'DQNAgent', 'buffer': 'ReplayBuffer', 'notes': 'REDO of last: Bigger grid size and 5 actions. 40 episodes.', 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 90, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.95, 'Decay type': 'exponential', 'EPSILON_MIN': 0.1, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 500, 'DNN_UPD': 1, 'DNN_SYNC': 20, '_wandb': {}}
+2025-11-16 20:46:39,184 INFO    MainThread:15565 [wandb_init.py:init():880] starting backend
+2025-11-16 20:46:39,614 INFO    MainThread:15565 [wandb_init.py:init():883] sending inform_init request
+2025-11-16 20:46:39,825 INFO    MainThread:15565 [wandb_init.py:init():891] backend started and connected
+2025-11-16 20:46:39,863 INFO    MainThread:15565 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-16 20:46:39,869 INFO    MainThread:15565 [wandb_init.py:init():961] updated telemetry
+2025-11-16 20:46:39,890 INFO    MainThread:15565 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-16 20:46:40,702 INFO    MainThread:15565 [wandb_init.py:init():1036] starting run threads in backend
+2025-11-16 20:46:41,486 INFO    MainThread:15565 [wandb_run.py:_console_start():2509] atexit reg
+2025-11-16 20:46:41,486 INFO    MainThread:15565 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-11-16 20:46:41,486 INFO    MainThread:15565 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-11-16 20:46:41,487 INFO    MainThread:15565 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-11-16 20:46:41,492 INFO    MainThread:15565 [wandb_init.py:init():1076] run started, returning control to user process
+2025-11-16 20:46:41,496 INFO    MainThread:15565 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-16 20:46:43,821 INFO    MainThread:15565 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-16 20:46:43,821 INFO    MainThread:15565 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-16 20:52:40,382 INFO    MainThread:15565 [wandb_run.py:_finish():2275] finishing run martinacarrettab/TFG_Glioblastoma/Extension023
+2025-11-16 20:52:40,395 INFO    MainThread:15565 [jupyter.py:save_history():480] not saving jupyter history
+2025-11-16 20:52:40,396 INFO    MainThread:15565 [jupyter.py:save_ipynb():404] not saving jupyter notebook
+2025-11-16 20:52:40,397 INFO    MainThread:15565 [wandb_init.py:_jupyter_teardown():609] cleaning up jupyter logic
+2025-11-16 20:52:40,398 INFO    MainThread:15565 [wandb_run.py:_atexit_cleanup():2474] got exitcode: 0
+2025-11-16 20:52:40,412 INFO    MainThread:15565 [wandb_run.py:_restore():2456] restore
+2025-11-16 20:52:40,414 INFO    MainThread:15565 [wandb_run.py:_restore():2462] restore done
+2025-11-16 20:52:41,396 INFO    MainThread:15565 [wandb_run.py:_footer_sync_info():3872] logging synced files

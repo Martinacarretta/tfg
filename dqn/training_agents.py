@@ -265,6 +265,8 @@ class DQNAgent:
         
         # Calculate the loss
         loss = torch.nn.MSELoss()(qvals, expected_qvals.reshape(-1,1))
+        # Use Huber loss instead of MSELoss
+        # loss = torch.nn.SmoothL1Loss()(qvals, expected_qvals.reshape(-1,1))
         return loss
     
 
@@ -540,7 +542,9 @@ class DQNAgent2:
         
         expected_qvals = (self.gamma * qvals_next) + rewards_vals
         
-        loss = torch.nn.MSELoss()(qvals, expected_qvals.reshape(-1,1))
+        # loss = torch.nn.MSELoss()(qvals, expected_qvals.reshape(-1,1))
+        loss = torch.nn.SmoothL1Loss()(qvals, expected_qvals.reshape(-1,1))
+
         return loss
     
 
@@ -571,3 +575,41 @@ class DQNAgent2:
             self.update_loss.append(loss.detach().cpu().numpy())
         else:
             self.update_loss.append(loss.detach().numpy())
+
+
+class DQNAgent3:
+    def __init__(self, dnnetwork, target_network, lr=1e-4, gamma=0.99):
+        self.dnnetwork = dnnetwork
+        self.target_network = target_network
+        self.gamma = gamma
+        
+        self.optimizer = torch.optim.Adam(self.dnnetwork.parameters(), lr=lr)
+        self.device = self.dnnetwork.device
+
+    def get_action(self, state, epsilon):
+        if random.random() < epsilon:
+            return random.randint(0, self.dnnetwork.n_actions - 1)
+        state_t = torch.FloatTensor(state).unsqueeze(0).to(self.device)
+        qvals = self.dnnetwork.get_qvals(state_t)
+        return int(torch.argmax(qvals))
+
+    def calculate_loss(self, batch):
+        states, actions, rewards, dones, next_states = batch
+        device = self.device
+
+        states = torch.FloatTensor(states).to(device)
+        next_states = torch.FloatTensor(next_states).to(device)
+
+        actions = torch.LongTensor(actions).view(-1, 1).to(device)
+        rewards = torch.FloatTensor(rewards).to(device)
+        dones = torch.BoolTensor(dones).to(device)
+
+        qvals = torch.gather(self.dnnetwork.get_qvals(states), 1, actions)
+
+        with torch.no_grad():
+            next_qvals = torch.max(self.target_network.get_qvals(next_states), dim=1)[0]
+            next_qvals[dones] = 0.0
+
+        expected = rewards + self.gamma * next_qvals
+        loss = nn.SmoothL1Loss()(qvals.view(-1), expected)
+        return loss
