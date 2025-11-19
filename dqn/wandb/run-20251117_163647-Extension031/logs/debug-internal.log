@@ -1,0 +1,24 @@
+{"time":"2025-11-17T16:36:48.682366789+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-17T16:36:49.827137222+01:00","level":"INFO","msg":"stream: created new stream","id":"Extension031"}
+{"time":"2025-11-17T16:36:49.827582345+01:00","level":"INFO","msg":"handler: started","stream_id":"Extension031"}
+{"time":"2025-11-17T16:36:49.831138549+01:00","level":"INFO","msg":"stream: started","id":"Extension031"}
+{"time":"2025-11-17T16:36:49.831439996+01:00","level":"INFO","msg":"sender: started","stream_id":"Extension031"}
+{"time":"2025-11-17T16:36:49.831404396+01:00","level":"INFO","msg":"writer: started","stream_id":"Extension031"}
+{"time":"2025-11-17T18:17:21.900072117+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:17:54.37551895+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-11-17T18:18:28.501477979+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:19:08.342855356+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:19:55.949360265+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-11-17T18:21:01.665846475+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:22:31.668424032+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-11-17T18:24:01.67043484+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-11-17T18:25:21.14296449+01:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":290}
+{"time":"2025-11-17T18:25:31.673538371+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:26:51.845679349+01:00","level":"WARN","msg":"sender: taking a long time","seconds":600.001137973,"work":"WorkRecord(*service_go_proto.Request_StopStatus); Control(local:true mailbox_slot:\"ip73utzegbz6\" connection_id:\"1(@)\")"}
+{"time":"2025-11-17T18:27:01.675814018+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:28:31.689011739+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:30:01.691617247+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:31:31.694574371+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-17T18:32:44.112818623+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 172.22.107.147:55762->35.186.228.49:443: read: connection timed out"}
+{"time":"2025-11-17T18:33:43.913236959+01:00","level":"INFO","msg":"sender: succeeded after taking longer than expected","seconds":1012.762921334,"work":"WorkRecord(*service_go_proto.Request_StopStatus); Control(local:true mailbox_slot:\"ip73utzegbz6\" connection_id:\"1(@)\")"}
+{"time":"2025-11-17T18:33:43.938370382+01:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":34}

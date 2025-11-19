@@ -44,253 +44,6 @@ def prepare(mode = "train"):
     print(f"✅ Found {len(pairs)} pairs out of {len(df)} listed in CSV.")
     return pairs
 
-#####################################################################################################
-
-class Glioblastoma(gym.Env):
-    metadata = {"render_modes": ["human"], "render_fps": 4} 
-    # The metadata of the environment, e.g. {“render_modes”: [“rgb_array”, “human”], “render_fps”: 30}. 
-    # For Jax or Torch, this can be indicated to users with “jax”=True or “torch”=True.
-
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, render_mode="human"): # cosntructor with the brain image, the mask and a size
-        super().__init__() # parent class
-        
-        self.image = np.load(image_path).astype(np.float32)
-        self.mask = np.load(mask_path).astype(np.uint8)
-        
-        img_min, img_max = self.image.min(), self.image.max()
-        if img_max > 1.0:  # only normalize if not already in [0, 1]
-            self.image = (self.image - img_min) / (img_max - img_min + 1e-8) #avoid division by 0
-
-        self.grid_size = grid_size
-        self.block_size = self.image.shape[0] // grid_size  # 240/4 = 60
-        
-        self.action_space = action_space
-        self.tumor_threshold = tumor_threshold # 15% of the patch must be tumor to consider that the agent is inside the tumor region
-        self.rewards = rewards  # [reward_on_tumor, reward_stay_no_tumor, reward_move_no_tumor]
-        
-        self.render_mode = render_mode
-
-        # Observations: grayscale patch (normalized 0-1)
-        # apparently Neural networks train better when inputs are scaled to small, 
-        # consistent ranges rather than raw 0–255 values.
-        self.observation_space = spaces.Box( # Supports continuous (and discrete) vectors or matrices
-            low=0, high=1, # Data has been normalized
-            shape=(self.block_size, self.block_size), # shape of the observation
-            dtype=np.float32
-        )
-
-        self.agent_pos = [0, 0] # INITIAL POSITION AT TOP LEFT
-        self.current_step = 0 # initialize counter
-        self.max_steps = max_steps  # like in the paper
-
-    def reset(self, seed=None, options=None): # new episode where we initialize the state. 
-        super().reset(seed=seed) # parent
-        
-        # reset
-        self.agent_pos = [0, 0]  # top-left corner
-        self.current_step = 0
-        obs = self._get_obs()
-        info = {}
-        return obs, info
-
-    def step(self, action):
-        self.current_step += 1
-
-        prev_pos = self.agent_pos.copy() # for reward computation taking into consideration the transition changes
-        
-        # Apply action (respect grid boundaries)
-        if self.action_space == spaces.Discrete(3):
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-                self.agent_pos[0] += 1  # move down
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[1] += 1  # move right
-            # else, the agent doesn't move so the observation 
-            # and reward will be calculated from the same position
-            # no need to compute self.agent_pos
-        elif self.action_space == spaces.Discrete(5):
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-                self.agent_pos[0] += 1  # move down
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[1] += 1  # move right
-            elif action == 3 and self.agent_pos[0] > 0:
-                self.agent_pos[0] -= 1  # move up
-            elif action == 4 and self.agent_pos[1] > 0:
-                self.agent_pos[1] -= 1  # move left
-        elif self.action_space == spaces.Discrete(9):
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-                self.agent_pos[0] += 1  # move down
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[1] += 1  # move right
-            elif action == 3 and self.agent_pos[0] > 0:
-                self.agent_pos[0] -= 1  # move up
-            elif action == 4 and self.agent_pos[1] > 0:
-                self.agent_pos[1] -= 1  # move left
-            elif action == 5 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[0] += 1  # move down-right
-                self.agent_pos[1] += 1
-            elif action == 6 and self.agent_pos[0] > 0 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[0] -= 1  # move up-right
-                self.agent_pos[1] += 1
-            elif action == 7 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] > 0:
-                self.agent_pos[0] += 1  # move down-left
-                self.agent_pos[1] -= 1
-            elif action == 8 and self.agent_pos[0] > 0 and self.agent_pos[1] > 0:
-                self.agent_pos[0] -= 1  # move up-left
-                self.agent_pos[1] -= 1
-        
-        reward = self._get_reward(action, prev_pos)
-                
-        obs = self._get_obs()
-
-        # Episode ends
-        terminated = self.current_step >= self.max_steps
-        truncated = False  # we don’t need truncation here
-        info = {}
-
-        return obs, reward, terminated, truncated, info
-
-    def _get_obs(self):
-        r0 = self.agent_pos[0] * self.block_size # row start
-        c0 = self.agent_pos[1] * self.block_size # col start
-        
-        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size].astype(np.float32)
-
-        # if patch.max() == 0: # DEBUGGING
-        #     print("Warning: extracted patch has max value 0 at position:", self.agent_pos)
-        # else:
-        #     print("Brain")
-        return patch
-
-    def _get_reward(self, action, prev_pos):        
-        # look position of the agent in the mask
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-        
-        # Now that i have the patch where i was and the patch where i am, i can check if there is tumor in any of them
-        # tumor is labeled as 1 or 4 in the mask        
-        # label 2 is edema
-        
-        # first get a count of the tumor pixels in the patch. 
-        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
-        total = self.block_size * self.block_size # to compute the percentage
-        # Determine if patch has more than self.tumor_threshold of tumor
-        inside = (tumor_count_curr / total) >= self.tumor_threshold
-        
-        if inside:
-            return self.rewards[0]  # reward for being on tumor or staying on tumor
-        else:
-            if action == 0 or prev_pos == self.agent_pos:  # stayed in place but no tumor. we are also taking into consideration that if the action was to move but we are at the edge of the grid, we also stay in place
-                return self.rewards[1]
-            else:
-                return self.rewards[2]  # moved but no tumor
-
-    def render(self, show=True):
-        if self.render_mode != "human": # would be rgb_array or ansi
-            return  # Only render in human mode
-
-        # Create RGB visualization image
-        # not necessary since it's grayscale, but i want to draw the mask and position
-        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
-
-        # Overlay tumor mask in red [..., 0] 
-        tumor_overlay = np.zeros_like(vis_img) # do all blank but here we have 3 channels, mask is 2D
-        tumor_overlay[..., 0] = (self.mask > 0).astype(float) # red channel. set to float to avoid issues when blending in vis_img
-
-        # transparency overlay (crec que es el mateix valor que tinc a l'altra notebook)
-        alpha = 0.4
-        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
-
-        if show:
-            # Plotting
-            fig, ax = plt.subplots(figsize=(3, 3))
-            ax.imshow(vis_img, cmap='gray', origin='upper')
-
-            # Draw grid lines
-            # alpha for transparency again
-            for i in range(1, self.grid_size):
-                ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
-                ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
-
-            # Draw agent position
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            rect = patches.Rectangle(
-                (c0, r0), # (x,y) bottom left corner
-                self.block_size, # width
-                self.block_size, # height
-                linewidth=2,
-                edgecolor='yellow',
-                facecolor='none'
-            )
-            ax.add_patch(rect)
-
-            ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}/{self.max_steps}")
-            ax.axis('off')
-            plt.show()
-            return None
-        else: #just return without showing but draw the agent position
-            rgb_array = (vis_img * 255).astype(np.uint8)
-        
-            # Draw grid lines directly on the array
-            for i in range(1, self.grid_size):
-                # Horizontal line
-                y = i * self.block_size
-                rgb_array[y-1:y+1, :] = [255, 255, 255]  # White line
-                
-                # Vertical line  
-                x = i * self.block_size
-                rgb_array[:, x-1:x+1] = [255, 255, 255]  # White line
-            
-            # Draw agent position as a yellow rectangle
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            
-            # Draw rectangle borders (yellow)
-            rgb_array[r0:r0+2, c0:c0+self.block_size] = [255, 255, 0]  # Top border
-            rgb_array[r0+self.block_size-2:r0+self.block_size, c0:c0+self.block_size] = [255, 255, 0]  # Bottom border
-            rgb_array[r0:r0+self.block_size, c0:c0+2] = [255, 255, 0]  # Left border
-            rgb_array[r0:r0+self.block_size, c0+self.block_size-2:c0+self.block_size] = [255, 255, 0]  # Right border
-            
-            # Add step counter text to the image
-            from PIL import Image, ImageDraw, ImageFont
-            pil_img = Image.fromarray(rgb_array)
-            draw = ImageDraw.Draw(pil_img)
-            
-            # Use default font (you can also load a specific font)
-            try:
-                font = ImageFont.truetype("arial.ttf", 16)
-            except:
-                font = ImageFont.load_default()
-            
-            # Draw step counter in top-left corner
-            step_text = f"Step: {self.current_step}/{self.max_steps}"
-            draw.text((5, 5), step_text, fill=(255, 255, 0), font=font)  # Yellow text
-            
-            # Convert back to numpy array
-            rgb_array = np.array(pil_img)
-            return rgb_array
-
-        
-    def current_patch_overlap_with_lesion(self): # FALTAAA chat
-        """ Returns the number of overlapping lesion pixels between the agent's current patch and the ground-truth mask. If > 0, the agent is correctly over the lesion (TP). """
-        # get current agent patch boundaries
-        row, col = self.agent_pos
-        patch_h = self.block_size # not grid_size because grid_size is number of patches per side
-        patch_w = self.block_size
-        
-        y0 = row * patch_h
-        y1 = y0 + patch_h
-        x0 = col * patch_w
-        x1 = x0 + patch_w
-        # extract mask region under current patch
-        patch_mask = self.mask[y0:y1, x0:x1]
-        # count how many pixels of lesion (nonzero)
-        overlap = np.sum(patch_mask > 0)
-        return overlap
-
-#####################################################################################################3
-
 def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, save_gifs=True, gif_folder="TEST_GIFS"):
     """
     Unified testing function for both DQN and PPO agents
@@ -560,11 +313,257 @@ def calculate_separate_action_distribution(episode_list):
 
 
 #####################################################################################################
+
+class Glioblastoma(gym.Env):
+    metadata = {"render_modes": ["human"], "render_fps": 4} 
+    # The metadata of the environment, e.g. {“render_modes”: [“rgb_array”, “human”], “render_fps”: 30}. 
+    # For Jax or Torch, this can be indicated to users with “jax”=True or “torch”=True.
+
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
+        super().__init__() # parent class
+        
+        self.image = np.load(image_path).astype(np.float32)
+        self.mask = np.load(mask_path).astype(np.uint8)
+        
+        img_min, img_max = self.image.min(), self.image.max()
+        if img_max > 1.0:  # only normalize if not already in [0, 1]
+            self.image = (self.image - img_min) / (img_max - img_min + 1e-8) #avoid division by 0
+
+        self.grid_size = grid_size
+        self.block_size = self.image.shape[0] // grid_size  # 240/4 = 60
+        
+        self.action_space = action_space
+        self.tumor_threshold = tumor_threshold # 15% of the patch must be tumor to consider that the agent is inside the tumor region
+        self.rewards = rewards  # [reward_on_tumor, reward_stay_no_tumor, reward_move_no_tumor]
+        
+        self.stop = stop
+        self.render_mode = render_mode
+
+        # Observations: grayscale patch (normalized 0-1)
+        # apparently Neural networks train better when inputs are scaled to small, 
+        # consistent ranges rather than raw 0–255 values.
+        self.observation_space = spaces.Box( # Supports continuous (and discrete) vectors or matrices
+            low=0, high=1, # Data has been normalized
+            shape=(self.block_size, self.block_size), # shape of the observation
+            dtype=np.float32
+        )
+
+        self.agent_pos = [0, 0] # INITIAL POSITION AT TOP LEFT
+        self.current_step = 0 # initialize counter
+        self.max_steps = max_steps  # like in the paper
+
+    def reset(self, seed=None, options=None): # new episode where we initialize the state. 
+        super().reset(seed=seed) # parent
+        
+        # reset
+        self.agent_pos = [0, 0]  # top-left corner
+        self.current_step = 0
+        obs = self._get_obs()
+        info = {}
+        return obs, info
+
+    def step(self, action):
+        self.current_step += 1
+
+        prev_pos = self.agent_pos.copy() # for reward computation taking into consideration the transition changes
+        
+        if self.stop == True:
+            # check if previous position had tumor
+            prev_overlap = self.current_patch_overlap_with_lesion()
+
+            # ============================================================
+            #                IMPLICIT STOP BEHAVIOR
+            # ============================================================
+            if prev_overlap > 0 and action == 0:
+                reward = +8.0              # Reward for correctly stopping
+                terminated = True
+                obs = self._get_obs()
+                return obs, reward, terminated, False, {}
+            
+        # Apply action (respect grid boundaries)
+        if self.action_space == spaces.Discrete(3):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1  # move down
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1  # move right
+            # else, the agent doesn't move so the observation 
+            # and reward will be calculated from the same position
+            # no need to compute self.agent_pos
+        elif self.action_space == spaces.Discrete(5):
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+                self.agent_pos[0] += 1  # move down
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+                self.agent_pos[1] += 1  # move right
+            elif action == 3 and self.agent_pos[0] > 0:
+                self.agent_pos[0] -= 1  # move up
+            elif action == 4 and self.agent_pos[1] > 0:
+                self.agent_pos[1] -= 1  # move left
+
+        
+        reward = self._get_reward(action, prev_pos)
+                
+        obs = self._get_obs()
+
+        # Episode ends
+        terminated = self.current_step >= self.max_steps
+        truncated = False  # we don’t need truncation here
+        info = {}
+
+        return obs, reward, terminated, truncated, info
+
+    def _get_obs(self):
+        r0 = self.agent_pos[0] * self.block_size # row start
+        c0 = self.agent_pos[1] * self.block_size # col start
+        
+        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size].astype(np.float32)
+
+        # if patch.max() == 0: # DEBUGGING
+        #     print("Warning: extracted patch has max value 0 at position:", self.agent_pos)
+        # else:
+        #     print("Brain")
+        return patch
+
+    def _get_reward(self, action, prev_pos):    
+        attempted_move_but_blocked = (action != 0) and (prev_pos == self.agent_pos)
+        if attempted_move_but_blocked:
+            #print("Out of bounds move attempted") # DEBUGGING
+            return -1.0  # penalty for trying to move out of bounds
+        
+        # look position of the agent in the mask
+        r0 = self.agent_pos[0] * self.block_size
+        c0 = self.agent_pos[1] * self.block_size
+        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
+        
+        # Now that i have the patch where i was and the patch where i am, i can check if there is tumor in any of them
+        # tumor is labeled as 1 or 4 in the mask        
+        # label 2 is edema
+        
+        # first get a count of the tumor pixels in the patch. 
+        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
+        total = self.block_size * self.block_size # to compute the percentage
+        # Determine if patch has more than self.tumor_threshold of tumor
+        inside = (tumor_count_curr / total) >= self.tumor_threshold
+
+        if inside:
+            return self.rewards[0]  # reward for being on tumor or staying on tumor
+            # will not distinguish between moving on tumor or staying on tumor
+            # since it returns, it will not execute the rest of the code
+        else:
+            if action == 0:  # stayed in place but no tumor.
+                return self.rewards[1]
+            else:
+                return self.rewards[2]  # moved but no tumor
+
+    def render(self, show=True):
+        if self.render_mode != "human": # would be rgb_array or ansi
+            return  # Only render in human mode
+
+        # Create RGB visualization image
+        # not necessary since it's grayscale, but i want to draw the mask and position
+        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
+
+        # Overlay tumor mask in red [..., 0] 
+        tumor_overlay = np.zeros_like(vis_img) # do all blank but here we have 3 channels, mask is 2D
+        tumor_overlay[..., 0] = (self.mask > 0).astype(float) # red channel. set to float to avoid issues when blending in vis_img
+
+        # transparency overlay (crec que es el mateix valor que tinc a l'altra notebook)
+        alpha = 0.4
+        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
+
+        if show:
+            # Plotting
+            fig, ax = plt.subplots(figsize=(3, 3))
+            ax.imshow(vis_img, cmap='gray', origin='upper')
+
+            # Draw grid lines
+            # alpha for transparency again
+            for i in range(1, self.grid_size):
+                ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
+                ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
+
+            # Draw agent position
+            r0 = self.agent_pos[0] * self.block_size
+            c0 = self.agent_pos[1] * self.block_size
+            rect = patches.Rectangle(
+                (c0, r0), # (x,y) bottom left corner
+                self.block_size, # width
+                self.block_size, # height
+                linewidth=2,
+                edgecolor='yellow',
+                facecolor='none'
+            )
+            ax.add_patch(rect)
+
+            ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}/{self.max_steps}")
+            ax.axis('off')
+            plt.show()
+            return None
+        else: #just return without showing but draw the agent position
+            rgb_array = (vis_img * 255).astype(np.uint8)
+        
+            # Draw grid lines directly on the array
+            for i in range(1, self.grid_size):
+                # Horizontal line
+                y = i * self.block_size
+                rgb_array[y-1:y+1, :] = [255, 255, 255]  # White line
+                
+                # Vertical line  
+                x = i * self.block_size
+                rgb_array[:, x-1:x+1] = [255, 255, 255]  # White line
+            
+            # Draw agent position as a yellow rectangle
+            r0 = self.agent_pos[0] * self.block_size
+            c0 = self.agent_pos[1] * self.block_size
+            
+            # Draw rectangle borders (yellow)
+            rgb_array[r0:r0+2, c0:c0+self.block_size] = [255, 255, 0]  # Top border
+            rgb_array[r0+self.block_size-2:r0+self.block_size, c0:c0+self.block_size] = [255, 255, 0]  # Bottom border
+            rgb_array[r0:r0+self.block_size, c0:c0+2] = [255, 255, 0]  # Left border
+            rgb_array[r0:r0+self.block_size, c0+self.block_size-2:c0+self.block_size] = [255, 255, 0]  # Right border
+            
+            # Add step counter text to the image
+            from PIL import Image, ImageDraw, ImageFont
+            pil_img = Image.fromarray(rgb_array)
+            draw = ImageDraw.Draw(pil_img)
+            
+            # Use default font (you can also load a specific font)
+            try:
+                font = ImageFont.truetype("arial.ttf", 16)
+            except:
+                font = ImageFont.load_default()
+            
+            # Draw step counter in top-left corner
+            step_text = f"Step: {self.current_step}/{self.max_steps}"
+            draw.text((5, 5), step_text, fill=(255, 255, 0), font=font)  # Yellow text
+            
+            # Convert back to numpy array
+            rgb_array = np.array(pil_img)
+            return rgb_array
+
+        
+    def current_patch_overlap_with_lesion(self): # FALTAAA chat
+        """ Returns the number of overlapping lesion pixels between the agent's current patch and the ground-truth mask. If > 0, the agent is correctly over the lesion (TP). """
+        # get current agent patch boundaries
+        row, col = self.agent_pos
+        patch_h = self.block_size # not grid_size because grid_size is number of patches per side
+        patch_w = self.block_size
+        
+        y0 = row * patch_h
+        y1 = y0 + patch_h
+        x0 = col * patch_w
+        x1 = x0 + patch_w
+        # extract mask region under current patch
+        patch_mask = self.mask[y0:y1, x0:x1]
+        # count how many pixels of lesion (nonzero)
+        overlap = np.sum(patch_mask > 0)
+        return overlap
+
+#####################################################################################################
 # Glioblastoma2 has positional encodings
-class Glioblastoma2(gym.Env):
+class GlioblastomaPositionalEncoding(gym.Env):
     metadata = {"render_modes": ["human"], "render_fps": 4} 
 
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, render_mode="human"): # cosntructor with the brain image, the mask and a size
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
         super().__init__()
         
         self.image = np.load(image_path).astype(np.float32)
@@ -581,6 +580,7 @@ class Glioblastoma2(gym.Env):
         self.tumor_threshold = tumor_threshold
         self.rewards = rewards
         
+        self.stop = stop
         self.render_mode = render_mode
 
         # UPDATED: Now 3 channels (image + 2 positional encodings)
@@ -608,41 +608,33 @@ class Glioblastoma2(gym.Env):
 
         prev_pos = self.agent_pos.copy()
         
+        if self.stop == True:
+            # check if previous position had tumor
+            prev_overlap = self.current_patch_overlap_with_lesion()
+
+            # ============================================================
+            #                IMPLICIT STOP BEHAVIOR
+            # ============================================================
+            if prev_overlap > 0 and action == 0:
+                reward = +8.0              # Reward for correctly stopping
+                terminated = True
+                obs = self._get_obs()
+                return obs, reward, terminated, False, {}
+        
         # Apply action (respect grid boundaries)
         if self.action_space == spaces.Discrete(3):
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1: # down
                 self.agent_pos[0] += 1
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1: # right
                 self.agent_pos[1] += 1
         elif self.action_space == spaces.Discrete(5):
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
+            if action == 1 and self.agent_pos[0] < self.grid_size - 1: # down
                 self.agent_pos[0] += 1
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
+            elif action == 2 and self.agent_pos[1] < self.grid_size - 1: # right
                 self.agent_pos[1] += 1
-            elif action == 3 and self.agent_pos[0] > 0:
+            elif action == 3 and self.agent_pos[0] > 0: # up
                 self.agent_pos[0] -= 1
-            elif action == 4 and self.agent_pos[1] > 0:
-                self.agent_pos[1] -= 1
-        elif self.action_space == spaces.Discrete(9):
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-                self.agent_pos[0] += 1
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[1] += 1
-            elif action == 3 and self.agent_pos[0] > 0:
-                self.agent_pos[0] -= 1
-            elif action == 4 and self.agent_pos[1] > 0:
-                self.agent_pos[1] -= 1
-            elif action == 5 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[0] += 1
-                self.agent_pos[1] += 1
-            elif action == 6 and self.agent_pos[0] > 0 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[0] -= 1
-                self.agent_pos[1] += 1
-            elif action == 7 and self.agent_pos[0] < self.grid_size - 1 and self.agent_pos[1] > 0:
-                self.agent_pos[0] += 1
-                self.agent_pos[1] -= 1
-            elif action == 8 and self.agent_pos[0] > 0 and self.agent_pos[1] > 0:
-                self.agent_pos[0] -= 1
+            elif action == 4 and self.agent_pos[1] > 0: # left
                 self.agent_pos[1] -= 1
         
         reward = self._get_reward(action, prev_pos)
@@ -794,398 +786,3 @@ class Glioblastoma2(gym.Env):
         overlap = np.sum(patch_mask > 0)
         return overlap
 
-
-# ADDED implicit stop behavior
-class Glioblastoma3(gym.Env):
-    metadata = {"render_modes": ["human"], "render_fps": 4}
-
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001,
-                 rewards=[1.0, -2.0, -0.5], action_space=spaces.Discrete(5),
-                 max_steps=20, render_mode="human"):
-        super().__init__()
-
-        # Load image + mask
-        self.image = np.load(image_path).astype(np.float32)
-        self.mask = np.load(mask_path).astype(np.uint8)
-
-        # Normalize if needed
-        img_min, img_max = self.image.min(), self.image.max()
-        if img_max > 1.0:
-            self.image = (self.image - img_min) / (img_max - img_min + 1e-8)
-
-        self.grid_size = grid_size
-        self.block_size = self.image.shape[0] // grid_size
-
-        self.action_space = action_space
-        self.tumor_threshold = tumor_threshold
-        self.rewards = rewards
-        self.render_mode = render_mode
-
-        # 3-channel observation: image + pos_row + pos_col
-        self.observation_space = spaces.Box(
-            low=0,
-            high=1,
-            shape=(3, self.block_size, self.block_size),
-            dtype=np.float32
-        )
-
-        self.agent_pos = [0, 0]
-        self.current_step = 0
-        self.max_steps = max_steps
-
-    def reset(self, seed=None, options=None):
-        super().reset(seed=seed)
-        self.agent_pos = [0, 0]
-        self.current_step = 0
-        obs = self._get_obs()
-        return obs, {}
-
-    def step(self, action):
-        self.current_step += 1
-        prev_pos = self.agent_pos.copy()
-
-        # --- Check if current tile contains tumor BEFORE moving ---
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-
-        tumor_count = np.sum(np.isin(patch_mask, [1, 4]))
-        inside = (tumor_count / (self.block_size * self.block_size)) >= self.tumor_threshold
-
-        # ============================================================
-        #                IMPLICIT STOP BEHAVIOR
-        # If agent chooses STAY (action 0) while on a tumor tile,
-        # we treat this as STOP and terminate with a strong reward.
-        # ============================================================
-        if inside and action == 0:
-            reward = +8.0              # Reward for correctly stopping
-            terminated = True
-            obs = self._get_obs()
-            return obs, reward, terminated, False, {}
-
-        # ============================================================
-        #                NORMAL MOVEMENT (NO STOP)
-        # ============================================================
-        # 0 = stay still
-        if action == 1 and self.agent_pos[0] < self.grid_size - 1:  # down
-            self.agent_pos[0] += 1
-        elif action == 2 and self.agent_pos[1] < self.grid_size - 1:  # right
-            self.agent_pos[1] += 1
-        elif action == 3 and self.agent_pos[0] > 0:  # up
-            self.agent_pos[0] -= 1
-        elif action == 4 and self.agent_pos[1] > 0:  # left
-            self.agent_pos[1] -= 1
-
-        reward = self._get_reward(action, prev_pos)
-        obs = self._get_obs()
-
-        terminated = self.current_step >= self.max_steps
-        return obs, reward, terminated, False, {}
-
-    def _get_obs(self):
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-
-        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size].astype(np.float32)
-
-        pos_row = np.full_like(patch, self.agent_pos[0] / (self.grid_size - 1))
-        pos_col = np.full_like(patch, self.agent_pos[1] / (self.grid_size - 1))
-
-        return np.stack([patch, pos_row, pos_col], axis=0)
-
-    def _get_reward(self, action, prev_pos):
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-
-        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
-        inside = (tumor_count_curr / (self.block_size * self.block_size)) >= self.tumor_threshold
-
-        if inside:
-            return self.rewards[0]         # reward for being on tumor
-        else:
-            if action == 0 or prev_pos == self.agent_pos:
-                return self.rewards[1]     # stayed outside tumor
-            else:
-                return self.rewards[2]     # moved outside tumor
-
-    def current_patch_overlap_with_lesion(self):
-        row, col = self.agent_pos
-        r0 = row * self.block_size
-        c0 = col * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-        return np.sum(patch_mask > 0)
-    
-    def render(self, show=True):
-        if self.render_mode != "human": # would be rgb_array or ansi
-            return  # Only render in human mode
-
-        # Create RGB visualization image
-        # not necessary since it's grayscale, but i want to draw the mask and position
-        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
-
-        # Overlay tumor mask in red [..., 0] 
-        tumor_overlay = np.zeros_like(vis_img) # do all blank but here we have 3 channels, mask is 2D
-        tumor_overlay[..., 0] = (self.mask > 0).astype(float) # red channel. set to float to avoid issues when blending in vis_img
-
-        # transparency overlay (crec que es el mateix valor que tinc a l'altra notebook)
-        alpha = 0.4
-        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
-
-        if show:
-            # Plotting
-            fig, ax = plt.subplots(figsize=(3, 3))
-            ax.imshow(vis_img, cmap='gray', origin='upper')
-
-            # Draw grid lines
-            # alpha for transparency again
-            for i in range(1, self.grid_size):
-                ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
-                ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
-
-            # Draw agent position
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            rect = patches.Rectangle(
-                (c0, r0), # (x,y) bottom left corner
-                self.block_size, # width
-                self.block_size, # height
-                linewidth=2,
-                edgecolor='yellow',
-                facecolor='none'
-            )
-            ax.add_patch(rect)
-
-            ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}/{self.max_steps}")
-            ax.axis('off')
-            plt.show()
-            return None
-        else: #just return without showing but draw the agent position
-            rgb_array = (vis_img * 255).astype(np.uint8)
-        
-            # Draw grid lines directly on the array
-            for i in range(1, self.grid_size):
-                # Horizontal line
-                y = i * self.block_size
-                rgb_array[y-1:y+1, :] = [255, 255, 255]  # White line
-                
-                # Vertical line  
-                x = i * self.block_size
-                rgb_array[:, x-1:x+1] = [255, 255, 255]  # White line
-            
-            # Draw agent position as a yellow rectangle
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            
-            # Draw rectangle borders (yellow)
-            rgb_array[r0:r0+2, c0:c0+self.block_size] = [255, 255, 0]  # Top border
-            rgb_array[r0+self.block_size-2:r0+self.block_size, c0:c0+self.block_size] = [255, 255, 0]  # Bottom border
-            rgb_array[r0:r0+self.block_size, c0:c0+2] = [255, 255, 0]  # Left border
-            rgb_array[r0:r0+self.block_size, c0+self.block_size-2:c0+self.block_size] = [255, 255, 0]  # Right border
-            
-            # Add step counter text to the image
-            from PIL import Image, ImageDraw, ImageFont
-            pil_img = Image.fromarray(rgb_array)
-            draw = ImageDraw.Draw(pil_img)
-            
-            # Use default font (you can also load a specific font)
-            try:
-                font = ImageFont.truetype("arial.ttf", 16)
-            except:
-                font = ImageFont.load_default()
-            
-            # Draw step counter in top-left corner
-            step_text = f"Step: {self.current_step}/{self.max_steps}"
-            draw.text((5, 5), step_text, fill=(255, 255, 0), font=font)  # Yellow text
-            
-            # Convert back to numpy array
-            rgb_array = np.array(pil_img)
-            return rgb_array
-
-
-class Glioblastoma4(gym.Env):
-    metadata = {"render_modes": ["human"], "render_fps": 4}
-
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001,
-                 rewards=[1.0, -2.0, -0.5], action_space=spaces.Discrete(5),
-                 max_steps=20, render_mode="human"):
-        super().__init__()
-
-        # Load image + mask
-        self.image = np.load(image_path).astype(np.float32)
-        self.mask = np.load(mask_path).astype(np.uint8)
-
-        # Normalize
-        img_min, img_max = self.image.min(), self.image.max()
-        if img_max > 1.0:
-            self.image = (self.image - img_min) / (img_max - img_min + 1e-8)
-
-        self.grid_size = grid_size
-        self.block_size = self.image.shape[0] // grid_size
-
-        self.action_space = action_space
-        self.tumor_threshold = tumor_threshold
-        self.rewards = rewards
-        self.render_mode = render_mode
-
-        # *** NO POSITIONAL ENCODING ***
-        self.observation_space = spaces.Box(
-            low=0, high=1,
-            shape=(1, self.block_size, self.block_size),
-            dtype=np.float32
-        )
-
-        self.agent_pos = [0, 0]
-        self.current_step = 0
-        self.max_steps = max_steps
-
-    def reset(self, seed=None, options=None):
-        super().reset(seed=seed)
-        self.agent_pos = [0, 0]
-        self.current_step = 0
-        return self._get_obs(), {}
-
-    def step(self, action):
-        self.current_step += 1
-        prev_pos = self.agent_pos.copy()
-
-        # ---------- CHECK IF CURRENT TILE HAS TUMOR ----------
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-        tumor_count = np.sum(np.isin(patch_mask, [1, 4]))
-        inside = (tumor_count / (self.block_size * self.block_size)) >= self.tumor_threshold
-
-        # ---------- IMPLICIT STOP ----------
-        if inside and action == 0:
-            reward = +8.0
-            return self._get_obs(), reward, True, False, {}
-
-        # ---------- MOVEMENT ----------
-        if action == 1 and self.agent_pos[0] < self.grid_size - 1:  # down
-            self.agent_pos[0] += 1
-        elif action == 2 and self.agent_pos[1] < self.grid_size - 1:  # right
-            self.agent_pos[1] += 1
-        elif action == 3 and self.agent_pos[0] > 0:  # up
-            self.agent_pos[0] -= 1
-        elif action == 4 and self.agent_pos[1] > 0:  # left
-            self.agent_pos[1] -= 1
-
-        reward = self._get_reward(action, prev_pos)
-        terminated = self.current_step >= self.max_steps
-        return self._get_obs(), reward, terminated, False, {}
-
-    def _get_obs(self):
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size]
-        return np.expand_dims(patch.astype(np.float32), axis=0)
-
-    def _get_reward(self, action, prev_pos):
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-
-        tumor_count = np.sum(np.isin(patch_mask, [1, 4]))
-        inside = (tumor_count / (self.block_size * self.block_size)) >= self.tumor_threshold
-
-        if inside:
-            return self.rewards[0]
-        else:
-            if action == 0 or prev_pos == self.agent_pos:
-                return self.rewards[1]
-            else:
-                return self.rewards[2]
-
-    def current_patch_overlap_with_lesion(self):
-        row, col = self.agent_pos
-        r0 = row * self.block_size
-        c0 = col * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-        return np.sum(patch_mask > 0)
-
-    def render(self, show=True):
-        if self.render_mode != "human": # would be rgb_array or ansi
-            return  # Only render in human mode
-
-        # Create RGB visualization image
-        # not necessary since it's grayscale, but i want to draw the mask and position
-        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
-
-        # Overlay tumor mask in red [..., 0] 
-        tumor_overlay = np.zeros_like(vis_img) # do all blank but here we have 3 channels, mask is 2D
-        tumor_overlay[..., 0] = (self.mask > 0).astype(float) # red channel. set to float to avoid issues when blending in vis_img
-
-        # transparency overlay (crec que es el mateix valor que tinc a l'altra notebook)
-        alpha = 0.4
-        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
-
-        if show:
-            # Plotting
-            fig, ax = plt.subplots(figsize=(3, 3))
-            ax.imshow(vis_img, cmap='gray', origin='upper')
-
-            # Draw grid lines
-            # alpha for transparency again
-            for i in range(1, self.grid_size):
-                ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
-                ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
-
-            # Draw agent position
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            rect = patches.Rectangle(
-                (c0, r0), # (x,y) bottom left corner
-                self.block_size, # width
-                self.block_size, # height
-                linewidth=2,
-                edgecolor='yellow',
-                facecolor='none'
-            )
-            ax.add_patch(rect)
-
-            ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}/{self.max_steps}")
-            ax.axis('off')
-            plt.show()
-            return None
-        else: #just return without showing but draw the agent position
-            rgb_array = (vis_img * 255).astype(np.uint8)
-        
-            # Draw grid lines directly on the array
-            for i in range(1, self.grid_size):
-                # Horizontal line
-                y = i * self.block_size
-                rgb_array[y-1:y+1, :] = [255, 255, 255]  # White line
-                
-                # Vertical line  
-                x = i * self.block_size
-                rgb_array[:, x-1:x+1] = [255, 255, 255]  # White line
-            
-            # Draw agent position as a yellow rectangle
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            
-            # Draw rectangle borders (yellow)
-            rgb_array[r0:r0+2, c0:c0+self.block_size] = [255, 255, 0]  # Top border
-            rgb_array[r0+self.block_size-2:r0+self.block_size, c0:c0+self.block_size] = [255, 255, 0]  # Bottom border
-            rgb_array[r0:r0+self.block_size, c0:c0+2] = [255, 255, 0]  # Left border
-            rgb_array[r0:r0+self.block_size, c0+self.block_size-2:c0+self.block_size] = [255, 255, 0]  # Right border
-            
-            # Add step counter text to the image
-            from PIL import Image, ImageDraw, ImageFont
-            pil_img = Image.fromarray(rgb_array)
-            draw = ImageDraw.Draw(pil_img)
-            
-            # Use default font (you can also load a specific font)
-            try:
-                font = ImageFont.truetype("arial.ttf", 16)
-            except:
-                font = ImageFont.load_default()
-            
-            # Draw step counter in top-left corner
-            step_text = f"Step: {self.current_step}/{self.max_steps}"
-            draw.text((5, 5), step_text, fill=(255, 255, 0), font=font)  # Yellow text
-            
-            # Convert back to numpy array
-            rgb_array = np.array(pil_img)
-            return rgb_array
