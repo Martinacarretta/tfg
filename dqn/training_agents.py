@@ -163,9 +163,10 @@ class DQNAgent:
                     
                     self.mean_training_rewards.append(mean_rewards)
 
-                    print("Episode {:d} | Episode reward {:.2f} | Mean Rewards {:.2f} | Epsilon {:.4f} | Loss {:.4f}".format(
-                        episode, self.total_reward, mean_rewards, self.epsilon, np.mean(self.update_loss)))
-                    print(f"      Positive rewards: {pos_rewards}, Negative rewards: {neg_rewards}") # DEBUGGING
+                    if episode % 15 == 0:
+                        print("Episode {:d} | Episode reward {:.2f} | Mean Rewards {:.2f} | Epsilon {:.4f} | Loss {:.4f}".format(
+                            episode, self.total_reward, mean_rewards, self.epsilon, np.mean(self.update_loss)))
+                        print(f"      Positive rewards: {pos_rewards}, Negative rewards: {neg_rewards}") # DEBUGGING
                     
                     wandb.log({
                         'episode': episode,
@@ -195,6 +196,9 @@ class DQNAgent:
                     else:
                         self.epsilon = max(self.epsilon - self.eps_decay, self.epsilon_min) 
                         
+                    #save if it's best mean reward
+                    if mean_rewards >= max(self.mean_training_rewards):
+                        torch.save(self.dnnetwork.state_dict(), f"{self.save_name}_best.dat")
                     torch.save(self.dnnetwork.state_dict(), self.save_name + ".dat")
         
         pbar.close()
@@ -270,7 +274,9 @@ class DQNAgent:
         # Calculate the loss
         # loss = torch.nn.MSELoss()(qvals, expected_qvals.reshape(-1,1))
         # Use Huber loss instead of MSELoss
-        loss = torch.nn.SmoothL1Loss()(qvals, expected_qvals.reshape(-1,1))
+        
+        # loss = torch.nn.SmoothL1Loss()(qvals, expected_qvals.reshape(-1,1))
+        loss = torch.nn.SmoothL1Loss()(qvals.clamp(-10,10), expected_qvals.reshape(-1,1).clamp(-10,10))
         return loss
     
 

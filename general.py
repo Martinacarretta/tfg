@@ -18,9 +18,11 @@ SEED = 42
 def prepare(mode = "train", dataset = 0):
     if mode == "train":
         if dataset == 0:
+            print
             base_dir = "/home/martina/codi2/4year/tfg/training_set_npy"
             csv_path = "/home/martina/codi2/4year/tfg/training_set.csv"
         elif dataset == 200:
+            print("Using dataset of 200 samples for training.")
             base_dir = "/home/martina/codi2/4year/tfg/training_set_200_npy"
             csv_path = "/home/martina/codi2/4year/tfg/training_set_200.csv"
         else:
@@ -28,6 +30,7 @@ def prepare(mode = "train", dataset = 0):
             base_dir = "/home/martina/codi2/4year/tfg/training_set_npy"
             csv_path = "/home/martina/codi2/4year/tfg/training_set.csv"
     else:
+        print("Preparing testing set.")
         base_dir = "/home/martina/codi2/4year/tfg/testing_set_npy"
         csv_path = "/home/martina/codi2/4year/tfg/testing_set.csv"
 
@@ -41,7 +44,7 @@ def prepare(mode = "train", dataset = 0):
     df["mask_path"] = df.apply(
         lambda row: os.path.join(base_dir, f"{row['Patient']:03d}_{row['SliceIndex']}_mask.npy"), axis=1
     )
-
+    
     # Sanity check (optional)
     pairs = [
         (img, mask)
