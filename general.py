@@ -15,13 +15,21 @@ import pandas as pd
 
 SEED = 42
 
-def prepare(mode = "train"):
+def prepare(mode = "train", dataset = 0):
     if mode == "train":
-        base_dir = "/home/martina/codi2/4year/tfg/training_set_npy"
-        csv_path = "/home/martina/codi2/4year/tfg/set_training.csv"
+        if dataset == 0:
+            base_dir = "/home/martina/codi2/4year/tfg/training_set_npy"
+            csv_path = "/home/martina/codi2/4year/tfg/training_set.csv"
+        elif dataset == 200:
+            base_dir = "/home/martina/codi2/4year/tfg/training_set_200_npy"
+            csv_path = "/home/martina/codi2/4year/tfg/training_set_200.csv"
+        else:
+            print("Dataset not recognized, using default training set.")
+            base_dir = "/home/martina/codi2/4year/tfg/training_set_npy"
+            csv_path = "/home/martina/codi2/4year/tfg/training_set.csv"
     else:
         base_dir = "/home/martina/codi2/4year/tfg/testing_set_npy"
-        csv_path = "/home/martina/codi2/4year/tfg/set_testing.csv"
+        csv_path = "/home/martina/codi2/4year/tfg/testing_set.csv"
 
     # Load the CSV
     df = pd.read_csv(csv_path)
