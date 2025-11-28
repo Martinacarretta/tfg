@@ -1,0 +1,17 @@
+{"time":"2025-11-28T15:07:39.211131801+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-28T15:07:39.964941847+01:00","level":"INFO","msg":"stream: created new stream","id":"Extension057"}
+{"time":"2025-11-28T15:07:39.965273681+01:00","level":"INFO","msg":"handler: started","stream_id":"Extension057"}
+{"time":"2025-11-28T15:07:39.965744873+01:00","level":"INFO","msg":"stream: started","id":"Extension057"}
+{"time":"2025-11-28T15:07:39.965860935+01:00","level":"INFO","msg":"writer: started","stream_id":"Extension057"}
+{"time":"2025-11-28T15:07:39.965861504+01:00","level":"INFO","msg":"sender: started","stream_id":"Extension057"}
+{"time":"2025-11-28T15:11:37.44016013+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension057/file_stream\": write tcp 172.22.107.147:60980->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-28T15:12:21.173736287+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension057/file_stream\": EOF"}
+{"time":"2025-11-28T15:13:21.83612784+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension057/file_stream\": write tcp 172.22.107.147:41158->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-28T15:16:13.186131955+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension057/file_stream\": write tcp 172.22.107.147:37800->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-28T15:16:42.93986181+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension057/file_stream\": unexpected EOF"}
+{"time":"2025-11-28T15:20:59.148921373+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.045879169}],"total_operations":1}}
+{"time":"2025-11-28T15:21:00.078266808+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-28T15:21:00.418345768+01:00","level":"INFO","msg":"stream: closing","id":"Extension057"}
+{"time":"2025-11-28T15:21:00.418417683+01:00","level":"INFO","msg":"handler: closed","stream_id":"Extension057"}
+{"time":"2025-11-28T15:21:00.419194854+01:00","level":"INFO","msg":"sender: closed","stream_id":"Extension057"}
+{"time":"2025-11-28T15:21:00.419292514+01:00","level":"INFO","msg":"stream: closed","id":"Extension057"}

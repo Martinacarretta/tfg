@@ -1,0 +1,29 @@
+Filling replay buffer...
+Buffer filled with 15000 experiences
+Training...
+Episode 15 | Episode reward -9.38 | Mean Rewards -15.20 | Epsilon 0.8936 | Loss 0.4030
+      Positive rewards: 2, Negative rewards: 38
+Episode 30 | Episode reward -21.22 | Mean Rewards -17.24 | Epsilon 0.7922 | Loss 0.4826
+      Positive rewards: 0, Negative rewards: 40
+Episode 45 | Episode reward -5.26 | Mean Rewards -12.98 | Epsilon 0.7023 | Loss 0.6603
+      Positive rewards: 4, Negative rewards: 36
+Episode 60 | Episode reward -17.78 | Mean Rewards -12.16 | Epsilon 0.6226 | Loss 0.6252
+      Positive rewards: 0, Negative rewards: 40
+Episode 75 | Episode reward -20.84 | Mean Rewards -10.62 | Epsilon 0.5519 | Loss 0.5840
+      Positive rewards: 0, Negative rewards: 40
+Episode 90 | Episode reward 0.17 | Mean Rewards -9.90 | Epsilon 0.4893 | Loss 0.5076
+      Positive rewards: 9, Negative rewards: 31
+Episode 105 | Episode reward -1.86 | Mean Rewards -9.20 | Epsilon 0.4337 | Loss 0.5612
+      Positive rewards: 7, Negative rewards: 33
+Episode 120 | Episode reward -18.36 | Mean Rewards -9.00 | Epsilon 0.3845 | Loss 0.5762
+      Positive rewards: 3, Negative rewards: 37
+Episode 135 | Episode reward -10.94 | Mean Rewards -9.13 | Epsilon 0.3409 | Loss 0.6065
+      Positive rewards: 4, Negative rewards: 36
+Episode 150 | Episode reward -34.76 | Mean Rewards -10.82 | Epsilon 0.3022 | Loss 0.5494
+      Positive rewards: 0, Negative rewards: 40
+Episode 165 | Episode reward -22.24 | Mean Rewards -12.02 | Epsilon 0.3000 | Loss 0.5565
+      Positive rewards: 4, Negative rewards: 36
+Episode 180 | Episode reward -29.48 | Mean Rewards -14.46 | Epsilon 0.3000 | Loss 0.5622
+      Positive rewards: 0, Negative rewards: 40
+
+Episode limit reached.

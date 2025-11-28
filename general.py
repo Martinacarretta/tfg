@@ -330,7 +330,7 @@ class Glioblastoma(gym.Env):
     # The metadata of the environment, e.g. {“render_modes”: [“rgb_array”, “human”], “render_fps”: 30}. 
     # For Jax or Torch, this can be indicated to users with “jax”=True or “torch”=True.
 
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.01, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
         super().__init__() # parent class
         
         self.image = np.load(image_path).astype(np.float32)
@@ -360,27 +360,69 @@ class Glioblastoma(gym.Env):
         )
 
         self.agent_pos = [0, 0] # INITIAL POSITION AT TOP LEFT
+        self.prev_pos = None
+        self.prev_prev_pos = None
         self.current_step = 0 # initialize counter
         self.max_steps = max_steps  # like in the paper
+
+    def _random_shift(self):
+        pad = 20
+        H, W = self.image.shape
+
+        while True:
+            canvas = np.zeros((H + 2*pad, W + 2*pad), dtype=self.image.dtype)
+            canvas_mask = np.zeros_like(canvas)
+
+            # random offset
+            y_off = np.random.randint(0, 2*pad+1)
+            x_off = np.random.randint(0, 2*pad+1)
+
+            # place original image
+            canvas[y_off:y_off+H, x_off:x_off+W] = self.image
+            canvas_mask[y_off:y_off+H, x_off:x_off+W] = self.mask
+
+            # crop
+            new_image = canvas[pad:pad+H, pad:pad+W]
+            new_mask = canvas_mask[pad:pad+H, pad:pad+W]
+
+            # check if new_mask still contains tumor
+            if np.sum(new_mask > 0) > 0:
+                self.image = new_image
+                self.mask = new_mask
+                return
+
+
 
     def reset(self, seed=None, options=None): # new episode where we initialize the state. 
         super().reset(seed=seed) # parent
         
+        #self._random_shift()  # Apply random shift on reset
+
         # reset
-        self.agent_pos = [0, 0]  # top-left corner
+        # self.agent_pos = [0, 0]
+        
+        self.agent_pos = [
+            np.random.randint(0, self.grid_size),
+            np.random.randint(0, self.grid_size)
+        ]
+        self.prev_pos = self.agent_pos.copy()
+        self.prev_prev_pos = None
         self.current_step = 0
         obs = self._get_obs()
         info = {}
         return obs, info
 
     def step(self, action):
-        self.current_step += 1
+        prev_pos = self.agent_pos.copy()    # store position BEFORE applying action
 
-        prev_pos = self.agent_pos.copy() # for reward computation taking into consideration the transition changes
+        self.prev_prev_pos = self.prev_pos.copy() if self.prev_pos is not None else None
+        self.prev_pos = prev_pos.copy()     # store for next step
+
+        self.current_step += 1
         
         if self.stop == True:
             # check if previous position had tumor
-            prev_overlap = self.current_patch_overlap_with_lesion()
+            prev_overlap = self.current_patch_overlap_with_lesion(pos=prev_pos)
 
             # ============================================================
             #                IMPLICIT STOP BEHAVIOR
@@ -392,7 +434,7 @@ class Glioblastoma(gym.Env):
                 return obs, reward, terminated, False, {}
             
         # Apply action (respect grid boundaries)
-        if self.action_space == spaces.Discrete(3):
+        if self.action_space.n == 3:
             if action == 1 and self.agent_pos[0] < self.grid_size - 1:
                 self.agent_pos[0] += 1  # move down
             elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
@@ -400,7 +442,7 @@ class Glioblastoma(gym.Env):
             # else, the agent doesn't move so the observation 
             # and reward will be calculated from the same position
             # no need to compute self.agent_pos
-        elif self.action_space == spaces.Discrete(5):
+        elif self.action_space.n == 5:
             if action == 1 and self.agent_pos[0] < self.grid_size - 1:
                 self.agent_pos[0] += 1  # move down
             elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
@@ -410,17 +452,22 @@ class Glioblastoma(gym.Env):
             elif action == 4 and self.agent_pos[1] > 0:
                 self.agent_pos[1] -= 1  # move left
 
-        
         reward = self._get_reward(action, prev_pos)
-                
+        
+        # TRY: terminate episode after getting the reward
+        if action == 0:
+            terminated = True  # agent decided to end
+            if reward == self.rewards[0]:
+                reward += 10.0  # bonus for finding tumor
+        else:
+            terminated = self.current_step >= self.max_steps
         obs = self._get_obs()
 
-        # Episode ends
-        terminated = self.current_step >= self.max_steps
-        truncated = False  # we don’t need truncation here
+        truncated = False
         info = {}
 
         return obs, reward, terminated, truncated, info
+
 
     def _get_obs(self):
         r0 = self.agent_pos[0] * self.block_size # row start
@@ -434,11 +481,14 @@ class Glioblastoma(gym.Env):
         #     print("Brain")
         return patch
 
-    def _get_reward(self, action, prev_pos):    
+    def _get_reward(self, action, prev_pos): 
+        if self.prev_prev_pos is not None and self.agent_pos == self.prev_prev_pos:
+            # true oscillation (backtracking)
+            return -1.5   
         attempted_move_but_blocked = (action != 0) and (prev_pos == self.agent_pos)
         if attempted_move_but_blocked:
             #print("Out of bounds move attempted") # DEBUGGING
-            return -1.0  # penalty for trying to move out of bounds
+            return -0.3  # penalty for trying to move out of bounds
         
         # look position of the agent in the mask
         r0 = self.agent_pos[0] * self.block_size
@@ -461,9 +511,28 @@ class Glioblastoma(gym.Env):
             # since it returns, it will not execute the rest of the code
         else:
             if action == 0:  # stayed in place but no tumor.
-                return self.rewards[1]
+                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
+                
+                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
+                cy = (self.agent_pos[0] + 0.5) * self.block_size
+                cx = (self.agent_pos[1] + 0.5) * self.block_size
+                
+                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
+                normalized_dist = dist / max_dist
+                distance_penalty = 0.1 * normalized_dist
+                
+                return self.rewards[1] - distance_penalty
             else:
-                return self.rewards[2]  # moved but no tumor
+                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
+                
+                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
+                cy = (self.agent_pos[0] + 0.5) * self.block_size
+                cx = (self.agent_pos[1] + 0.5) * self.block_size
+                
+                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
+                normalized_dist = dist / max_dist
+                distance_penalty = 0.1 * normalized_dist
+                return self.rewards[2] + distance_penalty  # moved but no tumor
 
     def render(self, show=True):
         if self.render_mode != "human": # would be rgb_array or ansi
@@ -551,11 +620,12 @@ class Glioblastoma(gym.Env):
             rgb_array = np.array(pil_img)
             return rgb_array
 
-        
-    def current_patch_overlap_with_lesion(self): # FALTAAA chat
+    def current_patch_overlap_with_lesion(self, pos=None): # FALTAAA chat
         """ Returns the number of overlapping lesion pixels between the agent's current patch and the ground-truth mask. If > 0, the agent is correctly over the lesion (TP). """
-        # get current agent patch boundaries
-        row, col = self.agent_pos
+        if pos is None:
+            row, col = self.agent_pos
+        else:
+            row, col = pos
         patch_h = self.block_size # not grid_size because grid_size is number of patches per side
         patch_w = self.block_size
         
@@ -574,7 +644,7 @@ class Glioblastoma(gym.Env):
 class GlioblastomaPositionalEncoding(gym.Env):
     metadata = {"render_modes": ["human"], "render_fps": 4} 
 
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.0001, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.01, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
         super().__init__()
         
         self.image = np.load(image_path).astype(np.float32)
@@ -602,26 +672,66 @@ class GlioblastomaPositionalEncoding(gym.Env):
         )
 
         self.agent_pos = [0, 0]
+        self.prev_pos = None
+        self.prev_prev_pos = None
         self.current_step = 0
         self.max_steps = max_steps
+        
+    def _random_shift(self):
+        pad = 20
+        H, W = self.image.shape
+
+        while True:
+            canvas = np.zeros((H + 2*pad, W + 2*pad), dtype=self.image.dtype)
+            canvas_mask = np.zeros_like(canvas)
+
+            # random offset
+            y_off = np.random.randint(0, 2*pad+1)
+            x_off = np.random.randint(0, 2*pad+1)
+
+            # place original image
+            canvas[y_off:y_off+H, x_off:x_off+W] = self.image
+            canvas_mask[y_off:y_off+H, x_off:x_off+W] = self.mask
+
+            # crop
+            new_image = canvas[pad:pad+H, pad:pad+W]
+            new_mask = canvas_mask[pad:pad+H, pad:pad+W]
+
+            # check if new_mask still contains tumor
+            if np.sum(new_mask > 0) > 0:
+                self.image = new_image
+                self.mask = new_mask
+                return
+
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         
-        self.agent_pos = [0, 0]
+        #self._random_shift()  # Apply random shift on reset
+
+        # self.agent_pos = [0, 0]
+        
+        self.agent_pos = [
+            np.random.randint(0, self.grid_size),
+            np.random.randint(0, self.grid_size)
+        ]
         self.current_step = 0
+        self.prev_pos = None
+        self.prev_prev_pos = None
         obs = self._get_obs()
         info = {}
         return obs, info
 
     def step(self, action):
         self.current_step += 1
+        prev_pos = self.agent_pos.copy()    # store position BEFORE applying action
 
-        prev_pos = self.agent_pos.copy()
+        self.prev_prev_pos = self.prev_pos.copy() if self.prev_pos is not None else None
+        self.prev_pos = prev_pos.copy()     # store for next step
         
         if self.stop == True:
             # check if previous position had tumor
-            prev_overlap = self.current_patch_overlap_with_lesion()
+            prev_overlap = self.current_patch_overlap_with_lesion(pos=prev_pos)
 
             # ============================================================
             #                IMPLICIT STOP BEHAVIOR
@@ -633,12 +743,12 @@ class GlioblastomaPositionalEncoding(gym.Env):
                 return obs, reward, terminated, False, {}
         
         # Apply action (respect grid boundaries)
-        if self.action_space == spaces.Discrete(3):
+        if self.action_space.n == 3:
             if action == 1 and self.agent_pos[0] < self.grid_size - 1: # down
                 self.agent_pos[0] += 1
             elif action == 2 and self.agent_pos[1] < self.grid_size - 1: # right
                 self.agent_pos[1] += 1
-        elif self.action_space == spaces.Discrete(5):
+        elif self.action_space.n == 5:
             if action == 1 and self.agent_pos[0] < self.grid_size - 1: # down
                 self.agent_pos[0] += 1
             elif action == 2 and self.agent_pos[1] < self.grid_size - 1: # right
@@ -649,10 +759,17 @@ class GlioblastomaPositionalEncoding(gym.Env):
                 self.agent_pos[1] -= 1
         
         reward = self._get_reward(action, prev_pos)
-                
+        
+        # TRY: terminate episode after getting the reward
+        if reward == self.rewards[0] and action == 0:
+            terminated = True
+            reward += 10.0  # bonus for finding tumor
+        elif reward == self.rewards[0] and action != 0:
+            terminated = True # agent decided to end (wrong tho, false positive)
+        else:
+            terminated = self.current_step >= self.max_steps
         obs = self._get_obs()
 
-        terminated = self.current_step >= self.max_steps
         truncated = False
         info = {}
 
@@ -680,22 +797,58 @@ class GlioblastomaPositionalEncoding(gym.Env):
         
         return obs
 
-    def _get_reward(self, action, prev_pos):        
+    def _get_reward(self, action, prev_pos): 
+        if self.prev_prev_pos is not None and self.agent_pos == self.prev_prev_pos:
+            # true oscillation (backtracking)
+            return -1.5   
+        attempted_move_but_blocked = (action != 0) and (prev_pos == self.agent_pos)
+        if attempted_move_but_blocked:
+            #print("Out of bounds move attempted") # DEBUGGING
+            return -0.3  # penalty for trying to move out of bounds
+        
+        # look position of the agent in the mask
         r0 = self.agent_pos[0] * self.block_size
         c0 = self.agent_pos[1] * self.block_size
         patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
         
-        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
-        total = self.block_size * self.block_size
-        inside = (tumor_count_curr / total) >= self.tumor_threshold
+        # Now that i have the patch where i was and the patch where i am, i can check if there is tumor in any of them
+        # tumor is labeled as 1 or 4 in the mask        
+        # label 2 is edema
         
+        # first get a count of the tumor pixels in the patch. 
+        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
+        total = self.block_size * self.block_size # to compute the percentage
+        # Determine if patch has more than self.tumor_threshold of tumor
+        inside = (tumor_count_curr / total) >= self.tumor_threshold
+
         if inside:
-            return self.rewards[0]
+            return self.rewards[0]  # reward for being on tumor or staying on tumor
+            # will not distinguish between moving on tumor or staying on tumor
+            # since it returns, it will not execute the rest of the code
         else:
-            if action == 0 or prev_pos == self.agent_pos:
-                return self.rewards[1]
+            if action == 0:  # stayed in place but no tumor.
+                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
+                
+                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
+                cy = (self.agent_pos[0] + 0.5) * self.block_size
+                cx = (self.agent_pos[1] + 0.5) * self.block_size
+                
+                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
+                normalized_dist = dist / max_dist
+                distance_penalty = 0.1 * normalized_dist
+                
+                return self.rewards[1] - distance_penalty
             else:
-                return self.rewards[2]
+                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
+                
+                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
+                cy = (self.agent_pos[0] + 0.5) * self.block_size
+                cx = (self.agent_pos[1] + 0.5) * self.block_size
+                
+                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
+                normalized_dist = dist / max_dist
+                distance_penalty = 0.1 * normalized_dist
+                return self.rewards[2] + distance_penalty  # moved but no tumor
 
     def render(self, show=True):
         if self.render_mode != "human": # would be rgb_array or ansi
@@ -783,17 +936,22 @@ class GlioblastomaPositionalEncoding(gym.Env):
             rgb_array = np.array(pil_img)
             return rgb_array
         
-    def current_patch_overlap_with_lesion(self):
-        row, col = self.agent_pos
-        patch_h = self.block_size
+    def current_patch_overlap_with_lesion(self, pos=None): # FALTAAA chat
+        """ Returns the number of overlapping lesion pixels between the agent's current patch and the ground-truth mask. If > 0, the agent is correctly over the lesion (TP). """
+        if pos is None:
+            row, col = self.agent_pos
+        else:
+            row, col = pos
+        patch_h = self.block_size # not grid_size because grid_size is number of patches per side
         patch_w = self.block_size
         
         y0 = row * patch_h
         y1 = y0 + patch_h
         x0 = col * patch_w
         x1 = x0 + patch_w
-        
+        # extract mask region under current patch
         patch_mask = self.mask[y0:y1, x0:x1]
+        # count how many pixels of lesion (nonzero)
         overlap = np.sum(patch_mask > 0)
         return overlap
 

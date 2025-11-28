@@ -1,0 +1,14 @@
+{"time":"2025-11-21T00:52:02.717170916+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-11-21T00:52:03.320427847+01:00","level":"INFO","msg":"stream: created new stream","id":"Extension050"}
+{"time":"2025-11-21T00:52:03.320565843+01:00","level":"INFO","msg":"handler: started","stream_id":"Extension050"}
+{"time":"2025-11-21T00:52:03.320796543+01:00","level":"INFO","msg":"stream: started","id":"Extension050"}
+{"time":"2025-11-21T00:52:03.320883888+01:00","level":"INFO","msg":"writer: started","stream_id":"Extension050"}
+{"time":"2025-11-21T00:52:03.320947315+01:00","level":"INFO","msg":"sender: started","stream_id":"Extension050"}
+{"time":"2025-11-21T00:54:25.756498916+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension050/file_stream\": write tcp 172.22.107.147:35650->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-21T00:55:00.038692842+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension050/file_stream\": write tcp 172.22.107.147:42364->35.186.228.49:443: write: broken pipe"}
+{"time":"2025-11-21T01:00:21.639364014+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.050521079}],"total_operations":1}}
+{"time":"2025-11-21T01:00:22.370699845+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-21T01:00:22.823670797+01:00","level":"INFO","msg":"stream: closing","id":"Extension050"}
+{"time":"2025-11-21T01:00:22.8237317+01:00","level":"INFO","msg":"handler: closed","stream_id":"Extension050"}
+{"time":"2025-11-21T01:00:22.823996812+01:00","level":"INFO","msg":"sender: closed","stream_id":"Extension050"}
+{"time":"2025-11-21T01:00:22.824016218+01:00","level":"INFO","msg":"stream: closed","id":"Extension050"}

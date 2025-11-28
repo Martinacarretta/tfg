@@ -1,0 +1,91 @@
+_wandb:
+    value:
+        cli_version: 0.22.2
+        e:
+            v2f4ie0tinqcqe3npec1o2ubsw564q2b:
+                codePath: dqn/training.ipynb
+                codePathLocal: training.ipynb
+                cpu_count: 4
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "269427478528"
+                        used: "41383587840"
+                email: martinacarrettab@gmail.com
+                executable: /usr/bin/python3
+                git:
+                    commit: 3de009ef28e2cbb4514d6b34a21a785d5cc2751d
+                    remote: https://github.com/Martinacarretta/tfg
+                host: LAPTOP-INQT65B2
+                memory:
+                    total: "3991109632"
+                os: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35
+                program: /home/martina/codi2/4year/tfg/dqn/training.ipynb
+                python: CPython 3.10.12
+                root: /home/martina/codi2/4year/tfg/dqn
+                startedAt: "2025-11-20T23:52:02.453678Z"
+                writerId: v2f4ie0tinqcqe3npec1o2ubsw564q2b
+        m: []
+        python_version: 3.10.12
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 2
+                - 13
+                - 14
+                - 16
+                - 61
+            "4": 3.10.12
+            "5": 0.22.2
+            "8":
+                - 1
+                - 2
+            "12": 0.22.2
+            "13": linux-x86_64
+BATCH_SIZE:
+    value: 128
+BURN_IN:
+    value: 500
+DNN_SYNC:
+    value: 200
+DNN_UPD:
+    value: 4
+Decay type:
+    value: exponential
+EPSILON:
+    value: 1
+EPSILON_DECAY:
+    value: 0.992
+EPSILON_MIN:
+    value: 0.3
+GAMMA:
+    value: 0.99
+MAX_EPISODES:
+    value: 190
+MEMORY_SIZE:
+    value: 15000
+agent:
+    value: training_agents.DQNAgent
+buffer:
+    value: training_buffers.ReplayBuffer
+configuration:
+    value:
+        action_space: Discrete(5)
+        grid_size: 6
+        max_steps: 40
+        rewards:
+            - 8
+            - -1
+            - -0.1
+        stop: false
+environment:
+    value: general.GlioblastomaPositionalEncoding
+lr:
+    value: 8e-05
+model:
+    value: training_dqn.DQNPositionalEncoding
+notes:
+    value: Normalization, random shift, increase tumor threshold, oscilation penalty, randomize start position, distance shaping

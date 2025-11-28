@@ -1,0 +1,33 @@
+Filling replay buffer...
+/home/martina/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/martina/.local/lib/python3.10/site-packages/numpy/core/_methods.py:121: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+Buffer filled with 15000 experiences
+Training...
+Episode 15 | Episode reward -12.09 | Mean Rewards -18.67 | Epsilon 0.8936 | Loss nan
+      Positive rewards: 3, Negative rewards: 37
+Episode 30 | Episode reward -26.71 | Mean Rewards -18.71 | Epsilon 0.7922 | Loss nan
+      Positive rewards: 0, Negative rewards: 40
+Episode 45 | Episode reward 13.98 | Mean Rewards -16.01 | Epsilon 0.7023 | Loss nan
+      Positive rewards: 5, Negative rewards: 35
+Episode 60 | Episode reward -28.86 | Mean Rewards -13.03 | Epsilon 0.6226 | Loss nan
+      Positive rewards: 0, Negative rewards: 40
+Episode 75 | Episode reward -31.74 | Mean Rewards -15.35 | Epsilon 0.5519 | Loss nan
+      Positive rewards: 0, Negative rewards: 40
+Episode 90 | Episode reward -21.41 | Mean Rewards -17.94 | Epsilon 0.4893 | Loss nan
+      Positive rewards: 2, Negative rewards: 38
+Episode 105 | Episode reward 31.44 | Mean Rewards -17.61 | Epsilon 0.4337 | Loss nan
+      Positive rewards: 8, Negative rewards: 32
+Episode 120 | Episode reward -30.54 | Mean Rewards -20.21 | Epsilon 0.3845 | Loss nan
+      Positive rewards: 2, Negative rewards: 38
+Episode 135 | Episode reward -13.82 | Mean Rewards -22.59 | Epsilon 0.3409 | Loss nan
+      Positive rewards: 4, Negative rewards: 36
+Episode 150 | Episode reward -45.11 | Mean Rewards -28.57 | Epsilon 0.3022 | Loss nan
+      Positive rewards: 0, Negative rewards: 40
+Episode 165 | Episode reward -45.70 | Mean Rewards -31.22 | Epsilon 0.3000 | Loss nan
+      Positive rewards: 0, Negative rewards: 40
+Episode 180 | Episode reward -9.18 | Mean Rewards -32.16 | Epsilon 0.3000 | Loss nan
+      Positive rewards: 4, Negative rewards: 36
+
+Episode limit reached.
