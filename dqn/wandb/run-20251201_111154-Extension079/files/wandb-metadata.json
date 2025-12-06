@@ -1,0 +1,28 @@
+{
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2025-12-01T10:11:54.113407Z",
+  "program": "/home/martina/codi2/4year/tfg/dqn/training.ipynb",
+  "codePath": "dqn/training.ipynb",
+  "codePathLocal": "training.ipynb",
+  "git": {
+    "remote": "https://github.com/Martinacarretta/tfg",
+    "commit": "048222afc5f9f612f5150af9df102a6830fa1086"
+  },
+  "email": "martinacarrettab@gmail.com",
+  "root": "/home/martina/codi2/4year/tfg/dqn",
+  "host": "LAPTOP-INQT65B2",
+  "executable": "/bin/python3",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "269427478528",
+      "used": "42537865216"
+    }
+  },
+  "memory": {
+    "total": "3991113728"
+  },
+  "writerId": "fdygfbcvp1nzvdt4aneppdv5fkev8iz8"
+}

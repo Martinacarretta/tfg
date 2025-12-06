@@ -1,0 +1,29 @@
+2025-11-30 16:49:24,185 INFO    MainThread:1012 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/dqn/wandb/run-20251130_164924-Extension077/logs/debug.log
+2025-11-30 16:49:24,186 INFO    MainThread:1012 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/dqn/wandb/run-20251130_164924-Extension077/logs/debug-internal.log
+2025-11-30 16:49:24,187 INFO    MainThread:1012 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7fc02a56b6d0>
+2025-11-30 16:49:24,189 INFO    MainThread:1012 [wandb_init.py:init():832] calling init triggers
+2025-11-30 16:49:24,189 INFO    MainThread:1012 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'environment': <class '__main__.GlioblastomaPositionalEncoding'>, 'configuration': {'grid_size': 6, 'rewards': [10.0, -3.0, 0.5, -0.05], 'action_space': Discrete(5), 'max_steps': 20}, 'model': <class '__main__.DQNPositionalEncoding'>, 'agent': <class '__main__.DQNAgent'>, 'buffer': <class '__main__.ReplayBuffer'>, 'notes': 'Normalization, random shift, increase tumor threshold, oscilation penalty, randomize start position, distance shaping', 'lr': 0.0001, 'MEMORY_SIZE': 15000, 'MAX_EPISODES': 1000, 'EPSILON': 1.0, 'EPSILON_DECAY': 0.995, 'Decay type': 'exponential', 'EPSILON_MIN': 0.3, 'GAMMA': 0.99, 'BATCH_SIZE': 128, 'BURN_IN': 500, 'DNN_UPD': 4, 'DNN_SYNC': 200, '_wandb': {}}
+2025-11-30 16:49:24,190 INFO    MainThread:1012 [wandb_init.py:init():880] starting backend
+2025-11-30 16:49:24,191 INFO    MainThread:1012 [wandb_init.py:init():883] sending inform_init request
+2025-11-30 16:49:24,235 INFO    MainThread:1012 [wandb_init.py:init():891] backend started and connected
+2025-11-30 16:49:24,565 INFO    MainThread:1012 [wandb_run.py:_label_probe_notebook():1330] probe notebook
+2025-11-30 16:49:24,577 INFO    MainThread:1012 [wandb_init.py:init():961] updated telemetry
+2025-11-30 16:49:24,709 INFO    MainThread:1012 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-11-30 16:49:25,087 INFO    MainThread:1012 [wandb_init.py:init():1036] starting run threads in backend
+2025-11-30 16:49:26,005 INFO    MainThread:1012 [wandb_run.py:_console_start():2509] atexit reg
+2025-11-30 16:49:26,005 INFO    MainThread:1012 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-11-30 16:49:26,005 INFO    MainThread:1012 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-11-30 16:49:26,006 INFO    MainThread:1012 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-11-30 16:49:26,008 INFO    MainThread:1012 [wandb_init.py:init():1076] run started, returning control to user process
+2025-11-30 16:49:26,014 INFO    MainThread:1012 [wandb_init.py:_post_run_cell_hook():594] [no run ID] resuming backend
+2025-11-30 16:49:27,137 INFO    MainThread:1012 [jupyter.py:save_ipynb():404] [no run ID] not saving jupyter notebook
+2025-11-30 16:49:27,137 INFO    MainThread:1012 [wandb_init.py:_pre_run_cell_hook():583] [no run ID] pausing backend
+2025-11-30 16:55:31,826 INFO    MainThread:1012 [wandb_run.py:_finish():2275] finishing run martinacarrettab/TFG_Glioblastoma/Extension077
+2025-11-30 16:55:31,832 INFO    MainThread:1012 [jupyter.py:save_history():480] not saving jupyter history
+2025-11-30 16:55:31,832 INFO    MainThread:1012 [jupyter.py:save_ipynb():404] not saving jupyter notebook
+2025-11-30 16:55:31,832 INFO    MainThread:1012 [wandb_init.py:_jupyter_teardown():609] cleaning up jupyter logic
+2025-11-30 16:55:31,832 INFO    MainThread:1012 [wandb_run.py:_atexit_cleanup():2474] got exitcode: 0
+2025-11-30 16:55:31,833 INFO    MainThread:1012 [wandb_run.py:_restore():2456] restore
+2025-11-30 16:55:31,834 INFO    MainThread:1012 [wandb_run.py:_restore():2462] restore done
+2025-11-30 16:55:32,804 INFO    MainThread:1012 [wandb_run.py:_footer_sync_info():3872] logging synced files

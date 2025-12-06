@@ -6,11 +6,13 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import torch
 from torch.distributions import Categorical
-import imageio
+from stable_baselines3 import PPO
 from PIL import Image
 import matplotlib.pyplot as plt
 from copy import deepcopy
 import pandas as pd
+import sys
+
 
 
 SEED = 42
@@ -56,20 +58,18 @@ def prepare(mode = "train", dataset = 0):
     return pairs
 
 def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, save_gifs=True, gif_folder="TEST_GIFS"):
-    """
-    Unified testing function for both DQN and PPO agents
-    
+    """    
     Args:
-        agent: The trained agent (DQN or PPO)
+        agent: The trained agent (DQN, PPO or REINFORCE)
         test_pairs: List of (image_path, mask_path) tuples
-        agent_type: Either "dqn" or "ppo"
+        agent_type: Either "dqn", "ppo" or "reinforce"
         num_episodes: Number of episodes to test (default: all test pairs)
         env_config: Environment configuration dictionary
         save_gifs: Whether to save GIFs of episodes
         gif_folder: Folder to save GIFs
     
     Returns:
-        Dictionary with test results including success rate and action distributions
+        Dictionary with test results
     """
     if num_episodes is None:
         num_episodes = len(test_pairs)
@@ -81,17 +81,15 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
     # Set model to evaluation mode
     if agent_type.lower() == "dqn":
         agent.dnnetwork.eval()
-    elif agent_type.lower() == "ppo":
-        agent.model.eval()
+    # elif agent_type.lower() == "ppo":
+    #     agent.model.eval()
     
     results = {
-        'success_rate': [],
-        'final_position_accuracy': [],
+        'hard_success': [], 'hard_failure': [],
+        'timeout_success': [], 'timeout_failure': [],
         'average_reward': [],
-        'steps_to_find_tumor': [],
-        'total_tumor_reward': [],
-        'tumor_sizes_pixels': [],
-        'tumor_sizes_percentage': [],
+        'steps_to_find_tumor': [], 'total_tumor_reward': [],
+        'tumor_sizes_pixels': [], 'tumor_sizes_percentage': [],
         'episode_details': []
     }
     
@@ -106,9 +104,10 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
         if hasattr(agent, 'env_class'):
             env = agent.env_class(img_path, mask_path, grid_size=grid_size, rewards=rewards, action_space=action_space)
         else:
-            env = Glioblastoma(img_path, mask_path, grid_size=grid_size, rewards=rewards, action_space=action_space)
+            env = GlioblastomaPositionalEncoding(img_path, mask_path, grid_size=grid_size, rewards=rewards, action_space=action_space)
         
         state, _ = env.reset()
+        terminated_by_stay = False
         total_reward = 0
         found_tumor = False
         tumor_positions_visited = set()
@@ -135,10 +134,8 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
                     action = agent.dnnetwork.get_action(state, epsilon=0.00)
                     action_idx = action
                 elif agent_type.lower() == "ppo":
-                    action_probs, _ = agent.model(state)
-                    dist = Categorical(action_probs)
-                    action = dist.sample()
-                    action_idx = action.item()
+                    action, _states = agent.predict(state, deterministic=True)
+                    action_idx = int(action)
                 elif agent_type.lower() == "reinforce":
                     action, _ = agent.policy.act(state)  # handles tensor conversion internally
                     action_idx = action
@@ -169,6 +166,7 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
                     frames.append(frame)
             
             if terminated or truncated:
+                terminated_by_stay = (action_idx == 0)
                 break
         
         # Save GIF
@@ -188,50 +186,63 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
                 print(f"Saved GIF for episode {i} at {gif_path}")
         
         # Calculate metrics for this episode
+        time_out = (not terminated_by_stay and (step+1) >= env.max_steps)
         final_overlap = env.current_patch_overlap_with_lesion()
         
-        # Success: ended on tumor region
-        success = final_overlap > 0
-        results['success_rate'].append(success)
+        hard_success = terminated_by_stay and final_overlap > 0
+        hard_failure = terminated_by_stay and final_overlap == 0
+        timeout_success = time_out and final_overlap > 0
+        timeout_failure = time_out and final_overlap == 0
+    
+        results['hard_success'].append(hard_success)
+        results['hard_failure'].append(hard_failure)
+        results['timeout_success'].append(timeout_success)
+        results['timeout_failure'].append(timeout_failure)
         
-        # Final position accuracy
-        results['final_position_accuracy'].append(final_overlap > 0)
-        
-        # Average reward
         results['average_reward'].append(total_reward)
-        
-        # Steps to find tumor
-        results['steps_to_find_tumor'].append(steps_to_find)
-                
-        # Total positive rewards from tumor
+        results['steps_to_find_tumor'].append(steps_to_find)     
         results['total_tumor_reward'].append(tumor_rewards)
         
         # Store detailed episode information
         episode_detail = {
             'image_path': img_path,
-            'success': success,
-            'final_on_tumor': final_overlap > 0,
+            'terminated_by_stay': terminated_by_stay,
+            'timed_out': time_out,
+            'hard_success': hard_success,
+            'hard_failure': hard_failure,
+            'timeout_success': timeout_success,
+            'timeout_failure': timeout_failure,
+            'final_overlap': final_overlap > 0,
             'total_reward': total_reward,
             'steps_to_find_tumor': steps_to_find,
             'tumor_rewards': tumor_rewards,
             'tumor_size_pixels': tumor_size_pixels,
             'tumor_size_percentage': tumor_size_percentage,
-            'action_distribution': action_counts / np.sum(action_counts),  # Normalized
-            'action_counts_raw': action_counts,  # Keep raw counts for aggregation
+            'action_distribution': action_counts / np.sum(action_counts),
+            'action_counts_raw': action_counts,
             'gif_path': gif_path
         }
         results['episode_details'].append(episode_detail)
     
     # Calculate separate action distributions
-    successful_episodes = [ep for ep in results['episode_details'] if ep['final_on_tumor']]
-    unsuccessful_episodes = [ep for ep in results['episode_details'] if not ep['final_on_tumor']]
+    hard_success_eps = [ep for ep in results['episode_details'] if ep['hard_success']]
+    hard_failure_eps = [ep for ep in results['episode_details'] if ep['hard_failure']]
+    timeout_success_eps = [ep for ep in results['episode_details'] if ep['timeout_success']]
+    timeout_failure_eps = [ep for ep in results['episode_details'] if ep['timeout_failure']]
+
     
-    action_dist_success = calculate_separate_action_distribution(successful_episodes)
-    action_dist_failure = calculate_separate_action_distribution(unsuccessful_episodes)
+    action_dist_hard_success = calculate_separate_action_distribution(hard_success_eps)
+    action_dist_hard_failure = calculate_separate_action_distribution(hard_failure_eps)
+    action_dist_timeout_success = calculate_separate_action_distribution(timeout_success_eps)
+    action_dist_timeout_failure = calculate_separate_action_distribution(timeout_failure_eps)
     
     # Calculate overall metrics with new tumor size statistics
     overall_results = {
-        'success_rate': np.mean(results['success_rate']),
+        'hard_success_rate': np.mean(results['hard_success']),
+        'hard_failure_rate': np.mean(results['hard_failure']),
+        'timeout_success_rate': np.mean(results['timeout_success']),
+        'timeout_failure_rate': np.mean(results['timeout_failure']),
+        
         'average_reward': np.mean(results['average_reward']),
         'avg_steps_to_find_tumor': np.mean(results['steps_to_find_tumor']),
         'avg_tumor_rewards': np.mean(results['total_tumor_reward']),
@@ -242,8 +253,10 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
         'avg_tumor_size_pixels': np.mean(results['tumor_sizes_pixels']),
         'avg_tumor_size_percentage': np.mean(results['tumor_sizes_percentage']),
         'action_distribution': calculate_overall_action_distribution(results['episode_details']),
-        'action_distribution_success': action_dist_success,
-        'action_distribution_failure': action_dist_failure,
+        'action_distribution_hard_success': action_dist_hard_success,
+        'action_distribution_hard_failure': action_dist_hard_failure,
+        'action_distribution_timeout_success': action_dist_timeout_success,
+        'action_distribution_timeout_failure': action_dist_timeout_failure,
         'episode_details': results['episode_details']
     }
     
@@ -251,7 +264,11 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
     print("\n" + "="*60)
     print(f"TEST RESULTS ({agent_type.upper()} Agent)")
     print("="*60)
-    print(f"Success Rate: {overall_results['success_rate']*100:.2f}%")
+    print(f"✅Hard Success (correct STAY): {overall_results['hard_success_rate']*100:.2f}%")
+    print(f"   ❌Hard Failure (wrong STAY): {overall_results['hard_failure_rate']*100:.2f}%")
+    print(f"✔️Timeout Success (lucky): {overall_results['timeout_success_rate']*100:.2f}%")
+    print(f"   ❌Timeout Failure: {overall_results['timeout_failure_rate']*100:.2f}%")
+
     print(f"Average Episode Reward: {overall_results['average_reward']:.2f}")
     print(f"Average Steps to Find Tumor: {overall_results['avg_steps_to_find_tumor']:.2f}")
     print(f"Average Tumor Rewards per Episode: {overall_results['avg_tumor_rewards']:.2f}")
@@ -260,15 +277,18 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
     print(f"  Smallest Tumor: {overall_results['smallest_tumor_pixels']:.0f} pixels ({overall_results['smallest_tumor_percentage']:.2f}%)")
     print(f"  Average Tumor: {overall_results['avg_tumor_size_pixels']:.0f} pixels ({overall_results['avg_tumor_size_percentage']:.2f}%)")
     print(f"Overall Action Distribution: {overall_results['action_distribution']}")
-    print(f"  Successful Episodes: {overall_results['action_distribution_success']}")
-    print(f"  Unsuccessful Episodes: {overall_results['action_distribution_failure']}")
+    print(f"  Hard Successful Episodes: {overall_results['action_distribution_hard_success']}")
+    print(f"  Hard Unsuccessful Episodes: {overall_results['action_distribution_hard_failure']}")
+    print(f"  Timeout Successful Episodes: {overall_results['action_distribution_timeout_success']}")
+    print(f"  Timeout Unsuccessful Episodes: {overall_results['action_distribution_timeout_failure']}")
     
     # Print individual episode results
     print(f"\nDetailed Results for {len(results['episode_details'])} episodes:")
     print("-" * 80)
     for i, detail in enumerate(results['episode_details']):
         print(f"Episode {i}: {os.path.basename(detail['image_path'])}")
-        print(f"  Success: {detail['success']}, Final on Tumor: {detail['final_on_tumor']}")
+        print(f"  Hard Success: {detail['hard_success']}, Hard Failure: {detail['hard_failure']}")
+        print(f"  Timeout Success: {detail['timeout_success']}, Timeout Failure: {detail['timeout_failure']}")
         print(f"  Total Reward: {detail['total_reward']:.2f}, Steps to Find: {detail['steps_to_find_tumor']}")
         print(f"  Tumor Size: {detail['tumor_size_pixels']} pixels ({detail['tumor_size_percentage']:.2f}%)")
         print(f"  Action Distribution: {detail['action_distribution']}")
@@ -332,334 +352,10 @@ def calculate_separate_action_distribution(episode_list):
 ###############################################################################################################################################################################################################################################################################################################
 ###############################################################################################################################################################################################################################################################################################################
 
-class Glioblastoma(gym.Env):
-    metadata = {"render_modes": ["human"], "render_fps": 4} 
-    # The metadata of the environment, e.g. {“render_modes”: [“rgb_array”, “human”], “render_fps”: 30}. 
-    # For Jax or Torch, this can be indicated to users with “jax”=True or “torch”=True.
-
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.01, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
-        super().__init__() # parent class
-        
-        self.image = np.load(image_path).astype(np.float32)
-        self.mask = np.load(mask_path).astype(np.uint8)
-        
-        img_min, img_max = self.image.min(), self.image.max()
-        if img_max > 1.0:  # only normalize if not already in [0, 1]
-            self.image = (self.image - img_min) / (img_max - img_min + 1e-8) #avoid division by 0
-
-        self.grid_size = grid_size
-        self.block_size = self.image.shape[0] // grid_size  # 240/4 = 60
-        
-        self.action_space = action_space
-        self.tumor_threshold = tumor_threshold # 15% of the patch must be tumor to consider that the agent is inside the tumor region
-        self.rewards = rewards  # [reward_on_tumor, reward_stay_no_tumor, reward_move_no_tumor]
-        
-        self.stop = stop
-        self.render_mode = render_mode
-
-        # Observations: grayscale patch (normalized 0-1)
-        # apparently Neural networks train better when inputs are scaled to small, 
-        # consistent ranges rather than raw 0–255 values.
-        self.observation_space = spaces.Box( # Supports continuous (and discrete) vectors or matrices
-            low=0, high=1, # Data has been normalized
-            shape=(self.block_size, self.block_size), # shape of the observation
-            dtype=np.float32
-        )
-
-        self.agent_pos = [0, 0] # INITIAL POSITION AT TOP LEFT
-        self.prev_pos = None
-        self.prev_prev_pos = None
-        self.current_step = 0 # initialize counter
-        self.max_steps = max_steps  # like in the paper
-
-    def _random_shift(self):
-        pad = 20
-        H, W = self.image.shape
-
-        while True:
-            canvas = np.zeros((H + 2*pad, W + 2*pad), dtype=self.image.dtype)
-            canvas_mask = np.zeros_like(canvas)
-
-            # random offset
-            y_off = np.random.randint(0, 2*pad+1)
-            x_off = np.random.randint(0, 2*pad+1)
-
-            # place original image
-            canvas[y_off:y_off+H, x_off:x_off+W] = self.image
-            canvas_mask[y_off:y_off+H, x_off:x_off+W] = self.mask
-
-            # crop
-            new_image = canvas[pad:pad+H, pad:pad+W]
-            new_mask = canvas_mask[pad:pad+H, pad:pad+W]
-
-            # check if new_mask still contains tumor
-            if np.sum(new_mask > 0) > 0:
-                self.image = new_image
-                self.mask = new_mask
-                return
-
-
-
-    def reset(self, seed=None, options=None): # new episode where we initialize the state. 
-        super().reset(seed=seed) # parent
-        
-        #self._random_shift()  # Apply random shift on reset
-
-        # reset
-        # self.agent_pos = [0, 0]
-        
-        self.agent_pos = [
-            np.random.randint(0, self.grid_size),
-            np.random.randint(0, self.grid_size)
-        ]
-        self.prev_pos = self.agent_pos.copy()
-        self.prev_prev_pos = None
-        self.current_step = 0
-        obs = self._get_obs()
-        info = {}
-        return obs, info
-
-    def step(self, action):
-        prev_pos = self.agent_pos.copy()    # store position BEFORE applying action
-
-        self.prev_prev_pos = self.prev_pos.copy() if self.prev_pos is not None else None
-        self.prev_pos = prev_pos.copy()     # store for next step
-
-        self.current_step += 1
-        
-        if self.stop == True:
-            # check if previous position had tumor
-            prev_overlap = self.current_patch_overlap_with_lesion(pos=prev_pos)
-
-            # ============================================================
-            #                IMPLICIT STOP BEHAVIOR
-            # ============================================================
-            if prev_overlap > 0 and action == 0:
-                reward = +8.0              # Reward for correctly stopping
-                terminated = True
-                obs = self._get_obs()
-                return obs, reward, terminated, False, {}
-            
-        # Apply action (respect grid boundaries)
-        if self.action_space.n == 3:
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-                self.agent_pos[0] += 1  # move down
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[1] += 1  # move right
-            # else, the agent doesn't move so the observation 
-            # and reward will be calculated from the same position
-            # no need to compute self.agent_pos
-        elif self.action_space.n == 5:
-            if action == 1 and self.agent_pos[0] < self.grid_size - 1:
-                self.agent_pos[0] += 1  # move down
-            elif action == 2 and self.agent_pos[1] < self.grid_size - 1:
-                self.agent_pos[1] += 1  # move right
-            elif action == 3 and self.agent_pos[0] > 0:
-                self.agent_pos[0] -= 1  # move up
-            elif action == 4 and self.agent_pos[1] > 0:
-                self.agent_pos[1] -= 1  # move left
-
-        reward = self._get_reward(action, prev_pos)
-        
-        # TRY: terminate episode after getting the reward
-        if action == 0:
-            terminated = True  # agent decided to end
-            if reward == self.rewards[0]:
-                reward += 10.0  # bonus for finding tumor
-        else:
-            terminated = self.current_step >= self.max_steps
-        obs = self._get_obs()
-
-        truncated = False
-        info = {}
-
-        return obs, reward, terminated, truncated, info
-
-
-    def _get_obs(self):
-        r0 = self.agent_pos[0] * self.block_size # row start
-        c0 = self.agent_pos[1] * self.block_size # col start
-        
-        patch = self.image[r0:r0+self.block_size, c0:c0+self.block_size].astype(np.float32)
-
-        # if patch.max() == 0: # DEBUGGING
-        #     print("Warning: extracted patch has max value 0 at position:", self.agent_pos)
-        # else:
-        #     print("Brain")
-        return patch
-
-    def _get_reward(self, action, prev_pos): 
-        if self.prev_prev_pos is not None and self.agent_pos == self.prev_prev_pos:
-            # true oscillation (backtracking)
-            return -1.5   
-        attempted_move_but_blocked = (action != 0) and (prev_pos == self.agent_pos)
-        if attempted_move_but_blocked:
-            #print("Out of bounds move attempted") # DEBUGGING
-            return -0.3  # penalty for trying to move out of bounds
-        
-        # look position of the agent in the mask
-        r0 = self.agent_pos[0] * self.block_size
-        c0 = self.agent_pos[1] * self.block_size
-        patch_mask = self.mask[r0:r0+self.block_size, c0:c0+self.block_size]
-        
-        # Now that i have the patch where i was and the patch where i am, i can check if there is tumor in any of them
-        # tumor is labeled as 1 or 4 in the mask        
-        # label 2 is edema
-        
-        # first get a count of the tumor pixels in the patch. 
-        tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
-        total = self.block_size * self.block_size # to compute the percentage
-        # Determine if patch has more than self.tumor_threshold of tumor
-        inside = (tumor_count_curr / total) >= self.tumor_threshold
-
-        if inside:
-            return self.rewards[0]  # reward for being on tumor or staying on tumor
-            # will not distinguish between moving on tumor or staying on tumor
-            # since it returns, it will not execute the rest of the code
-        else:
-            if action == 0:  # stayed in place but no tumor.
-                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
-                
-                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
-                cy = (self.agent_pos[0] + 0.5) * self.block_size
-                cx = (self.agent_pos[1] + 0.5) * self.block_size
-                
-                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
-                normalized_dist = dist / max_dist
-                distance_penalty = 0.1 * normalized_dist
-                
-                return self.rewards[1] - distance_penalty
-            else:
-                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
-                
-                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
-                cy = (self.agent_pos[0] + 0.5) * self.block_size
-                cx = (self.agent_pos[1] + 0.5) * self.block_size
-                
-                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
-                normalized_dist = dist / max_dist
-                distance_penalty = 0.1 * normalized_dist
-                return self.rewards[2] + distance_penalty  # moved but no tumor
-
-    def render(self, show=True):
-        if self.render_mode != "human": # would be rgb_array or ansi
-            return  # Only render in human mode
-
-        # Create RGB visualization image
-        # not necessary since it's grayscale, but i want to draw the mask and position
-        vis_img = np.stack([self.image] * 3, axis=-1).astype(np.float32)
-
-        # Overlay tumor mask in red [..., 0] 
-        tumor_overlay = np.zeros_like(vis_img) # do all blank but here we have 3 channels, mask is 2D
-        tumor_overlay[..., 0] = (self.mask > 0).astype(float) # red channel. set to float to avoid issues when blending in vis_img
-
-        # transparency overlay (crec que es el mateix valor que tinc a l'altra notebook)
-        alpha = 0.4
-        vis_img = (1 - alpha) * vis_img + alpha * tumor_overlay
-
-        if show:
-            # Plotting
-            fig, ax = plt.subplots(figsize=(3, 3))
-            ax.imshow(vis_img, cmap='gray', origin='upper')
-
-            # Draw grid lines
-            # alpha for transparency again
-            for i in range(1, self.grid_size):
-                ax.axhline(i * self.block_size, color='white', lw=1, alpha=0.5)
-                ax.axvline(i * self.block_size, color='white', lw=1, alpha=0.5)
-
-            # Draw agent position
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            rect = patches.Rectangle(
-                (c0, r0), # (x,y) bottom left corner
-                self.block_size, # width
-                self.block_size, # height
-                linewidth=2,
-                edgecolor='yellow',
-                facecolor='none'
-            )
-            ax.add_patch(rect)
-
-            ax.set_title(f"Agent at {self.agent_pos} | Step {self.current_step}/{self.max_steps}")
-            ax.axis('off')
-            plt.show()
-            return None
-        else: #just return without showing but draw the agent position
-            rgb_array = (vis_img * 255).astype(np.uint8)
-        
-            # Draw grid lines directly on the array
-            for i in range(1, self.grid_size):
-                # Horizontal line
-                y = i * self.block_size
-                rgb_array[y-1:y+1, :] = [255, 255, 255]  # White line
-                
-                # Vertical line  
-                x = i * self.block_size
-                rgb_array[:, x-1:x+1] = [255, 255, 255]  # White line
-            
-            # Draw agent position as a yellow rectangle
-            r0 = self.agent_pos[0] * self.block_size
-            c0 = self.agent_pos[1] * self.block_size
-            
-            # Draw rectangle borders (yellow)
-            rgb_array[r0:r0+2, c0:c0+self.block_size] = [255, 255, 0]  # Top border
-            rgb_array[r0+self.block_size-2:r0+self.block_size, c0:c0+self.block_size] = [255, 255, 0]  # Bottom border
-            rgb_array[r0:r0+self.block_size, c0:c0+2] = [255, 255, 0]  # Left border
-            rgb_array[r0:r0+self.block_size, c0+self.block_size-2:c0+self.block_size] = [255, 255, 0]  # Right border
-            
-            # Add step counter text to the image
-            from PIL import Image, ImageDraw, ImageFont
-            pil_img = Image.fromarray(rgb_array)
-            draw = ImageDraw.Draw(pil_img)
-            
-            # Use default font (you can also load a specific font)
-            try:
-                font = ImageFont.truetype("arial.ttf", 16)
-            except:
-                font = ImageFont.load_default()
-            
-            # Draw step counter in top-left corner
-            step_text = f"Step: {self.current_step}/{self.max_steps}"
-            draw.text((5, 5), step_text, fill=(255, 255, 0), font=font)  # Yellow text
-            
-            # Convert back to numpy array
-            rgb_array = np.array(pil_img)
-            return rgb_array
-
-    def current_patch_overlap_with_lesion(self, pos=None): # FALTAAA chat
-        """ Returns the number of overlapping lesion pixels between the agent's current patch and the ground-truth mask. If > 0, the agent is correctly over the lesion (TP). """
-        if pos is None:
-            row, col = self.agent_pos
-        else:
-            row, col = pos
-        patch_h = self.block_size # not grid_size because grid_size is number of patches per side
-        patch_w = self.block_size
-        
-        y0 = row * patch_h
-        y1 = y0 + patch_h
-        x0 = col * patch_w
-        x1 = x0 + patch_w
-        # extract mask region under current patch
-        patch_mask = self.mask[y0:y1, x0:x1]
-        # count how many pixels of lesion (nonzero)
-        overlap = np.sum(patch_mask > 0)
-        return overlap
-
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-###############################################################################################################################################################################################################################################################################################################
-
-# Glioblastoma2 has positional encodings
 class GlioblastomaPositionalEncoding(gym.Env):
     metadata = {"render_modes": ["human"], "render_fps": 4} 
 
-    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.01, rewards = [1.0, -2.0, -0.5], action_space=spaces.Discrete(3), max_steps=20, stop = True, render_mode="human"): # cosntructor with the brain image, the mask and a size
+    def __init__(self, image_path, mask_path, grid_size=4, tumor_threshold=0.01, rewards = [10.0, -2.0, 2.5, -0.1], action_space=spaces.Discrete(3), max_steps=20, render_mode="human"): # cosntructor with the brain image, the mask and a size
         super().__init__()
         
         self.image = np.load(image_path).astype(np.float32)
@@ -675,8 +371,6 @@ class GlioblastomaPositionalEncoding(gym.Env):
         self.action_space = action_space
         self.tumor_threshold = tumor_threshold
         self.rewards = rewards
-        
-        self.stop = stop
         self.render_mode = render_mode
 
         # UPDATED: Now 3 channels (image + 2 positional encodings)
@@ -690,7 +384,10 @@ class GlioblastomaPositionalEncoding(gym.Env):
         self.prev_pos = None
         self.prev_prev_pos = None
         self.current_step = 0
-        self.max_steps = max_steps
+        if max_steps == 0:
+            self.max_steps = sys.maxsize
+        else:
+            self.max_steps = max_steps
         
     def _random_shift(self):
         pad = 20
@@ -718,18 +415,25 @@ class GlioblastomaPositionalEncoding(gym.Env):
                 self.mask = new_mask
                 return
 
-
-    def reset(self, seed=None, options=None):
+    def reset(self, seed=None, options=None, force_on_target=False, start_on_zero=False):
         super().reset(seed=seed)
         
-        #self._random_shift()  # Apply random shift on reset
+        self._random_shift()  # Apply random shift on reset
 
-        # self.agent_pos = [0, 0]
+        if start_on_zero:
+            self.agent_pos = [0, 0]
+        else:
+            if force_on_target: # start on tumor so it can see good reward if stay
+                tumor_indices = np.where(self.mask > 0)
+                # Pick a random pixel within the tumor
+                idx = np.random.randint(len(tumor_indices[0]))
+                one = tumor_indices[0][idx]
+                two = tumor_indices[1][idx]
+                self.agent_pos = [one // self.block_size, two // self.block_size]
+            else:
+                # Standard random start
+                self.agent_pos = [np.random.randint(self.grid_size), np.random.randint(self.grid_size)]
         
-        self.agent_pos = [
-            np.random.randint(0, self.grid_size),
-            np.random.randint(0, self.grid_size)
-        ]
         self.current_step = 0
         self.prev_pos = None
         self.prev_prev_pos = None
@@ -740,22 +444,15 @@ class GlioblastomaPositionalEncoding(gym.Env):
     def step(self, action):
         self.current_step += 1
         prev_pos = self.agent_pos.copy()    # store position BEFORE applying action
-
-        self.prev_prev_pos = self.prev_pos.copy() if self.prev_pos is not None else None
-        self.prev_pos = prev_pos.copy()     # store for next step
-        
-        if self.stop == True:
-            # check if previous position had tumor
-            prev_overlap = self.current_patch_overlap_with_lesion(pos=prev_pos)
-
-            # ============================================================
-            #                IMPLICIT STOP BEHAVIOR
-            # ============================================================
-            if prev_overlap > 0 and action == 0:
-                reward = +8.0              # Reward for correctly stopping
-                terminated = True
-                obs = self._get_obs()
-                return obs, reward, terminated, False, {}
+                
+        if action == 0: # END episode
+            reward = self._get_reward(action, prev_pos)
+            if reward == self.rewards[0]: # good stop
+                terminated = True  
+            else:    
+                terminated = False
+            obs = self._get_obs()
+            return obs, reward, terminated, False, {}
         
         # Apply action (respect grid boundaries)
         if self.action_space.n == 3:
@@ -763,6 +460,7 @@ class GlioblastomaPositionalEncoding(gym.Env):
                 self.agent_pos[0] += 1
             elif action == 2 and self.agent_pos[1] < self.grid_size - 1: # right
                 self.agent_pos[1] += 1
+                
         elif self.action_space.n == 5:
             if action == 1 and self.agent_pos[0] < self.grid_size - 1: # down
                 self.agent_pos[0] += 1
@@ -775,20 +473,15 @@ class GlioblastomaPositionalEncoding(gym.Env):
         
         reward = self._get_reward(action, prev_pos)
         
-        # TRY: terminate episode after getting the reward
-        if reward == self.rewards[0] and action == 0:
-            terminated = True
-            reward += 10.0  # bonus for finding tumor
-        elif reward == self.rewards[0] and action != 0:
-            terminated = True # agent decided to end (wrong tho, false positive)
-        else:
-            terminated = self.current_step >= self.max_steps
+        terminated = self.current_step >= self.max_steps
         obs = self._get_obs()
-
-        truncated = False
         info = {}
 
-        return obs, reward, terminated, truncated, info
+        # track previous positions for oscillation detection
+        self.prev_prev_pos = self.prev_pos.copy() if self.prev_pos is not None else None
+        self.prev_pos = prev_pos.copy()     # store for next step
+
+        return obs, reward, terminated, False, info
 
     def _get_obs(self):
         """
@@ -813,9 +506,11 @@ class GlioblastomaPositionalEncoding(gym.Env):
         return obs
 
     def _get_reward(self, action, prev_pos): 
-        if self.prev_prev_pos is not None and self.agent_pos == self.prev_prev_pos:
-            # true oscillation (backtracking)
-            return -1.5   
+        # oscillation = agent returns to the previous position (A→B→A)
+        if self.prev_pos is not None and self.agent_pos == self.prev_pos:
+            return -1.0
+
+  
         attempted_move_but_blocked = (action != 0) and (prev_pos == self.agent_pos)
         if attempted_move_but_blocked:
             #print("Out of bounds move attempted") # DEBUGGING
@@ -834,36 +529,47 @@ class GlioblastomaPositionalEncoding(gym.Env):
         tumor_count_curr = np.sum(np.isin(patch_mask, [1, 4]))
         total = self.block_size * self.block_size # to compute the percentage
         # Determine if patch has more than self.tumor_threshold of tumor
-        inside = (tumor_count_curr / total) >= self.tumor_threshold
+        inside = tumor_count_curr > 0 
+        # inside = (tumor_count_curr / total) >= self.tumor_threshold
 
-        if inside:
-            return self.rewards[0]  # reward for being on tumor or staying on tumor
-            # will not distinguish between moving on tumor or staying on tumor
-            # since it returns, it will not execute the rest of the code
-        else:
-            if action == 0:  # stayed in place but no tumor.
-                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
-                
-                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
-                cy = (self.agent_pos[0] + 0.5) * self.block_size
-                cx = (self.agent_pos[1] + 0.5) * self.block_size
-                
-                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
-                normalized_dist = dist / max_dist
-                distance_penalty = 0.1 * normalized_dist
-                
-                return self.rewards[1] - distance_penalty
+        if action == 0:   
+            if inside:
+                return self.rewards[0]
             else:
-                max_dist = np.sqrt(self.image.shape[0]**2 + self.image.shape[1]**2)
+                return self.rewards[1]
+        
+        else: # movement
+            if inside:
+                return self.rewards[2]  # reward for moving into tumor
+            else:
+                # tumor_indices = np.where(self.mask > 0)
+                # if len(tumor_indices[0]) == 0:
+                #     # Fallback: If no tumor, set target to center of image, 
+                #     ty, tx = self.image.shape[0] / 2, self.image.shape[1] / 2 
+                # else:
+                #     ty, tx = np.mean(tumor_indices, axis=1)
+
+                # prev_dist = np.sqrt((prev_pos[1] - tx)**2 + (prev_pos[0] - ty)**2)
+                # curr_dist = np.sqrt((self.agent_pos[1] - tx)**2 + (self.agent_pos[0] - ty)**2)                
+                # #reward for moving closer, penalty for moving away
+                # dist_delta = prev_dist - curr_dist
+                # shaping_reward = dist_delta * 0.2
+                # return self.rewards[3] + shaping_reward
                 
-                ty, tx = np.mean(np.where(self.mask > 0), axis=1)
-                cy = (self.agent_pos[0] + 0.5) * self.block_size
-                cx = (self.agent_pos[1] + 0.5) * self.block_size
-                
-                dist = np.sqrt((cx - tx)**2 + (cy - ty)**2)
-                normalized_dist = dist / max_dist
-                distance_penalty = 0.1 * normalized_dist
-                return self.rewards[2] + distance_penalty  # moved but no tumor
+                prev_overlap = self.current_patch_overlap_with_lesion(prev_pos)
+                curr_overlap = self.current_patch_overlap_with_lesion(self.agent_pos)
+
+                delta = curr_overlap - prev_overlap
+
+                if delta > 0:
+                    bonus = 0.2
+                elif delta < 0:
+                    bonus = -0.2
+                else:
+                    bonus = 0.0
+
+                return self.rewards[3] + bonus
+
 
     def render(self, show=True):
         if self.render_mode != "human": # would be rgb_array or ansi

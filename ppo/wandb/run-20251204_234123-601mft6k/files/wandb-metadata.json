@@ -1,0 +1,28 @@
+{
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2025-12-04T22:41:23.775110Z",
+  "program": "/home/martina/codi2/4year/tfg/ppo/ppo.ipynb",
+  "codePath": "ppo/ppo.ipynb",
+  "codePathLocal": "ppo.ipynb",
+  "git": {
+    "remote": "https://github.com/Martinacarretta/tfg",
+    "commit": "048222afc5f9f612f5150af9df102a6830fa1086"
+  },
+  "email": "martinacarrettab@gmail.com",
+  "root": "/home/martina/codi2/4year/tfg/ppo",
+  "host": "LAPTOP-INQT65B2",
+  "executable": "/bin/python3",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "269427478528",
+      "used": "41335529472"
+    }
+  },
+  "memory": {
+    "total": "3991113728"
+  },
+  "writerId": "5mi85jh80v8zalk4y7zbag0qou1x5rhp"
+}

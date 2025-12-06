@@ -1,0 +1,2 @@
+2025-12-04 19:09:00,918 INFO    MainThread:199135 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/ppo/wandb/run-20251204_190900-lfrlgjck/logs/debug.log
+2025-12-04 19:09:00,918 INFO    MainThread:199135 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/ppo/wandb/run-20251204_190900-lfrlgjck/logs/debug-internal.log

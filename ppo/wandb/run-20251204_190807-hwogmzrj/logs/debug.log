@@ -1,0 +1,18 @@
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_setup.py:_flush():81] Current SDK version is 0.22.2
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_setup.py:_flush():81] Configure stats pid to 199135
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_setup.py:_flush():81] Loading settings from /home/martina/.config/wandb/settings
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_setup.py:_flush():81] Loading settings from /home/martina/codi2/4year/tfg/ppo/wandb/settings
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_init.py:setup_run_log_directory():705] Logging user logs to /home/martina/codi2/4year/tfg/ppo/wandb/run-20251204_190807-hwogmzrj/logs/debug.log
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to /home/martina/codi2/4year/tfg/ppo/wandb/run-20251204_190807-hwogmzrj/logs/debug-internal.log
+2025-12-04 19:08:07,365 INFO    MainThread:199135 [wandb_init.py:monkeypatch_ipython():624] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x718c8cf05390>
+2025-12-04 19:08:07,374 ERROR   MainThread:199135 [util.py:get_module():252] Error importing optional module tensorboard
+Traceback (most recent call last):
+  File "/home/martina/.local/lib/python3.10/site-packages/wandb/util.py", line 245, in get_module
+    return import_module(name)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tensorboard'

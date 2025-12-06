@@ -94,7 +94,7 @@ class DQNAgent:
             self.state0, _ = self.env.reset(seed=SEED)
             if first:
                 first = False
-                # UPDATED: Detect input channels from first environment so i can use with both envs and dqns
+                # Detect input channels from first environment so i can use with both envs and dqns
                 if self.state0.ndim == 2:
                     self.input_channels = 1 # in case it were (60, 60)
                 else:
@@ -119,12 +119,17 @@ class DQNAgent:
                 unit="ep", unit_scale=True, 
                 bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]')
 
-        
         print("Training...")
         while training and episode < max_episodes:
+            force_on_target = False
+            # if random.random() < 0.2: 
+            #     force_on_target = True
+            # else:
+            #     force_on_target = False
+                
             img_path, mask_path = random.choice(train_pairs)
             self.env = self.env_class(img_path, mask_path, **self.env_config)
-            self.state0, _ = self.env.reset(seed=SEED)
+            self.state0, _ = self.env.reset(seed=SEED, force_on_target=force_on_target)
             self.total_reward = 0
             
             # DEBUGGING
@@ -155,6 +160,7 @@ class DQNAgent:
           
                     # Save the rewards
                     self.training_rewards.append(self.total_reward)
+                    
                     # Calculate the average reward for the last X episodes
                     if len(self.training_rewards) >= self.nblock:
                         mean_rewards = np.mean(self.training_rewards[-self.nblock:])
@@ -163,9 +169,14 @@ class DQNAgent:
                     
                     self.mean_training_rewards.append(mean_rewards)
 
+                    if len(self.update_loss) > 0:
+                        average_loss = np.mean(self.update_loss)
+                    else:
+                        average_loss = 0.0 # episodes with no update (avoid nan)
+                        
                     if episode % 15 == 0:
                         print("Episode {:d} | Episode reward {:.2f} | Mean Rewards {:.2f} | Epsilon {:.4f} | Loss {:.4f}".format(
-                            episode, self.total_reward, mean_rewards, self.epsilon, np.mean(self.update_loss)))
+                            episode, self.total_reward, mean_rewards, self.epsilon, average_loss))
                         print(f"      Positive rewards: {pos_rewards}, Negative rewards: {neg_rewards}") # DEBUGGING
                     
                     wandb.log({
@@ -173,14 +184,14 @@ class DQNAgent:
                         'mean_rewards': mean_rewards,
                         'episode reward': self.total_reward,
                         'epsilon': self.epsilon,
-                        'loss': np.mean(self.update_loss)
+                        'loss': average_loss
                     }, step=episode)
                     
                     # Append metrics to lists for plotting
                     self.episode_rewards.append(self.total_reward)
                     self.mean_rewards.append(mean_rewards)
                     self.epsilon_values.append(self.epsilon)
-                    self.loss_values.append(np.mean(self.update_loss))
+                    self.loss_values.append(average_loss)
                     
                     self.update_loss = []
 
@@ -196,9 +207,6 @@ class DQNAgent:
                     else:
                         self.epsilon = max(self.epsilon - self.eps_decay, self.epsilon_min) 
                         
-                    #save if it's best mean reward
-                    if mean_rewards >= max(self.mean_training_rewards):
-                        torch.save(self.dnnetwork.state_dict(), f"{self.save_name}_best.dat")
                     torch.save(self.dnnetwork.state_dict(), self.save_name + ".dat")
         
         pbar.close()

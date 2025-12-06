@@ -1,0 +1,7 @@
+Filling replay buffer...
+Buffer filled with 15000 experiences
+Training...
+Episode 15 | Episode reward -1423.39 | Mean Rewards -660.40 | Epsilon 0.9724 | Loss 0.2380
+      Positive rewards: 422, Negative rewards: 2342
+Episode 30 | Episode reward -2928.69 | Mean Rewards -1455.12 | Epsilon 0.9436 | Loss 0.2799
+      Positive rewards: 860, Negative rewards: 4787

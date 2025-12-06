@@ -1,0 +1,8 @@
+Starting at 1.0, decaying 0.998 each episode, will reach 0.3 after 601 episodes
+Using dataset of 200 samples for training.
+✅ Found 200 pairs out of 200 listed in CSV.
+(3, 40, 40)
+5
+[0 1 2 3 4]
+Using Glioblastoma class <class 'general.GlioblastomaPositionalEncoding'>, DQN class <class 'training_dqn.DQNPositionalEncoding'>, Agent class <class 'training_agents.DQNAgent'>, Buffer class <class 'training_buffers.ReplayBuffer'>
+[34m[1mwandb[0m: [33mWARNING[0m Calling wandb.login() after wandb.init() has no effect.

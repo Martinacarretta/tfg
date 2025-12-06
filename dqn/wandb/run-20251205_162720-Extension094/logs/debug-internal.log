@@ -1,0 +1,6 @@
+{"time":"2025-12-05T16:27:21.147401682+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-12-05T16:27:21.677443865+01:00","level":"INFO","msg":"stream: created new stream","id":"Extension094"}
+{"time":"2025-12-05T16:27:21.677669001+01:00","level":"INFO","msg":"handler: started","stream_id":"Extension094"}
+{"time":"2025-12-05T16:27:21.677729306+01:00","level":"INFO","msg":"stream: started","id":"Extension094"}
+{"time":"2025-12-05T16:27:21.677763588+01:00","level":"INFO","msg":"writer: started","stream_id":"Extension094"}
+{"time":"2025-12-05T16:27:21.677793526+01:00","level":"INFO","msg":"sender: started","stream_id":"Extension094"}

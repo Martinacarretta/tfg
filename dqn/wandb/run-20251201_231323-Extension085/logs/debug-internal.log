@@ -1,0 +1,7 @@
+{"time":"2025-12-01T23:13:23.789391797+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-12-01T23:13:24.237130436+01:00","level":"INFO","msg":"stream: created new stream","id":"Extension085"}
+{"time":"2025-12-01T23:13:24.237775888+01:00","level":"INFO","msg":"handler: started","stream_id":"Extension085"}
+{"time":"2025-12-01T23:13:24.237785382+01:00","level":"INFO","msg":"stream: started","id":"Extension085"}
+{"time":"2025-12-01T23:13:24.23784134+01:00","level":"INFO","msg":"writer: started","stream_id":"Extension085"}
+{"time":"2025-12-01T23:13:24.2415259+01:00","level":"INFO","msg":"sender: started","stream_id":"Extension085"}
+{"time":"2025-12-01T23:15:46.340134885+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/martinacarrettab/TFG_Glioblastoma/Extension085/file_stream\": EOF"}
