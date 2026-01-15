@@ -3,3 +3,8 @@
 *.zip
 *.gif
 data/
+BENCHMARKING/
+models*/
+GIFS*/
+__pycache__/
+wandb/
