@@ -3,7 +3,9 @@
 *.zip
 *.gif
 data/
-models*/
+models_DQN/
+models_PPO/
+models_reinforce/
 GIFS*/
 __pycache__/
 wandb/

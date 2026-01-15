@@ -26,19 +26,19 @@ CURRENT_CONFIG = {
     'grid_size': 6,
     'action_space': spaces.Discrete(5), 
     'rewards': [
-        20.0,   # Correct Stay (Goal)
-        -6.0,  # Wrong Stay (False Positive penalty)
+        25.0,   # Correct Stay (Goal)
+        -12.0,  # Wrong Stay (False Positive penalty)
         0.5,    # Move into tumor (The "Warm" hint)
         -0.5,   # Exit tumor (The "Cold" hint)
-        0.1,    # Move within tumor (Encourage staying on target)
-        -0.1    # Step penalty (Urgency)
+        0.07,    # Move within tumor (Encourage staying on target)
+        -0.15    # Step penalty (Urgency)
     ],
     'max_steps': 75
 }
     
 start = True  # Whether to start on zero or random position
 best = True
-MODEL_NAME = "POLYP_reward_shaping_007"
+MODEL_NAME = "POLYP_reward_shaping_008"
 LR = 5e-5
 
 test_pairs = prepare(dataset=CURRENT_CONFIG['dataset'], mode="test")
