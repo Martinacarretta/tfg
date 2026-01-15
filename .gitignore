@@ -1,0 +1,5 @@
+*.npy
+*.dat
+*.zip
+*.gif
+data/
