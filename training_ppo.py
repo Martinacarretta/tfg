@@ -116,7 +116,7 @@ def make_env(grid_size, rewards, action_space, max_steps, dataset_name):
 CURRENT_CONFIG = {
     'dataset': "polyp",
     'mode': "train",               # IMPORTANT
-    'grid_size': 6,
+    'grid_size': 8,
     'action_space': spaces.Discrete(5),
     'rewards': [
         100.0,   # Correct Stay
@@ -128,7 +128,7 @@ CURRENT_CONFIG = {
     ],
     'max_steps': 100
 }
-MODEL_NAME = "POLYP_ppo_009"
+MODEL_NAME = "POLYP_ppo_011"
 
 CON2 = {
     'policy': 'MlpPolicy',
