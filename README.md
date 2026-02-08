@@ -23,3 +23,7 @@ REINFORCE:
 - [Training](training_reinforce.py)
 - [testing](testing_reinforce.py)
 
+Final models:
+- [DQN](final_models/models_DQN)
+- [PPO](final_models/models_PPO)
+- [REINFORCE](final_models/models_REINFORCE)
