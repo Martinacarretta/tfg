@@ -134,7 +134,11 @@ def testing(agent, test_pairs, agent_type, num_episodes=None, env_config=None, s
             
             # For GIF creation
             frames = []
-            
+            if save_gifs:
+                initial_frame = env.render(show=False)
+                if initial_frame is not None:
+                    frames.append(initial_frame)
+                    
             ### EPISODE LOOP ###
             for step in range(env.max_steps):
                 with torch.no_grad():

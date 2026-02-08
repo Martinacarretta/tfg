@@ -21,24 +21,24 @@ if torch.cuda.is_available():
     torch.backends.cudnn.benchmark = False
 
 CURRENT_CONFIG = {
-    'dataset': "polyp",
+    'dataset': "glio",
     'mode': "test",
-    'grid_size': 6,
+    'grid_size': 8,
     'action_space': spaces.Discrete(5), 
     'rewards': [
-        25.0,   # Correct Stay (Goal)
-        -12.0,  # Wrong Stay (False Positive penalty)
-        0.5,    # Move into tumor (The "Warm" hint)
-        -0.5,   # Exit tumor (The "Cold" hint)
-        0.07,    # Move within tumor (Encourage staying on target)
-        -0.15    # Step penalty (Urgency)
+        120.0,   # Correct Stay (Goal)
+        -60.0,  # Wrong Stay (False Positive penalty)
+        3.0,    # Move into tumor (The "Warm" hint)
+        -1.5,   # Exit tumor (The "Cold" hint)
+        1.0,    # Move within tumor (Encourage staying on target)
+        -0.1    # Step penalty (Urgency)
     ],
-    'max_steps': 75
+    'max_steps': 100
 }
     
 start = True  # Whether to start on zero or random position
 best = True
-MODEL_NAME = "POLYP_reward_shaping_008"
+MODEL_NAME = "GLIO_grid_shaping_008"
 LR = 5e-5
 
 test_pairs = prepare(dataset=CURRENT_CONFIG['dataset'], mode="test")
@@ -76,7 +76,7 @@ if start:
         num_episodes=len(test_pairs),
         env_config=CURRENT_CONFIG,
         save_gifs=True,
-        gif_folder=f"GIFS_DQN/SOZ_GIFs_Testing_{MODEL_NAME}",
+        gif_folder=f"PRESENTATION/GIFS_DQN/SOZ_GIFs_Testing_{MODEL_NAME}",
         start_on_zero=True, 
         print_all=False
     )
@@ -88,7 +88,7 @@ else:
         num_episodes=len(test_pairs),
         env_config=CURRENT_CONFIG,
         save_gifs=True,
-        gif_folder=f"GIFS_DQN/GIFs_Testing_{MODEL_NAME}", 
+        gif_folder=f"PRESENTATION/GIFS_DQN/GIFs_Testing_{MODEL_NAME}",
         print_all=False
     )
 
