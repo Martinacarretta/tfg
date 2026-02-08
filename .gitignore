@@ -1,11 +1,15 @@
 *.npy
-*.dat
 *.zip
 *.gif
 data/
+
 models_DQN/
 models_PPO/
 models_reinforce/
+# BUT keep the final models
+!final_models/
+!final_models/**
+
 GIFS*/
 __pycache__/
 wandb/
