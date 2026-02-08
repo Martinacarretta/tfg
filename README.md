@@ -24,6 +24,4 @@ REINFORCE:
 - [testing](testing_reinforce.py)
 
 Final models:
-- [DQN](final_models/models_DQN)
-- [PPO](final_models/models_PPO)
-- [REINFORCE](final_models/models_REINFORCE)
+- [Final models Drive](https://drive.google.com/drive/folders/16aJhx252OrXyRt33MFYGRPlTR0qfWdaw?usp=sharing)
