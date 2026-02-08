@@ -1,34 +1,25 @@
 # tfg
+## Data:
+In this project we used MRI scans from BraTS 2020 and colonoscopies from PolypSegm_ASH
+See statistics in: [Glioblastoma](glio.ipynb) and [polyps](polyp.ipynb)
 
+[env.py](env.py) has the class to convert the input to the gridworld environment
 
-png and npy files are saved with the correct orientation. 
-    Correct orientation (from axial view):
-    Anterior is up
-    posterior is down
+Use [general](general.py) to get the pairs of images and masks depending on the dataset and the modality (train, validate, test) perform testing. 
 
-I flipped the x and y axis with transpose function ONCE during data loading to avoid having to transpose it when plotting...
-To plot, display normally, no .t and no origin = lower. 
+DQN:
+- [Training main file](training_dqn.py)
+- [DQN architecture](training_dqnpos.py)
+- [Agent](training_agents.py)
+- [Buffer](training_buffers.py)
+- [Training](training_dqn.py)
+- [Testing](testing_dqn.py)
 
-BUT REMEMBER THE AXIS FOLLOW THE IMAGE y-axis direction CONVENTION (Y AXIS GOES DOWN, NOT UP)
+PPO:
+- [Training](training_ppo.py)
+- [testing](testing_ppo.py)
 
-  0  1  2  3
-  
-0
+REINFORCE:
+- [Training](training_reinforce.py)
+- [testing](testing_reinforce.py)
 
-1
-
-2
-
-3
-
-NOT 
-
-3
-
-2
-
-1
-
-0
-
-  0  1  2  3
